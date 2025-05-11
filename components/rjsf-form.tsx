@@ -7,7 +7,7 @@ import { TypographyH2 } from './ui/typography';
 
 const ObjectFieldTemplate = ({ title, properties }: any) => {
     return (
-      <div>
+      <div className="mt-4">
         <TypographyH2>
           {title}
         </TypographyH2>

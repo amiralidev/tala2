@@ -2,103 +2,151 @@
 
 import { RJSForm } from '@/components/rjsf-form';
 import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button'
-import { Label } from '@/components/ui/label'
-import { RJSFSchema } from '@rjsf/utils';
-import { useState } from 'react';
-import schemas from "./schemas.json"
-import axios from "axios"
+import { Button } from '@/components/ui/button';
+import { Label } from '@/components/ui/label';
+import { useState, useEffect } from 'react';
+import schemas from "./schemas.json";
+import axios from "axios";
 
-const schema: RJSFSchema = {
-  title: 'ایجاد محصول',
-  type: "object",
-  properties: {
-    "hello": {
-        title: "عنوان",
-        type: "string",
-    },
-    "zello": {
-        title: "رنگ",
-        type: "string",
-    },
-    "haello": {
-              title: "عنوان",
-              type: "string",
-    },
-    "zaello": {
-      title: "رنگ",
-      type: "string",
-      oneOf: [{
-          const: "salam",
-          title: "hello",
-        }, {
-          const: "khodafez",
-          title: "bye",
-        }
-      ]
-    }
-  }
-};
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 export default function Page() {
+  const [files, setFiles] = useState<File[]>([]);
+  const [sku, setSku] = useState("");
+  const [bucket, setBucket] = useState<string | null>(null);
+  const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+  const [selectedSchema, setSelectedSchema] = useState<string | null>(null);
+  const [bucketOptions, setBucketOptions] = useState<string[]>([]);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
-    const [files, setFiles] = useState([]);
-    const [previewUrl, setPreviewUrl] = useState(null);
-    const [isSubmitting, setIsSubmitting] = useState(false);
-    const [errorMessage, setErrorMessage] = useState('');
+  useEffect(() => {
+  const fetchBuckets = async () => {
+    try {
+      const res = await axios.get('/api/product/bucket');
+      setBucketOptions(res.data.buckets);
+    } catch (error) {
+      console.error('Error fetching buckets:', error);
+    }
+  };
+  fetchBuckets();
+  }, []);
 
-    const onSubmit = ({ formData }:{formData: RJSFSchema}, e) => console.log('Data submitted: ', formData);
+  const onSubmit = async ({ formData }: { formData: any }, e: any) => {
+    console.log('Data submitted: ', sku, formData);
+    try {
+      await axios.post("/api/product", { bucket, data: {sku, ...formData} });
+      alert('Form submitted successfully!');
+    } catch (error) {
+      setErrorMessage('Error submitting form');
+      console.error(error);
+    }
+  };
 
-    const handleFileChange = (event) => {
-      const selectedFiles = Array.from(event.target.files);
-      setFiles(selectedFiles);
-  
-      // Show preview of the first image file if available
-      if (selectedFiles.length > 0 && selectedFiles[0].type.startsWith('image/')) {
-        const reader = new FileReader();
-        reader.onloadend = () => {
-          setPreviewUrl(reader.result); // Data URL
-        };
-        reader.readAsDataURL(selectedFiles[0]);
-      } else {
-        setPreviewUrl(null); // Clear preview if no image
-      }
-    };
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const selectedFiles = Array.from(event.target.files || []);
+    setFiles(selectedFiles);
 
-    const handleSubmit = async (event) => {
-      event.preventDefault();
-      setIsSubmitting(true);
-      setErrorMessage('');
+    // Show preview of the first image file if available
+    if (selectedFiles.length > 0 && selectedFiles[0].type.startsWith('image/')) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setPreviewUrl(reader.result as string); // Data URL
+      };
+      reader.readAsDataURL(selectedFiles[0]);
+    } else {
+      setPreviewUrl(null); // Clear preview if no image
+    }
+  };
 
-      const formData = new FormData();
-      files.forEach((file) => {
-        formData.append('files', file);
+  const handleSkuChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSku(event.target.value);
+  };
+
+  const handleUpload = async (event: React.FormEvent) => {
+    event.preventDefault();
+    setIsSubmitting(true);
+    setErrorMessage('');
+
+    const formData = new FormData();
+    files.forEach((file) => {
+      formData.append('files', file);
+    });
+
+    formData.append('folder', sku);
+
+    try {
+      const response = await axios.post('/api/upload', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
       });
-      
-      formData.append('folder', 'yes')
+      alert('Files uploaded successfully!');
+    } catch (error) {
+      setErrorMessage('Error uploading files');
+      console.error(error);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
-      try {
-        console.log("hey",  files)
-        const response = await axios.post('/api/upload', formData, {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-          },
-        });
-        alert('Files uploaded successfully!');
-        
-      } catch (error) {
-        setErrorMessage('Error uploading files');
-        console.error(error);
-      } finally {
-        setIsSubmitting(false);
-      }
-    };
+  return (
+    <div>
+      <div className="max-w-lg p-1">
+        {/* First part - Select and SKU */}
+        <form onSubmit={handleUpload}>
+         
+          <div className="mb-4">
+            <Label htmlFor="bucket">مجموعه*</Label>
+            <Select onValueChange={setBucket} required>
+              <SelectTrigger className="mt-2">
+                <SelectValue placeholder="انتخاب کنید" />
+              </SelectTrigger>
+              <SelectContent>
+                {bucketOptions.map((option) => (
+                  <SelectItem key={option} value={option}>
+                    {option}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
 
-    return (
-        <div>
-          <div className="max-w-lg p-4">
-            <h1 className="text-2xl font-semibold mb-4">آپلود تصاویر</h1>
-            <form onSubmit={handleSubmit}>
+          <div className="mb-4">
+            <Label htmlFor="category">دسته بندی*</Label>
+            <Select onValueChange={setSelectedSchema}>
+              <SelectTrigger>
+                <SelectValue placeholder="Select Schema" />
+              </SelectTrigger>
+              <SelectContent>
+                {Object.entries(schemas).map(([key, schema]) => (
+                  <SelectItem key={key} value={key}>
+                    {schema.title}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+
+          <div className="mb-4">
+            <Label htmlFor="sku">شناسه*</Label>
+            <Input
+              id="sku"
+              type="text"
+              onChange={handleSkuChange}
+              className="mt-2"
+              required
+            />
+          </div>
+
+          {/* Image Upload part */}
+            <div className="max-w-lg mt-6">
               <div className="mb-4">
                 <Label htmlFor="fileInput">تصاویر را انتخاب کنید</Label>
                 <Input
@@ -122,18 +170,26 @@ export default function Page() {
               )}
 
               {errorMessage && <p className="text-red-500">{errorMessage}</p>}
+            </div>
 
-              <Button
-                type="submit"
-                className="mt-2"
-                disabled={isSubmitting}
-              >
-                {isSubmitting ? 'Uploading...' : 'Upload Files'}
-              </Button>
-            </form>
-          </div>
-            <RJSForm schema={schemas[2]} onSubmit={onSubmit}/>
-        </div>
-    )
-  }
-  
+
+          <Button
+            type="submit"
+            className="mt-2"
+            disabled={isSubmitting}
+          >
+            {isSubmitting ? 'در حال آپلود' : 'آپلود تصاویر'}
+          </Button>
+        </form>
+      </div>
+
+
+      {/* Second part - Render schema form */}
+      {selectedSchema && (
+          <RJSForm schema={schemas[selectedSchema]} onSubmit={onSubmit} />
+      )}
+      
+
+    </div>
+  );
+}

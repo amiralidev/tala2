@@ -1,5 +1,5 @@
-[
-    {
+{
+    "9386": {
         "title": "پابند طلا زنانه",
         "type": "object",
         "required": [
@@ -9,9 +9,9 @@
             "product[division_id]",
             "product[general_mefa]",
             "attribute[32]",
-            "attribute[8732]",
-            "attribute[10092]",
-            "attribute[10885]",
+            "attribute[8732][]",
+            "attribute[10092][]",
+            "attribute[10885][]",
             "attribute[11137]",
             "attribute[143]",
             "attribute[130]",
@@ -59,16 +59,6 @@
                     {
                         "const": "2936",
                         "title": "پابند طلا",
-                        "type": "string"
-                    },
-                    {
-                        "const": "11238",
-                        "title": "پابند طلا 18 عیار",
-                        "type": "string"
-                    },
-                    {
-                        "const": "2939",
-                        "title": "پابند طلا 24 عیار",
                         "type": "string"
                     }
                 ]
@@ -557,6 +547,11 @@
                     {
                         "const": "58220",
                         "title": "کارتیه",
+                        "type": "string"
+                    },
+                    {
+                        "const": "64288",
+                        "title": "ورساچه",
                         "type": "string"
                     }
                 ]
@@ -1540,7 +1535,7 @@
             }
         }
     },
-    {
+    "11314": {
         "title": "بنگل طلا زنانه",
         "type": "object",
         "required": [
@@ -1549,15 +1544,15 @@
             "product[category_product_type_id][]",
             "product[division_id]",
             "product[general_mefa]",
-            "attribute[10092]",
+            "attribute[10092][]",
             "attribute[10648]",
-            "attribute[10885]",
+            "attribute[10885][]",
             "attribute[11137]",
             "attribute[11297]",
             "attribute[143]",
             "attribute[254]",
             "attribute[168]",
-            "attribute[88]"
+            "attribute[88][]"
         ],
         "properties": {
             "product[model]": {
@@ -1580,7 +1575,13 @@
             "product[division_id]": {
                 "title": "دسته بندی کالا",
                 "type": "string",
-                "oneOf": []
+                "oneOf": [
+                    {
+                        "const": "13157",
+                        "title": "بنگل طلا",
+                        "type": "string"
+                    }
+                ]
             },
             "product[general_mefa]": {
                 "title": "شناسه عمومی",
@@ -1857,6 +1858,11 @@
                         "const": "58220",
                         "title": "کارتیه",
                         "type": "string"
+                    },
+                    {
+                        "const": "64288",
+                        "title": "ورساچه",
+                        "type": "string"
                     }
                 ]
             },
@@ -2053,7 +2059,7 @@
             }
         }
     },
-    {
+    "9388": {
         "title": "دستبند طلا زنانه",
         "type": "object",
         "required": [
@@ -2063,10 +2069,10 @@
             "product[division_id]",
             "product[general_mefa]",
             "attribute[11137]",
-            "attribute[10885]",
-            "attribute[10092]",
+            "attribute[10885][]",
+            "attribute[10092][]",
             "attribute[32]",
-            "attribute[8737]",
+            "attribute[8737][]",
             "attribute[143]",
             "attribute[202]",
             "attribute[254]",
@@ -2116,23 +2122,8 @@
                 "type": "string",
                 "oneOf": [
                     {
-                        "const": "10909",
-                        "title": "النگو طلا 18 عیار",
-                        "type": "string"
-                    },
-                    {
-                        "const": "10908",
-                        "title": "النگو طلا 24 عیار",
-                        "type": "string"
-                    },
-                    {
-                        "const": "10911",
-                        "title": "دستبند النگویی طلا 18 عیار",
-                        "type": "string"
-                    },
-                    {
-                        "const": "10910",
-                        "title": "دستبند النگویی طلا 24 عیار",
+                        "const": "13068",
+                        "title": "دستبند تمیمه طلا",
                         "type": "string"
                     },
                     {
@@ -2141,8 +2132,43 @@
                         "type": "string"
                     },
                     {
-                        "const": "11036",
-                        "title": "دستبند طلا 18 عیار",
+                        "const": "13073",
+                        "title": "دستبند طلا با بند بافت",
+                        "type": "string"
+                    },
+                    {
+                        "const": "13067",
+                        "title": "دستبند طلا با بند مهره‌ای",
+                        "type": "string"
+                    },
+                    {
+                        "const": "13074",
+                        "title": "دستبند طلا با بند میوکی",
+                        "type": "string"
+                    },
+                    {
+                        "const": "13075",
+                        "title": "دستبند طلا با بند نخی",
+                        "type": "string"
+                    },
+                    {
+                        "const": "13066",
+                        "title": "دستبند طلا با بند چرمی",
+                        "type": "string"
+                    },
+                    {
+                        "const": "13069",
+                        "title": "دستبند کشی طلا",
+                        "type": "string"
+                    },
+                    {
+                        "const": "13072",
+                        "title": "دستنبد النگویی طلا",
+                        "type": "string"
+                    },
+                    {
+                        "const": "13071",
+                        "title": "دستنبد زنجیری طلا",
                         "type": "string"
                     }
                 ]
@@ -2341,6 +2367,11 @@
                     {
                         "const": "58220",
                         "title": "کارتیه",
+                        "type": "string"
+                    },
+                    {
+                        "const": "64288",
+                        "title": "ورساچه",
                         "type": "string"
                     }
                 ]
@@ -3228,7 +3259,7 @@
             }
         }
     },
-    {
+    "9389": {
         "title": "گل سینه طلا زنانه",
         "type": "object",
         "required": [
@@ -3237,9 +3268,9 @@
             "product[category_product_type_id][]",
             "product[division_id]",
             "product[general_mefa]",
-            "attribute[8738]",
-            "attribute[10092]",
-            "attribute[10885]",
+            "attribute[8738][]",
+            "attribute[10092][]",
+            "attribute[10885][]",
             "attribute[11137]",
             "attribute[143]",
             "attribute[254]"
@@ -3274,22 +3305,12 @@
                 "oneOf": [
                     {
                         "const": "2504",
-                        "title": "سنجاق سینه طلا 18 عیار",
-                        "type": "string"
-                    },
-                    {
-                        "const": "2506",
-                        "title": "سنجاق سینه طلا 24 عیار",
+                        "title": "سنجاق سینه طلا",
                         "type": "string"
                     },
                     {
                         "const": "2461",
-                        "title": "گل سینه طلا 18 عیار",
-                        "type": "string"
-                    },
-                    {
-                        "const": "2505",
-                        "title": "گل سینه طلا 24 عیار",
+                        "title": "گل سینه طلا",
                         "type": "string"
                     }
                 ]
@@ -3548,6 +3569,11 @@
                         "const": "58220",
                         "title": "کارتیه",
                         "type": "string"
+                    },
+                    {
+                        "const": "64288",
+                        "title": "ورساچه",
+                        "type": "string"
                     }
                 ]
             },
@@ -3666,7 +3692,7 @@
             }
         }
     },
-    {
+    "9390": {
         "title": "زنجیر طلا زنانه",
         "type": "object",
         "required": [
@@ -3676,10 +3702,10 @@
             "product[division_id]",
             "product[general_mefa]",
             "attribute[10648]",
-            "attribute[10885]",
+            "attribute[10885][]",
             "attribute[11137]",
-            "attribute[10092]",
-            "attribute[8739]",
+            "attribute[10092][]",
+            "attribute[8739][]",
             "attribute[143]",
             "attribute[10653]",
             "attribute[32]",
@@ -3960,6 +3986,11 @@
                     {
                         "const": "58220",
                         "title": "کارتیه",
+                        "type": "string"
+                    },
+                    {
+                        "const": "64288",
+                        "title": "ورساچه",
                         "type": "string"
                     }
                 ]
@@ -4421,7 +4452,7 @@
             }
         }
     },
-    {
+    "9391": {
         "title": "گوشواره طلا زنانه",
         "type": "object",
         "required": [
@@ -4431,9 +4462,9 @@
             "product[division_id]",
             "product[general_mefa]",
             "attribute[11137]",
-            "attribute[10885]",
-            "attribute[10092]",
-            "attribute[8741]",
+            "attribute[10885][]",
+            "attribute[10092][]",
+            "attribute[8741][]",
             "attribute[143]",
             "attribute[206]",
             "attribute[254]",
@@ -4479,12 +4510,97 @@
                 "oneOf": [
                     {
                         "const": "2509",
-                        "title": "گوشواره طلا 18 عیار",
+                        "title": "گوشواره طلا",
                         "type": "string"
                     },
                     {
-                        "const": "2510",
-                        "title": "گوشواره طلا 24 عیار",
+                        "const": "13001",
+                        "title": "گوشواره طلا با طرح امگا",
+                        "type": "string"
+                    },
+                    {
+                        "const": "13004",
+                        "title": "گوشواره طلا با طرح بولگاری",
+                        "type": "string"
+                    },
+                    {
+                        "const": "12995",
+                        "title": "گوشواره طلا با طرح تیفانی",
+                        "type": "string"
+                    },
+                    {
+                        "const": "12996",
+                        "title": "گوشواره طلا با طرح دیوید یورمن",
+                        "type": "string"
+                    },
+                    {
+                        "const": "13000",
+                        "title": "گوشواره طلا با طرح روبرتو کوین",
+                        "type": "string"
+                    },
+                    {
+                        "const": "13009",
+                        "title": "گوشواره طلا با طرح شنل",
+                        "type": "string"
+                    },
+                    {
+                        "const": "13002",
+                        "title": "گوشواره طلا با طرح فراگامو",
+                        "type": "string"
+                    },
+                    {
+                        "const": "13003",
+                        "title": "گوشواره طلا با طرح فرِد",
+                        "type": "string"
+                    },
+                    {
+                        "const": "13007",
+                        "title": "گوشواره طلا با طرح لویی ویتون",
+                        "type": "string"
+                    },
+                    {
+                        "const": "12998",
+                        "title": "گوشواره طلا با طرح میسکا",
+                        "type": "string"
+                    },
+                    {
+                        "const": "12994",
+                        "title": "گوشواره طلا با طرح هرمس",
+                        "type": "string"
+                    },
+                    {
+                        "const": "13162",
+                        "title": "گوشواره طلا با طرح ورساچه",
+                        "type": "string"
+                    },
+                    {
+                        "const": "13008",
+                        "title": "گوشواره طلا با طرح ولنتینو",
+                        "type": "string"
+                    },
+                    {
+                        "const": "12999",
+                        "title": "گوشواره طلا با طرح ونکلیف",
+                        "type": "string"
+                    },
+                    {
+                        "const": "13010",
+                        "title": "گوشواره طلا با طرح پاندورا",
+                        "type": "string"
+                    },
+                    {
+                        "const": "12997",
+                        "title": "گوشواره طلا با طرح پورتوفینو",
+                        "type": "string"
+                    },
+                    {
+                        "const": "13006",
+                        "title": "گوشواره طلا با طرح پوملاتو",
+                        "type": "string"
+                    },
+                    {
+                        "const": "13005",
+                        "title": "گوشواره طلا با طرح کارتیه",
                         "type": "string"
                     }
                 ]
@@ -4673,6 +4789,11 @@
                     {
                         "const": "58220",
                         "title": "کارتیه",
+                        "type": "string"
+                    },
+                    {
+                        "const": "64288",
+                        "title": "ورساچه",
                         "type": "string"
                     }
                 ]
@@ -4976,7 +5097,7 @@
             }
         }
     },
-    {
+    "9392": {
         "title": "سرویس طلا زنانه",
         "type": "object",
         "required": [
@@ -4986,11 +5107,11 @@
             "product[division_id]",
             "product[general_mefa]",
             "attribute[11137]",
-            "attribute[10885]",
-            "attribute[10092]",
-            "attribute[8750]",
-            "attribute[47]",
-            "attribute[159]",
+            "attribute[10885][]",
+            "attribute[10092][]",
+            "attribute[8750][]",
+            "attribute[47][]",
+            "attribute[159][]",
             "attribute[254]",
             "attribute[143]"
         ],
@@ -5028,23 +5149,13 @@
                 "type": "string",
                 "oneOf": [
                     {
-                        "const": "2511",
-                        "title": "ست طلا 18 عیار",
+                        "const": "13173",
+                        "title": "سرویس طلا",
                         "type": "string"
                     },
                     {
-                        "const": "2513",
-                        "title": "ست طلا 24  عیار",
-                        "type": "string"
-                    },
-                    {
-                        "const": "2512",
-                        "title": "نیم ست طلا 18 عیار",
-                        "type": "string"
-                    },
-                    {
-                        "const": "2514",
-                        "title": "نیم ست طلا 24 عیار",
+                        "const": "13174",
+                        "title": "نیم ست طلا",
                         "type": "string"
                     }
                 ]
@@ -5233,6 +5344,11 @@
                     {
                         "const": "58220",
                         "title": "کارتیه",
+                        "type": "string"
+                    },
+                    {
+                        "const": "64288",
+                        "title": "ورساچه",
                         "type": "string"
                     }
                 ]
@@ -6593,7 +6709,7 @@
             }
         }
     },
-    {
+    "9393": {
         "title": "گردنبند طلا زنانه",
         "type": "object",
         "required": [
@@ -6603,12 +6719,12 @@
             "product[division_id]",
             "product[general_mefa]",
             "attribute[11137]",
-            "attribute[10885]",
-            "attribute[10092]",
-            "attribute[8752]",
+            "attribute[10885][]",
+            "attribute[10092][]",
+            "attribute[8752][]",
             "attribute[254]",
             "attribute[134]",
-            "attribute[103]",
+            "attribute[103][]",
             "attribute[32]",
             "attribute[202]",
             "attribute[143]"
@@ -6862,6 +6978,11 @@
                     {
                         "const": "58220",
                         "title": "کارتیه",
+                        "type": "string"
+                    },
+                    {
+                        "const": "64288",
+                        "title": "ورساچه",
                         "type": "string"
                     }
                 ]
@@ -8009,7 +8130,7 @@
             }
         }
     },
-    {
+    "9394": {
         "title": "آویز طلا زنانه",
         "type": "object",
         "required": [
@@ -8019,9 +8140,9 @@
             "product[division_id]",
             "product[general_mefa]",
             "attribute[11137]",
-            "attribute[10885]",
-            "attribute[10092]",
-            "attribute[8755]",
+            "attribute[10885][]",
+            "attribute[10092][]",
+            "attribute[8755][]",
             "attribute[7830]",
             "attribute[143]",
             "attribute[254]",
@@ -8068,18 +8189,8 @@
                 "type": "string",
                 "oneOf": [
                     {
-                        "const": "567",
-                        "title": "\"—\"",
-                        "type": "string"
-                    },
-                    {
                         "const": "2517",
-                        "title": "آویز گردنبند طلا 18 عیار",
-                        "type": "string"
-                    },
-                    {
-                        "const": "2518",
-                        "title": "آویز گردنبند طلا 24 عیار",
+                        "title": "آویز گردنبند طلا",
                         "type": "string"
                     }
                 ]
@@ -8288,6 +8399,11 @@
                     {
                         "const": "58220",
                         "title": "کارتیه",
+                        "type": "string"
+                    },
+                    {
+                        "const": "64288",
+                        "title": "ورساچه",
                         "type": "string"
                     }
                 ]
@@ -8919,7 +9035,7 @@
             }
         }
     },
-    {
+    "9395": {
         "title": "پیرسینگ طلا زنانه",
         "type": "object",
         "required": [
@@ -8929,9 +9045,9 @@
             "product[division_id]",
             "product[general_mefa]",
             "attribute[202]",
-            "attribute[10092]",
+            "attribute[10092][]",
             "attribute[10648]",
-            "attribute[10885]",
+            "attribute[10885][]",
             "attribute[11137]",
             "attribute[254]",
             "attribute[143]"
@@ -8959,13 +9075,8 @@
                 "type": "string",
                 "oneOf": [
                     {
-                        "const": "2520",
-                        "title": "پیرسینگ طلا 18 عیار",
-                        "type": "string"
-                    },
-                    {
-                        "const": "2521",
-                        "title": "پیرسینگ طلا 24 عیار",
+                        "const": "13167",
+                        "title": "پیرسینگ طلا",
                         "type": "string"
                     }
                 ]
@@ -9341,6 +9452,11 @@
                         "const": "58220",
                         "title": "کارتیه",
                         "type": "string"
+                    },
+                    {
+                        "const": "64288",
+                        "title": "ورساچه",
+                        "type": "string"
                     }
                 ]
             },
@@ -9457,4 +9573,4 @@
             }
         }
     }
-]
+}
