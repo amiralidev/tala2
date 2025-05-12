@@ -59,8 +59,8 @@ export default function Page() {
 
     const categorySku = (newCat) => {
         const cat_code = category_code[newCat];
-        const prefix = sku.slice(0, 3)
-        const postfix = sku.slice(-7)
+        const prefix = sku.slice(0, 2)
+        const postfix = sku.slice(-6)
         setSku(prefix + cat_code + postfix)
     }
 
