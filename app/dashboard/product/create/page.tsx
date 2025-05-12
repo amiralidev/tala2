@@ -5,7 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { useState, useEffect } from 'react';
-import schemas from "./schemas.json";
+import schemas from "@/lib/schemas.json";
 import axios from "axios";
 
 import {
@@ -16,9 +16,19 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
+const category_code = {
+11314: "B",
+9388: "D",
+9390: "Z",
+9391: "E", // gooshvare
+9392: "S", // service
+9393: "G", // gardanband
+9394: "A", // aviz
+}
+
 export default function Page() {
   const [files, setFiles] = useState<File[]>([]);
-  const [sku, setSku] = useState("");
+  const [sku, setSku] = useState("AA-D-000001");
   const [bucket, setBucket] = useState<string | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [selectedSchema, setSelectedSchema] = useState<string | null>(null);
@@ -29,8 +39,8 @@ export default function Page() {
   useEffect(() => {
   const fetchBuckets = async () => {
     try {
-      const res = await axios.get('/api/product/bucket');
-      setBucketOptions(res.data.buckets);
+      const res = await axios.get('/api/bucket');
+      setBucketOptions(res.data.buckets.map(bucket=>bucket.name));
     } catch (error) {
       console.error('Error fetching buckets:', error);
     }
@@ -38,11 +48,28 @@ export default function Page() {
   fetchBuckets();
   }, []);
 
+    const incrementSku = () => {
+        const prefix = sku.slice(0, -6)
+        const number = sku.slice(-6)
+
+        const incremented = (parseInt(number, 10) + 1).toString().padStart(6, '0')
+        setSku(prefix + incremented)
+
+    }
+
+    const categorySku = (newCat) => {
+        const cat_code = category_code[newCat];
+        const prefix = sku.slice(0, 3)
+        const postfix = sku.slice(-7)
+        setSku(prefix + cat_code + postfix)
+    }
+
   const onSubmit = async ({ formData }: { formData: any }, e: any) => {
     console.log('Data submitted: ', sku, formData);
     try {
       await axios.post("/api/product", { bucket, data: {sku, ...formData} });
       alert('Form submitted successfully!');
+      incrementSku()
     } catch (error) {
       setErrorMessage('Error submitting form');
       console.error(error);
@@ -120,14 +147,17 @@ export default function Page() {
 
           <div className="mb-4">
             <Label htmlFor="category">دسته بندی*</Label>
-            <Select onValueChange={setSelectedSchema}>
+            <Select onValueChange={(newValue)=> {
+                setSelectedSchema(newValue);
+                categorySku(newValue);
+            }}>
               <SelectTrigger>
                 <SelectValue placeholder="Select Schema" />
               </SelectTrigger>
               <SelectContent>
                 {Object.entries(schemas).map(([key, schema]) => (
                   <SelectItem key={key} value={key}>
-                    {schema.title}
+                    {schema.title} {category_code[key]}
                   </SelectItem>
                 ))}
               </SelectContent>
@@ -139,6 +169,7 @@ export default function Page() {
             <Input
               id="sku"
               type="text"
+              value={sku}
               onChange={handleSkuChange}
               className="mt-2"
               required

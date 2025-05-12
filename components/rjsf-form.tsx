@@ -8,9 +8,7 @@ import { TypographyH2 } from './ui/typography';
 const ObjectFieldTemplate = ({ title, properties }: any) => {
     return (
       <div className="mt-4">
-        <TypographyH2>
           {title}
-        </TypographyH2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4" >
           {properties.map((prop: any) => (
             <div key={prop.name} className="flex flex-col">

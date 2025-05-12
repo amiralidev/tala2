@@ -12,7 +12,7 @@ export async function GET() {
             .filter(file => file.endsWith('.json'))
             .map(file => path.basename(file, '.json'));
 
-        return NextResponse.json({ buckets: jsonFiles });
+        return NextResponse.json({ buckets: jsonFiles.map((name) => ({ "name": name })) });
     } catch (error) {
         return NextResponse.json(
             { error: 'Failed to read directory', details: error.message },

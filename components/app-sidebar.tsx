@@ -52,22 +52,18 @@ const data = {
   ],
   navMain: [
     {
-      title: "ایجاد محصول",
+      title: "محصول",
       url: "#",
       icon: SquareTerminal,
       isActive: true,
       items: [
         {
-          title: "گردنبند",
-          url: "product",
+          title: "ایجاد",
+          url: "product/create",
         },
         {
-          title: "Starred",
-          url: "#",
-        },
-        {
-          title: "Settings",
-          url: "#",
+          title: "سطل‌ها",
+          url: "bucket",
         },
       ],
     },

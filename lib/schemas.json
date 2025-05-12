@@ -1,0 +1,4041 @@
+{
+    "11314": {
+        "title": "بنگل طلا زنانه",
+        "type": "object",
+        "required": [
+            "product[model]",
+            "product[title_fa]",
+            "product[category_product_type_id][]",
+            "product[division_id]",
+            "product[general_mefa]",
+            "variants",
+            "product[description]",
+            "attribute[10092][]",
+            "attribute[10648]",
+            "attribute[10885][]",
+            "attribute[11137]",
+            "attribute[11297]",
+            "attribute[143]",
+            "attribute[254]",
+            "attribute[168]",
+            "attribute[88][]"
+        ],
+        "properties": {
+            "product[model]": {
+                "title": "مدل",
+                "type": "string"
+            },
+            "product[title_fa]": {
+                "title": "عنوان",
+                "type": "string"
+            },
+            "product[description]": {
+                "title": "توضیحات",
+                "type": "string"
+            },
+            "product[category_product_type_id][]": {
+                "title": "نوع کالا",
+                "type": "string",
+                "oneOf": []
+            },
+            "product[division_id]": {
+                "title": "دسته بندی کالا",
+                "type": "string",
+                "oneOf": [
+                    {
+                        "const": "13157",
+                        "title": "بنگل طلا",
+                        "type": "string"
+                    }
+                ]
+            },
+            "product[general_mefa]": {
+                "title": "شناسه عمومی",
+                "type": "number",
+                "oneOf": [
+                    {
+                        "const": 3592,
+                        "title": "2720000044665(النگو طلا زیورآلات ساخته شده از طلا - شناسه عمومی تولید داخل)",
+                        "type": "number"
+                    },
+                    {
+                        "const": 3593,
+                        "title": "2710000044666(النگو طلا زیورآلات ساخته شده از طلا - شناسه عمومی وارداتی)",
+                        "type": "number"
+                    },
+                    {
+                        "const": 3596,
+                        "title": "2720000044689(دستبند طلا زیورآلات ساخته شده از طلا - شناسه عمومی تولید داخل)",
+                        "type": "number"
+                    },
+                    {
+                        "const": 3597,
+                        "title": "2710000044680(دستبند طلا زیورآلات ساخته شده از طلا - شناسه عمومی وارداتی)",
+                        "type": "number"
+                    }
+                ]
+            },
+            "attribute[10092][]": {
+                "title": "نحوه ساخت طلا",
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                    "type": "string",
+                    "anyOf": [
+                        {
+                            "const": "52253",
+                            "title": "لیزری",
+                            "type": "string"
+                        },
+                        {
+                            "const": "52258",
+                            "title": "پرسی",
+                            "type": "string"
+                        },
+                        {
+                            "const": "52259",
+                            "title": "ماشینی",
+                            "type": "string"
+                        },
+                        {
+                            "const": "52260",
+                            "title": "الکتروفورمینگ",
+                            "type": "string"
+                        },
+                        {
+                            "const": "57942",
+                            "title": "ریخته‌گری",
+                            "type": "string"
+                        }
+                    ]
+                }
+            },
+            "attribute[10648]": {
+                "title": "رنگ طلا",
+                "type": "string",
+                "oneOf": [
+                    {
+                        "const": "55402",
+                        "title": "زرد",
+                        "type": "string"
+                    },
+                    {
+                        "const": "55403",
+                        "title": "سفید",
+                        "type": "string"
+                    },
+                    {
+                        "const": "55404",
+                        "title": "رزگلد",
+                        "type": "string"
+                    },
+                    {
+                        "const": "55405",
+                        "title": "ترکیبی",
+                        "type": "string"
+                    }
+                ]
+            },
+            "attribute[10885][]": {
+                "title": "جزییات ساخت طلا",
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                    "type": "string",
+                    "anyOf": [
+                        {
+                            "const": "57943",
+                            "title": "موم",
+                            "type": "string"
+                        },
+                        {
+                            "const": "57944",
+                            "title": "نگین / مینا",
+                            "type": "string"
+                        },
+                        {
+                            "const": "57945",
+                            "title": "مخراج",
+                            "type": "string"
+                        },
+                        {
+                            "const": "57946",
+                            "title": "تراش",
+                            "type": "string"
+                        },
+                        {
+                            "const": "57947",
+                            "title": "رزین /  پروجکت",
+                            "type": "string"
+                        },
+                        {
+                            "const": "58048",
+                            "title": "ندارد",
+                            "type": "string"
+                        }
+                    ]
+                }
+            },
+            "attribute[11137]": {
+                "title": "جلوه ظاهری طلا",
+                "type": "string",
+                "oneOf": [
+                    {
+                        "const": "59425",
+                        "title": "مات",
+                        "type": "string"
+                    },
+                    {
+                        "const": "59426",
+                        "title": "براق",
+                        "type": "string"
+                    },
+                    {
+                        "const": "59427",
+                        "title": "ترکیب مات و براق",
+                        "type": "string"
+                    }
+                ]
+            },
+            "attribute[11297]": {
+                "title": "طرح بنگل",
+                "type": "string",
+                "oneOf": [
+                    {
+                        "const": "60228",
+                        "title": "بدون تراش",
+                        "type": "string"
+                    },
+                    {
+                        "const": "60229",
+                        "title": "تراش خورده",
+                        "type": "string"
+                    }
+                ]
+            },
+            "attribute[143]": {
+                "title": "عیار",
+                "type": "string",
+                "oneOf": [
+                    {
+                        "const": "883",
+                        "title": "18",
+                        "type": "string"
+                    },
+                    {
+                        "const": "881",
+                        "title": "24",
+                        "type": "string"
+                    },
+                    {
+                        "const": "36549",
+                        "title": "22",
+                        "type": "string"
+                    },
+                    {
+                        "const": "39131",
+                        "title": "99.9",
+                        "type": "string"
+                    },
+                    {
+                        "const": "39130",
+                        "title": "999.9",
+                        "type": "string"
+                    }
+                ]
+            },
+            "attribute[254]": {
+                "title": "میزان خلوص",
+                "type": "string",
+                "oneOf": [
+                    {
+                        "const": "1654",
+                        "title": "کاملاً خالص",
+                        "type": "string"
+                    },
+                    {
+                        "const": "1655",
+                        "title": "همراه با ناخالصی",
+                        "type": "string"
+                    }
+                ]
+            },
+            "attribute[168]": {
+                "title": "قطر کالا",
+                "type": "string"
+            },
+            "attribute[88][]": {
+                "title": "جنس",
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                    "type": "string",
+                    "anyOf": [
+                        {
+                            "const": "232",
+                            "title": "بند و طلا",
+                            "type": "string"
+                        },
+                        {
+                            "const": "280",
+                            "title": "چرم و طلا",
+                            "type": "string"
+                        },
+                        {
+                            "const": "313",
+                            "title": "سنگ و طلا",
+                            "type": "string"
+                        },
+                        {
+                            "const": "321",
+                            "title": "طلا",
+                            "type": "string"
+                        },
+                        {
+                            "const": "40375",
+                            "title": "الیزا",
+                            "type": "string"
+                        },
+                        {
+                            "const": "40408",
+                            "title": "کتان کریستال",
+                            "type": "string"
+                        },
+                        {
+                            "const": "40450",
+                            "title": "کرپ کنزو",
+                            "type": "string"
+                        },
+                        {
+                            "const": "53865",
+                            "title": "پولیشی",
+                            "type": "string"
+                        },
+                        {
+                            "const": "53195",
+                            "title": "حصیری",
+                            "type": "string"
+                        },
+                        {
+                            "const": "54772",
+                            "title": "کجراه",
+                            "type": "string"
+                        },
+                        {
+                            "const": "51339",
+                            "title": "مروارید",
+                            "type": "string"
+                        },
+                        {
+                            "const": "58339",
+                            "title": "پشم آنگورا",
+                            "type": "string"
+                        },
+                        {
+                            "const": "56890",
+                            "title": "فلانل",
+                            "type": "string"
+                        },
+                        {
+                            "const": "62258",
+                            "title": "تنگستن",
+                            "type": "string"
+                        },
+                        {
+                            "const": "63079",
+                            "title": "سواروسکی",
+                            "type": "string"
+                        },
+                        {
+                            "const": "63355",
+                            "title": "شانل",
+                            "type": "string"
+                        },
+                        {
+                            "const": "63562",
+                            "title": "مراکشی",
+                            "type": "string"
+                        }
+                    ]
+                }
+            },
+            "variants": {
+                "title": "تنوع ها",
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "title": "تنوع",
+                    "required": [
+                        "weight",
+                        "stock",
+                        "wage",
+                        "profit"
+                    ],
+                    "properties": {
+                        "weight": {
+                            "type": "number",
+                            "title": "وزن"
+                        },
+                        "stock": {
+                            "type": "number",
+                            "title": "موجودی"
+                        },
+                        "wage": {
+                            "type": "number",
+                            "title": "درصد اجرت"
+                        },
+                        "profit": {
+                            "type": "number",
+                            "title": "درصد سود"
+                        },
+                        "extras_price": {
+                            "type": "number",
+                            "title": "قیمت اضافات"
+                        },
+                        "extras_wage": {
+                            "type": "number",
+                            "title": "اجرت اضافات"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "9388": {
+        "title": "دستبند طلا زنانه",
+        "type": "object",
+        "required": [
+            "product[model]",
+            "product[title_fa]",
+            "product[category_product_type_id][]",
+            "product[division_id]",
+            "product[general_mefa]",
+            "variants",
+            "product[description]",
+            "attribute[11137]",
+            "attribute[10885][]",
+            "attribute[10092][]",
+            "attribute[32]",
+            "attribute[8737][]",
+            "attribute[143]",
+            "attribute[202]",
+            "attribute[254]",
+            "attribute[266]"
+        ],
+        "properties": {
+            "product[model]": {
+                "title": "مدل",
+                "type": "string"
+            },
+            "product[title_fa]": {
+                "title": "عنوان",
+                "type": "string"
+            },
+            "product[description]": {
+                "title": "توضیحات",
+                "type": "string"
+            },
+            "product[category_product_type_id][]": {
+                "title": "نوع کالا",
+                "type": "string",
+                "oneOf": [
+                    {
+                        "const": "12427",
+                        "title": "دستبند بند و طلا",
+                        "type": "string"
+                    },
+                    {
+                        "const": "12424",
+                        "title": "دستبند ساده طلا",
+                        "type": "string"
+                    },
+                    {
+                        "const": "12426",
+                        "title": "دستبند طلا و سنگ",
+                        "type": "string"
+                    },
+                    {
+                        "const": "12425",
+                        "title": "دستبند طلا و چرم",
+                        "type": "string"
+                    }
+                ]
+            },
+            "product[division_id]": {
+                "title": "دسته بندی کالا",
+                "type": "string",
+                "oneOf": [
+                    {
+                        "const": "13068",
+                        "title": "دستبند تمیمه طلا",
+                        "type": "string"
+                    },
+                    {
+                        "const": "2941",
+                        "title": "دستبند طلا",
+                        "type": "string"
+                    },
+                    {
+                        "const": "13073",
+                        "title": "دستبند طلا با بند بافت",
+                        "type": "string"
+                    },
+                    {
+                        "const": "13067",
+                        "title": "دستبند طلا با بند مهره‌ای",
+                        "type": "string"
+                    },
+                    {
+                        "const": "13074",
+                        "title": "دستبند طلا با بند میوکی",
+                        "type": "string"
+                    },
+                    {
+                        "const": "13075",
+                        "title": "دستبند طلا با بند نخی",
+                        "type": "string"
+                    },
+                    {
+                        "const": "13066",
+                        "title": "دستبند طلا با بند چرمی",
+                        "type": "string"
+                    },
+                    {
+                        "const": "13069",
+                        "title": "دستبند کشی طلا",
+                        "type": "string"
+                    },
+                    {
+                        "const": "13072",
+                        "title": "دستنبد النگویی طلا",
+                        "type": "string"
+                    },
+                    {
+                        "const": "13071",
+                        "title": "دستنبد زنجیری طلا",
+                        "type": "string"
+                    }
+                ]
+            },
+            "product[general_mefa]": {
+                "title": "شناسه عمومی",
+                "type": "number",
+                "oneOf": [
+                    {
+                        "const": 3592,
+                        "title": "2720000044665(النگو طلا زیورآلات ساخته شده از طلا - شناسه عمومی تولید داخل)",
+                        "type": "number"
+                    },
+                    {
+                        "const": 3593,
+                        "title": "2710000044666(النگو طلا زیورآلات ساخته شده از طلا - شناسه عمومی وارداتی)",
+                        "type": "number"
+                    },
+                    {
+                        "const": 3596,
+                        "title": "2720000044689(دستبند طلا زیورآلات ساخته شده از طلا - شناسه عمومی تولید داخل)",
+                        "type": "number"
+                    },
+                    {
+                        "const": 3597,
+                        "title": "2710000044680(دستبند طلا زیورآلات ساخته شده از طلا - شناسه عمومی وارداتی)",
+                        "type": "number"
+                    }
+                ]
+            },
+            "attribute[11137]": {
+                "title": "جلوه ظاهری طلا",
+                "type": "string",
+                "oneOf": [
+                    {
+                        "const": "59425",
+                        "title": "مات",
+                        "type": "string"
+                    },
+                    {
+                        "const": "59426",
+                        "title": "براق",
+                        "type": "string"
+                    },
+                    {
+                        "const": "59427",
+                        "title": "ترکیب مات و براق",
+                        "type": "string"
+                    }
+                ]
+            },
+            "attribute[10885][]": {
+                "title": "جزییات ساخت طلا",
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                    "type": "string",
+                    "anyOf": [
+                        {
+                            "const": "57943",
+                            "title": "موم",
+                            "type": "string"
+                        },
+                        {
+                            "const": "57944",
+                            "title": "نگین / مینا",
+                            "type": "string"
+                        },
+                        {
+                            "const": "57945",
+                            "title": "مخراج",
+                            "type": "string"
+                        },
+                        {
+                            "const": "57946",
+                            "title": "تراش",
+                            "type": "string"
+                        },
+                        {
+                            "const": "57947",
+                            "title": "رزین /  پروجکت",
+                            "type": "string"
+                        },
+                        {
+                            "const": "58048",
+                            "title": "ندارد",
+                            "type": "string"
+                        }
+                    ]
+                }
+            },
+            "attribute[10092][]": {
+                "title": "نحوه ساخت طلا",
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                    "type": "string",
+                    "anyOf": [
+                        {
+                            "const": "52253",
+                            "title": "لیزری",
+                            "type": "string"
+                        },
+                        {
+                            "const": "52258",
+                            "title": "پرسی",
+                            "type": "string"
+                        },
+                        {
+                            "const": "52259",
+                            "title": "ماشینی",
+                            "type": "string"
+                        },
+                        {
+                            "const": "52260",
+                            "title": "الکتروفورمینگ",
+                            "type": "string"
+                        },
+                        {
+                            "const": "57942",
+                            "title": "ریخته‌گری",
+                            "type": "string"
+                        }
+                    ]
+                }
+            },
+            "attribute[32]": {
+                "title": "طرح زنجیر",
+                "type": "string",
+                "oneOf": [
+                    {
+                        "const": "49738",
+                        "title": "مارپیچی",
+                        "type": "string"
+                    },
+                    {
+                        "const": "49729",
+                        "title": "طنابی (توئیست)",
+                        "type": "string"
+                    },
+                    {
+                        "const": "53422",
+                        "title": "فلامینگو (حلقه‌ای)",
+                        "type": "string"
+                    },
+                    {
+                        "const": "49722",
+                        "title": "فیگارو",
+                        "type": "string"
+                    },
+                    {
+                        "const": "49728",
+                        "title": "کابلی",
+                        "type": "string"
+                    },
+                    {
+                        "const": "49723",
+                        "title": "کارتیه",
+                        "type": "string"
+                    },
+                    {
+                        "const": "49735",
+                        "title": "کورب",
+                        "type": "string"
+                    },
+                    {
+                        "const": "49726",
+                        "title": "گندمی",
+                        "type": "string"
+                    },
+                    {
+                        "const": "49732",
+                        "title": "لنگری",
+                        "type": "string"
+                    },
+                    {
+                        "const": "49733",
+                        "title": "سنگاپوری (دیسکو)",
+                        "type": "string"
+                    },
+                    {
+                        "const": "49730",
+                        "title": "ماری",
+                        "type": "string"
+                    },
+                    {
+                        "const": "53400",
+                        "title": "مروارید",
+                        "type": "string"
+                    },
+                    {
+                        "const": "868",
+                        "title": "مهره",
+                        "type": "string"
+                    },
+                    {
+                        "const": "53424",
+                        "title": "میرو",
+                        "type": "string"
+                    },
+                    {
+                        "const": "53408",
+                        "title": "ونکلیف",
+                        "type": "string"
+                    },
+                    {
+                        "const": "49731",
+                        "title": "ونیزی (آجری)",
+                        "type": "string"
+                    },
+                    {
+                        "const": "49725",
+                        "title": "هرینگبون (تیغ ماهی- آینه‌ای)",
+                        "type": "string"
+                    },
+                    {
+                        "const": "867",
+                        "title": "ساچمه‌ای",
+                        "type": "string"
+                    },
+                    {
+                        "const": "53425",
+                        "title": "رولو",
+                        "type": "string"
+                    },
+                    {
+                        "const": "49736",
+                        "title": "رولکس",
+                        "type": "string"
+                    },
+                    {
+                        "const": "49724",
+                        "title": "دیپلمات",
+                        "type": "string"
+                    },
+                    {
+                        "const": "53401",
+                        "title": "تیفانی",
+                        "type": "string"
+                    },
+                    {
+                        "const": "54889",
+                        "title": "پولکی",
+                        "type": "string"
+                    },
+                    {
+                        "const": "54357",
+                        "title": "بیزمارک",
+                        "type": "string"
+                    },
+                    {
+                        "const": "864",
+                        "title": "بندی",
+                        "type": "string"
+                    },
+                    {
+                        "const": "863",
+                        "title": "بافت",
+                        "type": "string"
+                    },
+                    {
+                        "const": "49727",
+                        "title": "امگا",
+                        "type": "string"
+                    },
+                    {
+                        "const": "54356",
+                        "title": "البرنادو",
+                        "type": "string"
+                    },
+                    {
+                        "const": "57955",
+                        "title": "کارتیه ژاپنی (تخت)",
+                        "type": "string"
+                    },
+                    {
+                        "const": "57956",
+                        "title": "کارتیه موناکو",
+                        "type": "string"
+                    },
+                    {
+                        "const": "57957",
+                        "title": "کارتیه سیسیلی",
+                        "type": "string"
+                    },
+                    {
+                        "const": "57958",
+                        "title": "کارتیه حصیری",
+                        "type": "string"
+                    },
+                    {
+                        "const": "57959",
+                        "title": "مینیمال",
+                        "type": "string"
+                    },
+                    {
+                        "const": "57960",
+                        "title": "بیزانسی",
+                        "type": "string"
+                    },
+                    {
+                        "const": "57961",
+                        "title": "پاپکورن",
+                        "type": "string"
+                    },
+                    {
+                        "const": "57962",
+                        "title": "گوی ساده",
+                        "type": "string"
+                    },
+                    {
+                        "const": "57963",
+                        "title": "دوریکا",
+                        "type": "string"
+                    },
+                    {
+                        "const": "57964",
+                        "title": "مورس",
+                        "type": "string"
+                    },
+                    {
+                        "const": "57965",
+                        "title": "سان مارکو",
+                        "type": "string"
+                    },
+                    {
+                        "const": "57966",
+                        "title": "تنیسی",
+                        "type": "string"
+                    },
+                    {
+                        "const": "57967",
+                        "title": "تیفانی تایتان",
+                        "type": "string"
+                    },
+                    {
+                        "const": "57968",
+                        "title": "هرمس",
+                        "type": "string"
+                    },
+                    {
+                        "const": "57969",
+                        "title": "کشی",
+                        "type": "string"
+                    }
+                ]
+            },
+            "attribute[8737][]": {
+                "title": "نوع دستبند طلا زنانه",
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                    "type": "string",
+                    "anyOf": [
+                        {
+                            "const": "43993",
+                            "title": "دستبند بند و طلا",
+                            "type": "string"
+                        },
+                        {
+                            "const": "43989",
+                            "title": "دستبند تمام طلا",
+                            "type": "string"
+                        },
+                        {
+                            "const": "49720",
+                            "title": "دستبند تمیمه",
+                            "type": "string"
+                        },
+                        {
+                            "const": "43991",
+                            "title": "دستبند طلا و چرم",
+                            "type": "string"
+                        },
+                        {
+                            "const": "43992",
+                            "title": "دستبند طلا و سنگ",
+                            "type": "string"
+                        },
+                        {
+                            "const": "49719",
+                            "title": "دستبند طلا و مهره",
+                            "type": "string"
+                        }
+                    ]
+                }
+            },
+            "attribute[143]": {
+                "title": "عیار",
+                "type": "string",
+                "oneOf": [
+                    {
+                        "const": "882",
+                        "title": "925",
+                        "type": "string"
+                    },
+                    {
+                        "const": "883",
+                        "title": "18",
+                        "type": "string"
+                    },
+                    {
+                        "const": "881",
+                        "title": "24",
+                        "type": "string"
+                    },
+                    {
+                        "const": "884",
+                        "title": "850",
+                        "type": "string"
+                    },
+                    {
+                        "const": "885",
+                        "title": "900",
+                        "type": "string"
+                    },
+                    {
+                        "const": "887",
+                        "title": "995",
+                        "type": "string"
+                    },
+                    {
+                        "const": "888",
+                        "title": "999",
+                        "type": "string"
+                    },
+                    {
+                        "const": "36549",
+                        "title": "22",
+                        "type": "string"
+                    },
+                    {
+                        "const": "39131",
+                        "title": "99.9",
+                        "type": "string"
+                    },
+                    {
+                        "const": "39130",
+                        "title": "999.9",
+                        "type": "string"
+                    }
+                ]
+            },
+            "attribute[202]": {
+                "title": "نحوه بسته شدن زیورآلات",
+                "type": "string",
+                "oneOf": [
+                    {
+                        "const": "1335",
+                        "title": "دکمه‌ای",
+                        "type": "string"
+                    },
+                    {
+                        "const": "1334",
+                        "title": "دکمه پرچی",
+                        "type": "string"
+                    },
+                    {
+                        "const": "1333",
+                        "title": "چسبی",
+                        "type": "string"
+                    },
+                    {
+                        "const": "1332",
+                        "title": "پینی",
+                        "type": "string"
+                    },
+                    {
+                        "const": "1331",
+                        "title": "پیچی",
+                        "type": "string"
+                    },
+                    {
+                        "const": "1339",
+                        "title": "خرچنگی - طوطی",
+                        "type": "string"
+                    },
+                    {
+                        "const": "1345",
+                        "title": "کلیپسی",
+                        "type": "string"
+                    },
+                    {
+                        "const": "1344",
+                        "title": "کشی",
+                        "type": "string"
+                    },
+                    {
+                        "const": "1348",
+                        "title": "مگنتی",
+                        "type": "string"
+                    },
+                    {
+                        "const": "1330",
+                        "title": "بندی",
+                        "type": "string"
+                    },
+                    {
+                        "const": "1343",
+                        "title": "قلابی",
+                        "type": "string"
+                    },
+                    {
+                        "const": "1337",
+                        "title": "سگکی",
+                        "type": "string"
+                    },
+                    {
+                        "const": "1346",
+                        "title": "گره‌ای",
+                        "type": "string"
+                    },
+                    {
+                        "const": "1336",
+                        "title": "مدبر گرد",
+                        "type": "string"
+                    },
+                    {
+                        "const": "35207",
+                        "title": "ملوانی",
+                        "type": "string"
+                    },
+                    {
+                        "const": "62727",
+                        "title": "قلاب S",
+                        "type": "string"
+                    },
+                    {
+                        "const": "62728",
+                        "title": "قفل T",
+                        "type": "string"
+                    },
+                    {
+                        "const": "62892",
+                        "title": "کوبایی",
+                        "type": "string"
+                    },
+                    {
+                        "const": "62893",
+                        "title": "ساعتی",
+                        "type": "string"
+                    },
+                    {
+                        "const": "62894",
+                        "title": "کتابی",
+                        "type": "string"
+                    }
+                ]
+            },
+            "attribute[254]": {
+                "title": "میزان خلوص",
+                "type": "string",
+                "oneOf": [
+                    {
+                        "const": "1654",
+                        "title": "کاملاً خالص",
+                        "type": "string"
+                    },
+                    {
+                        "const": "1655",
+                        "title": "همراه با ناخالصی",
+                        "type": "string"
+                    }
+                ]
+            },
+            "attribute[266]": {
+                "title": "طول دستبند",
+                "type": "string"
+            },
+            "variants": {
+                "title": "تنوع ها",
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "title": "تنوع",
+                    "required": [
+                        "weight",
+                        "stock",
+                        "wage",
+                        "profit"
+                    ],
+                    "properties": {
+                        "weight": {
+                            "type": "number",
+                            "title": "وزن"
+                        },
+                        "stock": {
+                            "type": "number",
+                            "title": "موجودی"
+                        },
+                        "wage": {
+                            "type": "number",
+                            "title": "درصد اجرت"
+                        },
+                        "profit": {
+                            "type": "number",
+                            "title": "درصد سود"
+                        },
+                        "extras_price": {
+                            "type": "number",
+                            "title": "قیمت اضافات"
+                        },
+                        "extras_wage": {
+                            "type": "number",
+                            "title": "اجرت اضافات"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "9390": {
+        "title": "زنجیر طلا زنانه",
+        "type": "object",
+        "required": [
+            "product[model]",
+            "product[title_fa]",
+            "product[category_product_type_id][]",
+            "product[division_id]",
+            "product[general_mefa]",
+            "variants",
+            "product[description]",
+            "attribute[10648]",
+            "attribute[10885][]",
+            "attribute[11137]",
+            "attribute[10092][]",
+            "attribute[8739][]",
+            "attribute[143]",
+            "attribute[10653]",
+            "attribute[32]",
+            "attribute[202]",
+            "attribute[254]"
+        ],
+        "properties": {
+            "product[model]": {
+                "title": "مدل",
+                "type": "string"
+            },
+            "product[title_fa]": {
+                "title": "عنوان",
+                "type": "string"
+            },
+            "product[description]": {
+                "title": "توضیحات",
+                "type": "string"
+            },
+            "product[category_product_type_id][]": {
+                "title": "نوع کالا",
+                "type": "string",
+                "oneOf": [
+                    {
+                        "const": "14877",
+                        "title": "طلای رزگلد",
+                        "type": "string"
+                    },
+                    {
+                        "const": "17599",
+                        "title": "طلای زرد",
+                        "type": "string"
+                    },
+                    {
+                        "const": "15562",
+                        "title": "طلای سفید",
+                        "type": "string"
+                    }
+                ]
+            },
+            "product[division_id]": {
+                "title": "دسته بندی کالا",
+                "type": "string",
+                "oneOf": [
+                    {
+                        "const": "12978",
+                        "title": "زنجیر",
+                        "type": "string"
+                    }
+                ]
+            },
+            "product[general_mefa]": {
+                "title": "شناسه عمومی",
+                "type": "number",
+                "oneOf": [
+                    {
+                        "const": 3600,
+                        "title": "2720000044702(زنجیر طلا زیورآلات ساخته شده از طلا - شناسه عمومی تولید داخل)",
+                        "type": "number"
+                    },
+                    {
+                        "const": 3601,
+                        "title": "2710000044703(زنجیر طلا زیورآلات ساخته شده از طلا - شناسه عمومی وارداتی)",
+                        "type": "number"
+                    }
+                ]
+            },
+            "attribute[10648]": {
+                "title": "رنگ طلا",
+                "type": "string",
+                "oneOf": [
+                    {
+                        "const": "55402",
+                        "title": "زرد",
+                        "type": "string"
+                    },
+                    {
+                        "const": "55403",
+                        "title": "سفید",
+                        "type": "string"
+                    },
+                    {
+                        "const": "55404",
+                        "title": "رزگلد",
+                        "type": "string"
+                    },
+                    {
+                        "const": "55405",
+                        "title": "ترکیبی",
+                        "type": "string"
+                    }
+                ]
+            },
+            "attribute[10885][]": {
+                "title": "جزییات ساخت طلا",
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                    "type": "string",
+                    "anyOf": [
+                        {
+                            "const": "57943",
+                            "title": "موم",
+                            "type": "string"
+                        },
+                        {
+                            "const": "57944",
+                            "title": "نگین / مینا",
+                            "type": "string"
+                        },
+                        {
+                            "const": "57945",
+                            "title": "مخراج",
+                            "type": "string"
+                        },
+                        {
+                            "const": "57946",
+                            "title": "تراش",
+                            "type": "string"
+                        },
+                        {
+                            "const": "57947",
+                            "title": "رزین /  پروجکت",
+                            "type": "string"
+                        },
+                        {
+                            "const": "58048",
+                            "title": "ندارد",
+                            "type": "string"
+                        }
+                    ]
+                }
+            },
+            "attribute[11137]": {
+                "title": "جلوه ظاهری طلا",
+                "type": "string",
+                "oneOf": [
+                    {
+                        "const": "59425",
+                        "title": "مات",
+                        "type": "string"
+                    },
+                    {
+                        "const": "59426",
+                        "title": "براق",
+                        "type": "string"
+                    },
+                    {
+                        "const": "59427",
+                        "title": "ترکیب مات و براق",
+                        "type": "string"
+                    }
+                ]
+            },
+            "attribute[10092][]": {
+                "title": "نحوه ساخت طلا",
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                    "type": "string",
+                    "anyOf": [
+                        {
+                            "const": "52253",
+                            "title": "لیزری",
+                            "type": "string"
+                        },
+                        {
+                            "const": "52258",
+                            "title": "پرسی",
+                            "type": "string"
+                        },
+                        {
+                            "const": "52259",
+                            "title": "ماشینی",
+                            "type": "string"
+                        },
+                        {
+                            "const": "52260",
+                            "title": "الکتروفورمینگ",
+                            "type": "string"
+                        },
+                        {
+                            "const": "57942",
+                            "title": "ریخته‌گری",
+                            "type": "string"
+                        }
+                    ]
+                }
+            },
+            "attribute[8739][]": {
+                "title": "نوع زنجیر طلا زنانه",
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                    "type": "string",
+                    "anyOf": [
+                        {
+                            "const": "43995",
+                            "title": "طلای رزگلد",
+                            "type": "string"
+                        },
+                        {
+                            "const": "43996",
+                            "title": "طلای سفید",
+                            "type": "string"
+                        },
+                        {
+                            "const": "43997",
+                            "title": "طلای زرد",
+                            "type": "string"
+                        }
+                    ]
+                }
+            },
+            "attribute[143]": {
+                "title": "عیار",
+                "type": "string",
+                "oneOf": [
+                    {
+                        "const": "883",
+                        "title": "18",
+                        "type": "string"
+                    },
+                    {
+                        "const": "881",
+                        "title": "24",
+                        "type": "string"
+                    },
+                    {
+                        "const": "36549",
+                        "title": "22",
+                        "type": "string"
+                    }
+                ]
+            },
+            "attribute[10653]": {
+                "title": "طول زنجیر",
+                "type": "string",
+                "oneOf": [
+                    {
+                        "const": "55464",
+                        "title": "35",
+                        "type": "string"
+                    },
+                    {
+                        "const": "55465",
+                        "title": "40",
+                        "type": "string"
+                    },
+                    {
+                        "const": "55466",
+                        "title": "45",
+                        "type": "string"
+                    },
+                    {
+                        "const": "55467",
+                        "title": "50",
+                        "type": "string"
+                    },
+                    {
+                        "const": "55468",
+                        "title": "55",
+                        "type": "string"
+                    },
+                    {
+                        "const": "55469",
+                        "title": "60",
+                        "type": "string"
+                    },
+                    {
+                        "const": "55470",
+                        "title": "65",
+                        "type": "string"
+                    },
+                    {
+                        "const": "55471",
+                        "title": "70",
+                        "type": "string"
+                    },
+                    {
+                        "const": "55472",
+                        "title": "75",
+                        "type": "string"
+                    },
+                    {
+                        "const": "55473",
+                        "title": "80",
+                        "type": "string"
+                    }
+                ]
+            },
+            "attribute[32]": {
+                "title": "طرح زنجیر",
+                "type": "string",
+                "oneOf": [
+                    {
+                        "const": "49738",
+                        "title": "مارپیچی",
+                        "type": "string"
+                    },
+                    {
+                        "const": "49729",
+                        "title": "طنابی (توئیست)",
+                        "type": "string"
+                    },
+                    {
+                        "const": "53422",
+                        "title": "فلامینگو (حلقه‌ای)",
+                        "type": "string"
+                    },
+                    {
+                        "const": "49722",
+                        "title": "فیگارو",
+                        "type": "string"
+                    },
+                    {
+                        "const": "49728",
+                        "title": "کابلی",
+                        "type": "string"
+                    },
+                    {
+                        "const": "49723",
+                        "title": "کارتیه",
+                        "type": "string"
+                    },
+                    {
+                        "const": "49735",
+                        "title": "کورب",
+                        "type": "string"
+                    },
+                    {
+                        "const": "49726",
+                        "title": "گندمی",
+                        "type": "string"
+                    },
+                    {
+                        "const": "49732",
+                        "title": "لنگری",
+                        "type": "string"
+                    },
+                    {
+                        "const": "49733",
+                        "title": "سنگاپوری (دیسکو)",
+                        "type": "string"
+                    },
+                    {
+                        "const": "49730",
+                        "title": "ماری",
+                        "type": "string"
+                    },
+                    {
+                        "const": "53400",
+                        "title": "مروارید",
+                        "type": "string"
+                    },
+                    {
+                        "const": "868",
+                        "title": "مهره",
+                        "type": "string"
+                    },
+                    {
+                        "const": "53424",
+                        "title": "میرو",
+                        "type": "string"
+                    },
+                    {
+                        "const": "53408",
+                        "title": "ونکلیف",
+                        "type": "string"
+                    },
+                    {
+                        "const": "49731",
+                        "title": "ونیزی (آجری)",
+                        "type": "string"
+                    },
+                    {
+                        "const": "49725",
+                        "title": "هرینگبون (تیغ ماهی- آینه‌ای)",
+                        "type": "string"
+                    },
+                    {
+                        "const": "867",
+                        "title": "ساچمه‌ای",
+                        "type": "string"
+                    },
+                    {
+                        "const": "53425",
+                        "title": "رولو",
+                        "type": "string"
+                    },
+                    {
+                        "const": "49736",
+                        "title": "رولکس",
+                        "type": "string"
+                    },
+                    {
+                        "const": "49724",
+                        "title": "دیپلمات",
+                        "type": "string"
+                    },
+                    {
+                        "const": "53401",
+                        "title": "تیفانی",
+                        "type": "string"
+                    },
+                    {
+                        "const": "54889",
+                        "title": "پولکی",
+                        "type": "string"
+                    },
+                    {
+                        "const": "54357",
+                        "title": "بیزمارک",
+                        "type": "string"
+                    },
+                    {
+                        "const": "864",
+                        "title": "بندی",
+                        "type": "string"
+                    },
+                    {
+                        "const": "863",
+                        "title": "بافت",
+                        "type": "string"
+                    },
+                    {
+                        "const": "49727",
+                        "title": "امگا",
+                        "type": "string"
+                    },
+                    {
+                        "const": "54356",
+                        "title": "البرنادو",
+                        "type": "string"
+                    },
+                    {
+                        "const": "57955",
+                        "title": "کارتیه ژاپنی (تخت)",
+                        "type": "string"
+                    },
+                    {
+                        "const": "57956",
+                        "title": "کارتیه موناکو",
+                        "type": "string"
+                    },
+                    {
+                        "const": "57957",
+                        "title": "کارتیه سیسیلی",
+                        "type": "string"
+                    },
+                    {
+                        "const": "57958",
+                        "title": "کارتیه حصیری",
+                        "type": "string"
+                    },
+                    {
+                        "const": "57959",
+                        "title": "مینیمال",
+                        "type": "string"
+                    },
+                    {
+                        "const": "57960",
+                        "title": "بیزانسی",
+                        "type": "string"
+                    },
+                    {
+                        "const": "57961",
+                        "title": "پاپکورن",
+                        "type": "string"
+                    },
+                    {
+                        "const": "57962",
+                        "title": "گوی ساده",
+                        "type": "string"
+                    },
+                    {
+                        "const": "57963",
+                        "title": "دوریکا",
+                        "type": "string"
+                    },
+                    {
+                        "const": "57964",
+                        "title": "مورس",
+                        "type": "string"
+                    },
+                    {
+                        "const": "57965",
+                        "title": "سان مارکو",
+                        "type": "string"
+                    },
+                    {
+                        "const": "57966",
+                        "title": "تنیسی",
+                        "type": "string"
+                    },
+                    {
+                        "const": "57967",
+                        "title": "تیفانی تایتان",
+                        "type": "string"
+                    },
+                    {
+                        "const": "57968",
+                        "title": "هرمس",
+                        "type": "string"
+                    },
+                    {
+                        "const": "57969",
+                        "title": "کشی",
+                        "type": "string"
+                    }
+                ]
+            },
+            "attribute[202]": {
+                "title": "نحوه بسته شدن زیورآلات",
+                "type": "string",
+                "oneOf": [
+                    {
+                        "const": "1331",
+                        "title": "پیچی",
+                        "type": "string"
+                    },
+                    {
+                        "const": "1339",
+                        "title": "خرچنگی - طوطی",
+                        "type": "string"
+                    },
+                    {
+                        "const": "1343",
+                        "title": "قلابی",
+                        "type": "string"
+                    },
+                    {
+                        "const": "1336",
+                        "title": "مدبر گرد",
+                        "type": "string"
+                    },
+                    {
+                        "const": "35207",
+                        "title": "ملوانی",
+                        "type": "string"
+                    },
+                    {
+                        "const": "62727",
+                        "title": "قلاب S",
+                        "type": "string"
+                    },
+                    {
+                        "const": "62728",
+                        "title": "قفل T",
+                        "type": "string"
+                    },
+                    {
+                        "const": "62892",
+                        "title": "کوبایی",
+                        "type": "string"
+                    },
+                    {
+                        "const": "62893",
+                        "title": "ساعتی",
+                        "type": "string"
+                    },
+                    {
+                        "const": "62894",
+                        "title": "کتابی",
+                        "type": "string"
+                    }
+                ]
+            },
+            "attribute[254]": {
+                "title": "میزان خلوص",
+                "type": "string",
+                "oneOf": [
+                    {
+                        "const": "1654",
+                        "title": "کاملاً خالص",
+                        "type": "string"
+                    },
+                    {
+                        "const": "1655",
+                        "title": "همراه با ناخالصی",
+                        "type": "string"
+                    }
+                ]
+            },
+            "variants": {
+                "title": "تنوع ها",
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "title": "تنوع",
+                    "required": [
+                        "weight",
+                        "stock",
+                        "wage",
+                        "profit"
+                    ],
+                    "properties": {
+                        "weight": {
+                            "type": "number",
+                            "title": "وزن"
+                        },
+                        "stock": {
+                            "type": "number",
+                            "title": "موجودی"
+                        },
+                        "wage": {
+                            "type": "number",
+                            "title": "درصد اجرت"
+                        },
+                        "profit": {
+                            "type": "number",
+                            "title": "درصد سود"
+                        },
+                        "extras_price": {
+                            "type": "number",
+                            "title": "قیمت اضافات"
+                        },
+                        "extras_wage": {
+                            "type": "number",
+                            "title": "اجرت اضافات"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "9391": {
+        "title": "گوشواره طلا زنانه",
+        "type": "object",
+        "required": [
+            "product[model]",
+            "product[title_fa]",
+            "product[category_product_type_id][]",
+            "product[division_id]",
+            "product[general_mefa]",
+            "variants",
+            "product[description]",
+            "attribute[11137]",
+            "attribute[10885][]",
+            "attribute[10092][]",
+            "attribute[8741][]",
+            "attribute[143]",
+            "attribute[206]",
+            "attribute[254]",
+            "attribute[244]"
+        ],
+        "properties": {
+            "product[model]": {
+                "title": "مدل",
+                "type": "string"
+            },
+            "product[title_fa]": {
+                "title": "عنوان",
+                "type": "string"
+            },
+            "product[description]": {
+                "title": "توضیحات",
+                "type": "string"
+            },
+            "product[category_product_type_id][]": {
+                "title": "نوع کالا",
+                "type": "string",
+                "oneOf": [
+                    {
+                        "const": "22615",
+                        "title": "طلا رزگلد",
+                        "type": "string"
+                    },
+                    {
+                        "const": "22613",
+                        "title": "طلا زرد",
+                        "type": "string"
+                    },
+                    {
+                        "const": "22614",
+                        "title": "طلا سفید",
+                        "type": "string"
+                    }
+                ]
+            },
+            "product[division_id]": {
+                "title": "دسته بندی کالا",
+                "type": "string",
+                "oneOf": [
+                    {
+                        "const": "2509",
+                        "title": "گوشواره طلا",
+                        "type": "string"
+                    },
+                    {
+                        "const": "13001",
+                        "title": "گوشواره طلا با طرح امگا",
+                        "type": "string"
+                    },
+                    {
+                        "const": "13004",
+                        "title": "گوشواره طلا با طرح بولگاری",
+                        "type": "string"
+                    },
+                    {
+                        "const": "12995",
+                        "title": "گوشواره طلا با طرح تیفانی",
+                        "type": "string"
+                    },
+                    {
+                        "const": "12996",
+                        "title": "گوشواره طلا با طرح دیوید یورمن",
+                        "type": "string"
+                    },
+                    {
+                        "const": "13000",
+                        "title": "گوشواره طلا با طرح روبرتو کوین",
+                        "type": "string"
+                    },
+                    {
+                        "const": "13009",
+                        "title": "گوشواره طلا با طرح شنل",
+                        "type": "string"
+                    },
+                    {
+                        "const": "13002",
+                        "title": "گوشواره طلا با طرح فراگامو",
+                        "type": "string"
+                    },
+                    {
+                        "const": "13003",
+                        "title": "گوشواره طلا با طرح فرِد",
+                        "type": "string"
+                    },
+                    {
+                        "const": "13007",
+                        "title": "گوشواره طلا با طرح لویی ویتون",
+                        "type": "string"
+                    },
+                    {
+                        "const": "12998",
+                        "title": "گوشواره طلا با طرح میسکا",
+                        "type": "string"
+                    },
+                    {
+                        "const": "12994",
+                        "title": "گوشواره طلا با طرح هرمس",
+                        "type": "string"
+                    },
+                    {
+                        "const": "13162",
+                        "title": "گوشواره طلا با طرح ورساچه",
+                        "type": "string"
+                    },
+                    {
+                        "const": "13008",
+                        "title": "گوشواره طلا با طرح ولنتینو",
+                        "type": "string"
+                    },
+                    {
+                        "const": "12999",
+                        "title": "گوشواره طلا با طرح ونکلیف",
+                        "type": "string"
+                    },
+                    {
+                        "const": "13010",
+                        "title": "گوشواره طلا با طرح پاندورا",
+                        "type": "string"
+                    },
+                    {
+                        "const": "12997",
+                        "title": "گوشواره طلا با طرح پورتوفینو",
+                        "type": "string"
+                    },
+                    {
+                        "const": "13006",
+                        "title": "گوشواره طلا با طرح پوملاتو",
+                        "type": "string"
+                    },
+                    {
+                        "const": "13005",
+                        "title": "گوشواره طلا با طرح کارتیه",
+                        "type": "string"
+                    }
+                ]
+            },
+            "product[general_mefa]": {
+                "title": "شناسه عمومی",
+                "type": "number",
+                "oneOf": [
+                    {
+                        "const": 3604,
+                        "title": "2720000044726(گوشواره طلا زیورآلات ساخته شده از طلا - شناسه عمومی تولید داخل)",
+                        "type": "number"
+                    },
+                    {
+                        "const": 3605,
+                        "title": "2710000044727(گوشواره طلا زیورآلات ساخته شده از طلا - شناسه عمومی وارداتی)",
+                        "type": "number"
+                    }
+                ]
+            },
+            "attribute[11137]": {
+                "title": "جلوه ظاهری طلا",
+                "type": "string",
+                "oneOf": [
+                    {
+                        "const": "59425",
+                        "title": "مات",
+                        "type": "string"
+                    },
+                    {
+                        "const": "59426",
+                        "title": "براق",
+                        "type": "string"
+                    },
+                    {
+                        "const": "59427",
+                        "title": "ترکیب مات و براق",
+                        "type": "string"
+                    }
+                ]
+            },
+            "attribute[10885][]": {
+                "title": "جزییات ساخت طلا",
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                    "type": "string",
+                    "anyOf": [
+                        {
+                            "const": "57943",
+                            "title": "موم",
+                            "type": "string"
+                        },
+                        {
+                            "const": "57944",
+                            "title": "نگین / مینا",
+                            "type": "string"
+                        },
+                        {
+                            "const": "57945",
+                            "title": "مخراج",
+                            "type": "string"
+                        },
+                        {
+                            "const": "57946",
+                            "title": "تراش",
+                            "type": "string"
+                        },
+                        {
+                            "const": "57947",
+                            "title": "رزین /  پروجکت",
+                            "type": "string"
+                        },
+                        {
+                            "const": "58048",
+                            "title": "ندارد",
+                            "type": "string"
+                        }
+                    ]
+                }
+            },
+            "attribute[10092][]": {
+                "title": "نحوه ساخت طلا",
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                    "type": "string",
+                    "anyOf": [
+                        {
+                            "const": "52253",
+                            "title": "لیزری",
+                            "type": "string"
+                        },
+                        {
+                            "const": "52258",
+                            "title": "پرسی",
+                            "type": "string"
+                        },
+                        {
+                            "const": "52259",
+                            "title": "ماشینی",
+                            "type": "string"
+                        },
+                        {
+                            "const": "52260",
+                            "title": "الکتروفورمینگ",
+                            "type": "string"
+                        },
+                        {
+                            "const": "57942",
+                            "title": "ریخته‌گری",
+                            "type": "string"
+                        }
+                    ]
+                }
+            },
+            "attribute[8741][]": {
+                "title": "نوع گوشواره طلا زنانه",
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                    "type": "string",
+                    "anyOf": [
+                        {
+                            "const": "44000",
+                            "title": "طلا رزگلد",
+                            "type": "string"
+                        },
+                        {
+                            "const": "44001",
+                            "title": "طلا زرد",
+                            "type": "string"
+                        },
+                        {
+                            "const": "44002",
+                            "title": "طلا سفید",
+                            "type": "string"
+                        }
+                    ]
+                }
+            },
+            "attribute[143]": {
+                "title": "عیار",
+                "type": "string",
+                "oneOf": [
+                    {
+                        "const": "882",
+                        "title": "925",
+                        "type": "string"
+                    },
+                    {
+                        "const": "883",
+                        "title": "18",
+                        "type": "string"
+                    },
+                    {
+                        "const": "881",
+                        "title": "24",
+                        "type": "string"
+                    },
+                    {
+                        "const": "884",
+                        "title": "850",
+                        "type": "string"
+                    },
+                    {
+                        "const": "885",
+                        "title": "900",
+                        "type": "string"
+                    },
+                    {
+                        "const": "887",
+                        "title": "995",
+                        "type": "string"
+                    },
+                    {
+                        "const": "888",
+                        "title": "999",
+                        "type": "string"
+                    },
+                    {
+                        "const": "36549",
+                        "title": "22",
+                        "type": "string"
+                    },
+                    {
+                        "const": "39131",
+                        "title": "99.9",
+                        "type": "string"
+                    },
+                    {
+                        "const": "39130",
+                        "title": "999.9",
+                        "type": "string"
+                    }
+                ]
+            },
+            "attribute[206]": {
+                "title": "مدل گوشواره",
+                "type": "string",
+                "oneOf": [
+                    {
+                        "const": "1381",
+                        "title": "آویز",
+                        "type": "string"
+                    },
+                    {
+                        "const": "1382",
+                        "title": "حلقه‌ای",
+                        "type": "string"
+                    },
+                    {
+                        "const": "1385",
+                        "title": "عصایی",
+                        "type": "string"
+                    },
+                    {
+                        "const": "1387",
+                        "title": "میخی",
+                        "type": "string"
+                    },
+                    {
+                        "const": "49739",
+                        "title": "ایرکاف",
+                        "type": "string"
+                    },
+                    {
+                        "const": "51600",
+                        "title": "بخیه‌ای",
+                        "type": "string"
+                    },
+                    {
+                        "const": "53414",
+                        "title": "کلیپسی",
+                        "type": "string"
+                    }
+                ]
+            },
+            "attribute[254]": {
+                "title": "میزان خلوص",
+                "type": "string",
+                "oneOf": [
+                    {
+                        "const": "1654",
+                        "title": "کاملاً خالص",
+                        "type": "string"
+                    },
+                    {
+                        "const": "1655",
+                        "title": "همراه با ناخالصی",
+                        "type": "string"
+                    }
+                ]
+            },
+            "attribute[244]": {
+                "title": "ابعاد",
+                "type": "string"
+            },
+            "variants": {
+                "title": "تنوع ها",
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "title": "تنوع",
+                    "required": [
+                        "weight",
+                        "stock",
+                        "wage",
+                        "profit"
+                    ],
+                    "properties": {
+                        "weight": {
+                            "type": "number",
+                            "title": "وزن"
+                        },
+                        "stock": {
+                            "type": "number",
+                            "title": "موجودی"
+                        },
+                        "wage": {
+                            "type": "number",
+                            "title": "درصد اجرت"
+                        },
+                        "profit": {
+                            "type": "number",
+                            "title": "درصد سود"
+                        },
+                        "extras_price": {
+                            "type": "number",
+                            "title": "قیمت اضافات"
+                        },
+                        "extras_wage": {
+                            "type": "number",
+                            "title": "اجرت اضافات"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "9392": {
+        "title": "سرویس طلا زنانه",
+        "type": "object",
+        "required": [
+            "product[model]",
+            "product[title_fa]",
+            "product[category_product_type_id][]",
+            "product[division_id]",
+            "product[general_mefa]",
+            "variants",
+            "product[description]",
+            "attribute[11137]",
+            "attribute[10885][]",
+            "attribute[10092][]",
+            "attribute[8750][]",
+            "attribute[47][]",
+            "attribute[159][]",
+            "attribute[254]",
+            "attribute[143]"
+        ],
+        "properties": {
+            "product[model]": {
+                "title": "مدل",
+                "type": "string"
+            },
+            "product[title_fa]": {
+                "title": "عنوان",
+                "type": "string"
+            },
+            "product[description]": {
+                "title": "توضیحات",
+                "type": "string"
+            },
+            "product[category_product_type_id][]": {
+                "title": "نوع کالا",
+                "type": "string",
+                "oneOf": [
+                    {
+                        "const": "12432",
+                        "title": "ست کامل طلا",
+                        "type": "string"
+                    },
+                    {
+                        "const": "12433",
+                        "title": "نیم ست طلا",
+                        "type": "string"
+                    }
+                ]
+            },
+            "product[division_id]": {
+                "title": "دسته بندی کالا",
+                "type": "string",
+                "oneOf": [
+                    {
+                        "const": "13173",
+                        "title": "سرویس طلا",
+                        "type": "string"
+                    },
+                    {
+                        "const": "13174",
+                        "title": "نیم ست طلا",
+                        "type": "string"
+                    }
+                ]
+            },
+            "product[general_mefa]": {
+                "title": "شناسه عمومی",
+                "type": "number",
+                "oneOf": [
+                    {
+                        "const": 3606,
+                        "title": "2720000044733(سرویس طلا زیورآلات ساخته شده از طلا - شناسه عمومی تولید داخل)",
+                        "type": "number"
+                    },
+                    {
+                        "const": 3607,
+                        "title": "2710000044734(سرویس طلا زیورآلات ساخته شده از طلا - شناسه عمومی وارداتی)",
+                        "type": "number"
+                    }
+                ]
+            },
+            "attribute[11137]": {
+                "title": "جلوه ظاهری طلا",
+                "type": "string",
+                "oneOf": [
+                    {
+                        "const": "59425",
+                        "title": "مات",
+                        "type": "string"
+                    },
+                    {
+                        "const": "59426",
+                        "title": "براق",
+                        "type": "string"
+                    },
+                    {
+                        "const": "59427",
+                        "title": "ترکیب مات و براق",
+                        "type": "string"
+                    }
+                ]
+            },
+            "attribute[10885][]": {
+                "title": "جزییات ساخت طلا",
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                    "type": "string",
+                    "anyOf": [
+                        {
+                            "const": "57943",
+                            "title": "موم",
+                            "type": "string"
+                        },
+                        {
+                            "const": "57944",
+                            "title": "نگین / مینا",
+                            "type": "string"
+                        },
+                        {
+                            "const": "57945",
+                            "title": "مخراج",
+                            "type": "string"
+                        },
+                        {
+                            "const": "57946",
+                            "title": "تراش",
+                            "type": "string"
+                        },
+                        {
+                            "const": "57947",
+                            "title": "رزین /  پروجکت",
+                            "type": "string"
+                        },
+                        {
+                            "const": "58048",
+                            "title": "ندارد",
+                            "type": "string"
+                        }
+                    ]
+                }
+            },
+            "attribute[10092][]": {
+                "title": "نحوه ساخت طلا",
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                    "type": "string",
+                    "anyOf": [
+                        {
+                            "const": "52253",
+                            "title": "لیزری",
+                            "type": "string"
+                        },
+                        {
+                            "const": "52258",
+                            "title": "پرسی",
+                            "type": "string"
+                        },
+                        {
+                            "const": "52259",
+                            "title": "ماشینی",
+                            "type": "string"
+                        },
+                        {
+                            "const": "52260",
+                            "title": "الکتروفورمینگ",
+                            "type": "string"
+                        },
+                        {
+                            "const": "57942",
+                            "title": "ریخته‌گری",
+                            "type": "string"
+                        }
+                    ]
+                }
+            },
+            "attribute[8750][]": {
+                "title": "نوع ست زیورآلات طلا زنانه",
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                    "type": "string",
+                    "anyOf": [
+                        {
+                            "const": "44054",
+                            "title": "ست کامل طلا",
+                            "type": "string"
+                        },
+                        {
+                            "const": "44056",
+                            "title": "نیم ست طلا",
+                            "type": "string"
+                        }
+                    ]
+                }
+            },
+            "attribute[47][]": {
+                "title": "اقلام ست",
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                    "type": "string",
+                    "anyOf": [
+                        {
+                            "const": "134",
+                            "title": "انگشتر",
+                            "type": "string"
+                        },
+                        {
+                            "const": "135",
+                            "title": "آویز گردنبند",
+                            "type": "string"
+                        },
+                        {
+                            "const": "136",
+                            "title": "پابند",
+                            "type": "string"
+                        },
+                        {
+                            "const": "137",
+                            "title": "پلاک",
+                            "type": "string"
+                        },
+                        {
+                            "const": "138",
+                            "title": "دستبند",
+                            "type": "string"
+                        },
+                        {
+                            "const": "139",
+                            "title": "زنجیر",
+                            "type": "string"
+                        },
+                        {
+                            "const": "140",
+                            "title": "گردنبند",
+                            "type": "string"
+                        },
+                        {
+                            "const": "141",
+                            "title": "گوشواره",
+                            "type": "string"
+                        },
+                        {
+                            "const": "1578",
+                            "title": "ساعت",
+                            "type": "string"
+                        },
+                        {
+                            "const": "58626",
+                            "title": "کمربند",
+                            "type": "string"
+                        }
+                    ]
+                }
+            },
+            "attribute[159][]": {
+                "title": "قابل استفاده برای",
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                    "type": "string",
+                    "anyOf": [
+                        {
+                            "const": "997",
+                            "title": "بانوان",
+                            "type": "string"
+                        },
+                        {
+                            "const": "999",
+                            "title": "دختران",
+                            "type": "string"
+                        }
+                    ]
+                }
+            },
+            "attribute[254]": {
+                "title": "میزان خلوص",
+                "type": "string",
+                "oneOf": [
+                    {
+                        "const": "1654",
+                        "title": "کاملاً خالص",
+                        "type": "string"
+                    },
+                    {
+                        "const": "1655",
+                        "title": "همراه با ناخالصی",
+                        "type": "string"
+                    }
+                ]
+            },
+            "attribute[143]": {
+                "title": "عیار",
+                "type": "string",
+                "oneOf": [
+                    {
+                        "const": "883",
+                        "title": "18",
+                        "type": "string"
+                    },
+                    {
+                        "const": "881",
+                        "title": "24",
+                        "type": "string"
+                    }
+                ]
+            },
+            "variants": {
+                "title": "تنوع ها",
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "title": "تنوع",
+                    "required": [
+                        "weight",
+                        "stock",
+                        "wage",
+                        "profit"
+                    ],
+                    "properties": {
+                        "weight": {
+                            "type": "number",
+                            "title": "وزن"
+                        },
+                        "stock": {
+                            "type": "number",
+                            "title": "موجودی"
+                        },
+                        "wage": {
+                            "type": "number",
+                            "title": "درصد اجرت"
+                        },
+                        "profit": {
+                            "type": "number",
+                            "title": "درصد سود"
+                        },
+                        "extras_price": {
+                            "type": "number",
+                            "title": "قیمت اضافات"
+                        },
+                        "extras_wage": {
+                            "type": "number",
+                            "title": "اجرت اضافات"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "9393": {
+        "title": "گردنبند طلا زنانه",
+        "type": "object",
+        "required": [
+            "product[model]",
+            "product[title_fa]",
+            "product[category_product_type_id][]",
+            "product[division_id]",
+            "product[general_mefa]",
+            "variants",
+            "product[description]",
+            "attribute[11137]",
+            "attribute[10885][]",
+            "attribute[10092][]",
+            "attribute[8752][]",
+            "attribute[254]",
+            "attribute[134]",
+            "attribute[103][]",
+            "attribute[32]",
+            "attribute[202]",
+            "attribute[143]"
+        ],
+        "properties": {
+            "product[model]": {
+                "title": "مدل",
+                "type": "string"
+            },
+            "product[title_fa]": {
+                "title": "عنوان",
+                "type": "string"
+            },
+            "product[description]": {
+                "title": "توضیحات",
+                "type": "string"
+            },
+            "product[category_product_type_id][]": {
+                "title": "نوع کالا",
+                "type": "string",
+                "oneOf": [
+                    {
+                        "const": "20741",
+                        "title": "بدون پلاک",
+                        "type": "string"
+                    },
+                    {
+                        "const": "20739",
+                        "title": "زنجیر و پلاک جداشونده",
+                        "type": "string"
+                    },
+                    {
+                        "const": "20740",
+                        "title": "زنجیر و پلاک متصل",
+                        "type": "string"
+                    }
+                ]
+            },
+            "product[division_id]": {
+                "title": "دسته بندی کالا",
+                "type": "string",
+                "oneOf": [
+                    {
+                        "const": "12979",
+                        "title": "گردنبند طلا",
+                        "type": "string"
+                    },
+                    {
+                        "const": "12980",
+                        "title": "گردنبند طلا رولباسی",
+                        "type": "string"
+                    },
+                    {
+                        "const": "12981",
+                        "title": "گردنبند طلا گردنی",
+                        "type": "string"
+                    }
+                ]
+            },
+            "product[general_mefa]": {
+                "title": "شناسه عمومی",
+                "type": "number",
+                "oneOf": [
+                    {
+                        "const": 3598,
+                        "title": "2720000044696(آویز گردنبند طلا زیورآلات ساخته شده از طلا - شناسه عمومی تولید داخل)",
+                        "type": "number"
+                    },
+                    {
+                        "const": 3599,
+                        "title": "2710000044697(آویز گردنبند طلا زیورآلات ساخته شده از طلا - شناسه عمومی وارداتی)",
+                        "type": "number"
+                    },
+                    {
+                        "const": 3602,
+                        "title": "2720000044719(گردنبند طلا زیورآلات ساخته شده از طلا - شناسه عمومی تولید داخل)",
+                        "type": "number"
+                    },
+                    {
+                        "const": 3603,
+                        "title": "2710000044710(گردنبند طلا زیورآلات ساخته شده از طلا - شناسه عمومی وارداتی)",
+                        "type": "number"
+                    }
+                ]
+            },
+            "attribute[11137]": {
+                "title": "جلوه ظاهری طلا",
+                "type": "string",
+                "oneOf": [
+                    {
+                        "const": "59425",
+                        "title": "مات",
+                        "type": "string"
+                    },
+                    {
+                        "const": "59426",
+                        "title": "براق",
+                        "type": "string"
+                    },
+                    {
+                        "const": "59427",
+                        "title": "ترکیب مات و براق",
+                        "type": "string"
+                    }
+                ]
+            },
+            "attribute[10885][]": {
+                "title": "جزییات ساخت طلا",
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                    "type": "string",
+                    "anyOf": [
+                        {
+                            "const": "57943",
+                            "title": "موم",
+                            "type": "string"
+                        },
+                        {
+                            "const": "57944",
+                            "title": "نگین / مینا",
+                            "type": "string"
+                        },
+                        {
+                            "const": "57945",
+                            "title": "مخراج",
+                            "type": "string"
+                        },
+                        {
+                            "const": "57946",
+                            "title": "تراش",
+                            "type": "string"
+                        },
+                        {
+                            "const": "57947",
+                            "title": "رزین /  پروجکت",
+                            "type": "string"
+                        },
+                        {
+                            "const": "58048",
+                            "title": "ندارد",
+                            "type": "string"
+                        }
+                    ]
+                }
+            },
+            "attribute[10092][]": {
+                "title": "نحوه ساخت طلا",
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                    "type": "string",
+                    "anyOf": [
+                        {
+                            "const": "52253",
+                            "title": "لیزری",
+                            "type": "string"
+                        },
+                        {
+                            "const": "52258",
+                            "title": "پرسی",
+                            "type": "string"
+                        },
+                        {
+                            "const": "52259",
+                            "title": "ماشینی",
+                            "type": "string"
+                        },
+                        {
+                            "const": "52260",
+                            "title": "الکتروفورمینگ",
+                            "type": "string"
+                        },
+                        {
+                            "const": "57942",
+                            "title": "ریخته‌گری",
+                            "type": "string"
+                        }
+                    ]
+                }
+            },
+            "attribute[8752][]": {
+                "title": "نوع گردنبند طلا زنانه",
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                    "type": "string",
+                    "anyOf": [
+                        {
+                            "const": "44058",
+                            "title": "زنجیر و پلاک متصل",
+                            "type": "string"
+                        },
+                        {
+                            "const": "44062",
+                            "title": "بدون پلاک",
+                            "type": "string"
+                        },
+                        {
+                            "const": "44063",
+                            "title": "زنجیر و پلاک جداشونده",
+                            "type": "string"
+                        },
+                        {
+                            "const": "58167",
+                            "title": "طوق",
+                            "type": "string"
+                        }
+                    ]
+                }
+            },
+            "attribute[254]": {
+                "title": "میزان خلوص",
+                "type": "string",
+                "oneOf": [
+                    {
+                        "const": "1654",
+                        "title": "کاملاً خالص",
+                        "type": "string"
+                    },
+                    {
+                        "const": "1655",
+                        "title": "همراه با ناخالصی",
+                        "type": "string"
+                    }
+                ]
+            },
+            "attribute[134]": {
+                "title": "طول زنجیر",
+                "type": "string"
+            },
+            "attribute[103][]": {
+                "title": "جنس زنجیر",
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                    "type": "string",
+                    "anyOf": [
+                        {
+                            "const": "580",
+                            "title": "طلا",
+                            "type": "string"
+                        },
+                        {
+                            "const": "581",
+                            "title": "فلز",
+                            "type": "string"
+                        },
+                        {
+                            "const": "582",
+                            "title": "کریستال",
+                            "type": "string"
+                        },
+                        {
+                            "const": "583",
+                            "title": "لاستیک",
+                            "type": "string"
+                        },
+                        {
+                            "const": "584",
+                            "title": "مخمل",
+                            "type": "string"
+                        },
+                        {
+                            "const": "574",
+                            "title": "ساتن",
+                            "type": "string"
+                        },
+                        {
+                            "const": "585",
+                            "title": "مس",
+                            "type": "string"
+                        },
+                        {
+                            "const": "586",
+                            "title": "نخ",
+                            "type": "string"
+                        },
+                        {
+                            "const": "587",
+                            "title": "نقره",
+                            "type": "string"
+                        },
+                        {
+                            "const": "588",
+                            "title": "ورشو",
+                            "type": "string"
+                        },
+                        {
+                            "const": "589",
+                            "title": "ویسکوز",
+                            "type": "string"
+                        },
+                        {
+                            "const": "554",
+                            "title": "بند",
+                            "type": "string"
+                        },
+                        {
+                            "const": "547",
+                            "title": "آلیاژ روی",
+                            "type": "string"
+                        },
+                        {
+                            "const": "548",
+                            "title": "آلیاژ قلع",
+                            "type": "string"
+                        },
+                        {
+                            "const": "549",
+                            "title": "آلیاژ مس",
+                            "type": "string"
+                        },
+                        {
+                            "const": "551",
+                            "title": "آهن",
+                            "type": "string"
+                        },
+                        {
+                            "const": "543",
+                            "title": "اپوکسی",
+                            "type": "string"
+                        },
+                        {
+                            "const": "544",
+                            "title": "استیل",
+                            "type": "string"
+                        },
+                        {
+                            "const": "545",
+                            "title": "اکریلیک",
+                            "type": "string"
+                        },
+                        {
+                            "const": "550",
+                            "title": "الیاف مصنوعی",
+                            "type": "string"
+                        },
+                        {
+                            "const": "578",
+                            "title": "سیلیکون",
+                            "type": "string"
+                        },
+                        {
+                            "const": "542",
+                            "title": "PVC",
+                            "type": "string"
+                        },
+                        {
+                            "const": "552",
+                            "title": "برنج",
+                            "type": "string"
+                        },
+                        {
+                            "const": "553",
+                            "title": "برنز",
+                            "type": "string"
+                        },
+                        {
+                            "const": "546",
+                            "title": "آلومینیوم",
+                            "type": "string"
+                        },
+                        {
+                            "const": "555",
+                            "title": "پارچه",
+                            "type": "string"
+                        },
+                        {
+                            "const": "556",
+                            "title": "پر",
+                            "type": "string"
+                        },
+                        {
+                            "const": "557",
+                            "title": "پلاستیک",
+                            "type": "string"
+                        },
+                        {
+                            "const": "558",
+                            "title": "پلی استر",
+                            "type": "string"
+                        },
+                        {
+                            "const": "559",
+                            "title": "پلی اورتان",
+                            "type": "string"
+                        },
+                        {
+                            "const": "560",
+                            "title": "ترموپلاستیک پلی اورتان",
+                            "type": "string"
+                        },
+                        {
+                            "const": "570",
+                            "title": "روکش طلا",
+                            "type": "string"
+                        },
+                        {
+                            "const": "561",
+                            "title": "تیتانیوم",
+                            "type": "string"
+                        },
+                        {
+                            "const": "562",
+                            "title": "جین",
+                            "type": "string"
+                        },
+                        {
+                            "const": "563",
+                            "title": "چرم طبیعی",
+                            "type": "string"
+                        },
+                        {
+                            "const": "564",
+                            "title": "چرم مصنوعی",
+                            "type": "string"
+                        },
+                        {
+                            "const": "565",
+                            "title": "چوب",
+                            "type": "string"
+                        },
+                        {
+                            "const": "1718",
+                            "title": "پلاتین",
+                            "type": "string"
+                        },
+                        {
+                            "const": "575",
+                            "title": "سرامیک",
+                            "type": "string"
+                        },
+                        {
+                            "const": "571",
+                            "title": "روکش نقره",
+                            "type": "string"
+                        },
+                        {
+                            "const": "567",
+                            "title": "رزین",
+                            "type": "string"
+                        },
+                        {
+                            "const": "576",
+                            "title": "سفال",
+                            "type": "string"
+                        },
+                        {
+                            "const": "577",
+                            "title": "سنگ",
+                            "type": "string"
+                        },
+                        {
+                            "const": "572",
+                            "title": "روی",
+                            "type": "string"
+                        },
+                        {
+                            "const": "568",
+                            "title": "رودیوم",
+                            "type": "string"
+                        },
+                        {
+                            "const": "566",
+                            "title": "چوب و رزین",
+                            "type": "string"
+                        },
+                        {
+                            "const": "573",
+                            "title": "زاماک",
+                            "type": "string"
+                        },
+                        {
+                            "const": "569",
+                            "title": "روکش رودیوم",
+                            "type": "string"
+                        },
+                        {
+                            "const": "49861",
+                            "title": "طلا و مروارید",
+                            "type": "string"
+                        },
+                        {
+                            "const": "50650",
+                            "title": "آبکاری طلا",
+                            "type": "string"
+                        }
+                    ]
+                }
+            },
+            "attribute[32]": {
+                "title": "طرح زنجیر",
+                "type": "string",
+                "oneOf": [
+                    {
+                        "const": "49738",
+                        "title": "مارپیچی",
+                        "type": "string"
+                    },
+                    {
+                        "const": "49729",
+                        "title": "طنابی (توئیست)",
+                        "type": "string"
+                    },
+                    {
+                        "const": "53422",
+                        "title": "فلامینگو (حلقه‌ای)",
+                        "type": "string"
+                    },
+                    {
+                        "const": "49722",
+                        "title": "فیگارو",
+                        "type": "string"
+                    },
+                    {
+                        "const": "49728",
+                        "title": "کابلی",
+                        "type": "string"
+                    },
+                    {
+                        "const": "49723",
+                        "title": "کارتیه",
+                        "type": "string"
+                    },
+                    {
+                        "const": "49735",
+                        "title": "کورب",
+                        "type": "string"
+                    },
+                    {
+                        "const": "49726",
+                        "title": "گندمی",
+                        "type": "string"
+                    },
+                    {
+                        "const": "49732",
+                        "title": "لنگری",
+                        "type": "string"
+                    },
+                    {
+                        "const": "49733",
+                        "title": "سنگاپوری (دیسکو)",
+                        "type": "string"
+                    },
+                    {
+                        "const": "49730",
+                        "title": "ماری",
+                        "type": "string"
+                    },
+                    {
+                        "const": "53400",
+                        "title": "مروارید",
+                        "type": "string"
+                    },
+                    {
+                        "const": "868",
+                        "title": "مهره",
+                        "type": "string"
+                    },
+                    {
+                        "const": "53424",
+                        "title": "میرو",
+                        "type": "string"
+                    },
+                    {
+                        "const": "53408",
+                        "title": "ونکلیف",
+                        "type": "string"
+                    },
+                    {
+                        "const": "49731",
+                        "title": "ونیزی (آجری)",
+                        "type": "string"
+                    },
+                    {
+                        "const": "49725",
+                        "title": "هرینگبون (تیغ ماهی- آینه‌ای)",
+                        "type": "string"
+                    },
+                    {
+                        "const": "867",
+                        "title": "ساچمه‌ای",
+                        "type": "string"
+                    },
+                    {
+                        "const": "53425",
+                        "title": "رولو",
+                        "type": "string"
+                    },
+                    {
+                        "const": "49736",
+                        "title": "رولکس",
+                        "type": "string"
+                    },
+                    {
+                        "const": "49724",
+                        "title": "دیپلمات",
+                        "type": "string"
+                    },
+                    {
+                        "const": "53401",
+                        "title": "تیفانی",
+                        "type": "string"
+                    },
+                    {
+                        "const": "54889",
+                        "title": "پولکی",
+                        "type": "string"
+                    },
+                    {
+                        "const": "54357",
+                        "title": "بیزمارک",
+                        "type": "string"
+                    },
+                    {
+                        "const": "864",
+                        "title": "بندی",
+                        "type": "string"
+                    },
+                    {
+                        "const": "863",
+                        "title": "بافت",
+                        "type": "string"
+                    },
+                    {
+                        "const": "49727",
+                        "title": "امگا",
+                        "type": "string"
+                    },
+                    {
+                        "const": "54356",
+                        "title": "البرنادو",
+                        "type": "string"
+                    },
+                    {
+                        "const": "57955",
+                        "title": "کارتیه ژاپنی (تخت)",
+                        "type": "string"
+                    },
+                    {
+                        "const": "57956",
+                        "title": "کارتیه موناکو",
+                        "type": "string"
+                    },
+                    {
+                        "const": "57957",
+                        "title": "کارتیه سیسیلی",
+                        "type": "string"
+                    },
+                    {
+                        "const": "57958",
+                        "title": "کارتیه حصیری",
+                        "type": "string"
+                    },
+                    {
+                        "const": "57959",
+                        "title": "مینیمال",
+                        "type": "string"
+                    },
+                    {
+                        "const": "57960",
+                        "title": "بیزانسی",
+                        "type": "string"
+                    },
+                    {
+                        "const": "57961",
+                        "title": "پاپکورن",
+                        "type": "string"
+                    },
+                    {
+                        "const": "57962",
+                        "title": "گوی ساده",
+                        "type": "string"
+                    },
+                    {
+                        "const": "57963",
+                        "title": "دوریکا",
+                        "type": "string"
+                    },
+                    {
+                        "const": "57964",
+                        "title": "مورس",
+                        "type": "string"
+                    },
+                    {
+                        "const": "57965",
+                        "title": "سان مارکو",
+                        "type": "string"
+                    },
+                    {
+                        "const": "57966",
+                        "title": "تنیسی",
+                        "type": "string"
+                    },
+                    {
+                        "const": "57967",
+                        "title": "تیفانی تایتان",
+                        "type": "string"
+                    },
+                    {
+                        "const": "57968",
+                        "title": "هرمس",
+                        "type": "string"
+                    },
+                    {
+                        "const": "57969",
+                        "title": "کشی",
+                        "type": "string"
+                    }
+                ]
+            },
+            "attribute[202]": {
+                "title": "نحوه بسته شدن زیورآلات",
+                "type": "string",
+                "oneOf": [
+                    {
+                        "const": "1335",
+                        "title": "دکمه‌ای",
+                        "type": "string"
+                    },
+                    {
+                        "const": "1334",
+                        "title": "دکمه پرچی",
+                        "type": "string"
+                    },
+                    {
+                        "const": "1332",
+                        "title": "پینی",
+                        "type": "string"
+                    },
+                    {
+                        "const": "1331",
+                        "title": "پیچی",
+                        "type": "string"
+                    },
+                    {
+                        "const": "1339",
+                        "title": "خرچنگی - طوطی",
+                        "type": "string"
+                    },
+                    {
+                        "const": "1345",
+                        "title": "کلیپسی",
+                        "type": "string"
+                    },
+                    {
+                        "const": "1348",
+                        "title": "مگنتی",
+                        "type": "string"
+                    },
+                    {
+                        "const": "1330",
+                        "title": "بندی",
+                        "type": "string"
+                    },
+                    {
+                        "const": "1343",
+                        "title": "قلابی",
+                        "type": "string"
+                    },
+                    {
+                        "const": "1337",
+                        "title": "سگکی",
+                        "type": "string"
+                    },
+                    {
+                        "const": "1346",
+                        "title": "گره‌ای",
+                        "type": "string"
+                    },
+                    {
+                        "const": "1336",
+                        "title": "مدبر گرد",
+                        "type": "string"
+                    },
+                    {
+                        "const": "35207",
+                        "title": "ملوانی",
+                        "type": "string"
+                    },
+                    {
+                        "const": "62727",
+                        "title": "قلاب S",
+                        "type": "string"
+                    },
+                    {
+                        "const": "62728",
+                        "title": "قفل T",
+                        "type": "string"
+                    },
+                    {
+                        "const": "62892",
+                        "title": "کوبایی",
+                        "type": "string"
+                    },
+                    {
+                        "const": "62893",
+                        "title": "ساعتی",
+                        "type": "string"
+                    },
+                    {
+                        "const": "62894",
+                        "title": "کتابی",
+                        "type": "string"
+                    }
+                ]
+            },
+            "attribute[143]": {
+                "title": "عیار",
+                "type": "string",
+                "oneOf": [
+                    {
+                        "const": "883",
+                        "title": "18",
+                        "type": "string"
+                    },
+                    {
+                        "const": "881",
+                        "title": "24",
+                        "type": "string"
+                    },
+                    {
+                        "const": "36549",
+                        "title": "22",
+                        "type": "string"
+                    }
+                ]
+            },
+            "variants": {
+                "title": "تنوع ها",
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "title": "تنوع",
+                    "required": [
+                        "weight",
+                        "stock",
+                        "wage",
+                        "profit"
+                    ],
+                    "properties": {
+                        "weight": {
+                            "type": "number",
+                            "title": "وزن"
+                        },
+                        "stock": {
+                            "type": "number",
+                            "title": "موجودی"
+                        },
+                        "wage": {
+                            "type": "number",
+                            "title": "درصد اجرت"
+                        },
+                        "profit": {
+                            "type": "number",
+                            "title": "درصد سود"
+                        },
+                        "extras_price": {
+                            "type": "number",
+                            "title": "قیمت اضافات"
+                        },
+                        "extras_wage": {
+                            "type": "number",
+                            "title": "اجرت اضافات"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "9394": {
+        "title": "آویز طلا زنانه",
+        "type": "object",
+        "required": [
+            "product[model]",
+            "product[title_fa]",
+            "product[category_product_type_id][]",
+            "product[division_id]",
+            "product[general_mefa]",
+            "variants",
+            "product[description]",
+            "attribute[11137]",
+            "attribute[10885][]",
+            "attribute[10092][]",
+            "attribute[8755][]",
+            "attribute[7830]",
+            "attribute[143]",
+            "attribute[254]",
+            "attribute[43]",
+            "attribute[114]",
+            "attribute[126]"
+        ],
+        "properties": {
+            "product[model]": {
+                "title": "مدل",
+                "type": "string"
+            },
+            "product[title_fa]": {
+                "title": "عنوان",
+                "type": "string"
+            },
+            "product[description]": {
+                "title": "توضیحات",
+                "type": "string"
+            },
+            "product[category_product_type_id][]": {
+                "title": "نوع کالا",
+                "type": "string",
+                "oneOf": [
+                    {
+                        "const": "14858",
+                        "title": "طلای رزگلد",
+                        "type": "string"
+                    },
+                    {
+                        "const": "15887",
+                        "title": "طلای زرد",
+                        "type": "string"
+                    },
+                    {
+                        "const": "14934",
+                        "title": "طلای سفید",
+                        "type": "string"
+                    }
+                ]
+            },
+            "product[division_id]": {
+                "title": "دسته بندی کالا",
+                "type": "string",
+                "oneOf": [
+                    {
+                        "const": "2517",
+                        "title": "آویز گردنبند طلا",
+                        "type": "string"
+                    }
+                ]
+            },
+            "product[general_mefa]": {
+                "title": "شناسه عمومی",
+                "type": "number",
+                "oneOf": [
+                    {
+                        "const": 3598,
+                        "title": "2720000044696(آویز گردنبند طلا زیورآلات ساخته شده از طلا - شناسه عمومی تولید داخل)",
+                        "type": "number"
+                    },
+                    {
+                        "const": 3599,
+                        "title": "2710000044697(آویز گردنبند طلا زیورآلات ساخته شده از طلا - شناسه عمومی وارداتی)",
+                        "type": "number"
+                    },
+                    {
+                        "const": 3608,
+                        "title": "2720000044740(پلاک طلا زیورآلات ساخته شده از طلا - شناسه عمومی تولید داخل)",
+                        "type": "number"
+                    },
+                    {
+                        "const": 3609,
+                        "title": "2710000044741(پلاک طلا زیورآلات ساخته شده از طلا - شناسه عمومی وارداتی)",
+                        "type": "number"
+                    },
+                    {
+                        "const": 31994,
+                        "title": "2720000214815(بند عینک تجهیزات چشم پزشکی- شناسه عمومی تولید داخل)",
+                        "type": "number"
+                    },
+                    {
+                        "const": 31995,
+                        "title": "2710000214816(بند عینک تجهیزات چشم پزشکی- شناسه عمومی وارداتی)",
+                        "type": "number"
+                    }
+                ]
+            },
+            "attribute[11137]": {
+                "title": "جلوه ظاهری طلا",
+                "type": "string",
+                "oneOf": [
+                    {
+                        "const": "59425",
+                        "title": "مات",
+                        "type": "string"
+                    },
+                    {
+                        "const": "59426",
+                        "title": "براق",
+                        "type": "string"
+                    },
+                    {
+                        "const": "59427",
+                        "title": "ترکیب مات و براق",
+                        "type": "string"
+                    }
+                ]
+            },
+            "attribute[10885][]": {
+                "title": "جزییات ساخت طلا",
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                    "type": "string",
+                    "anyOf": [
+                        {
+                            "const": "57943",
+                            "title": "موم",
+                            "type": "string"
+                        },
+                        {
+                            "const": "57944",
+                            "title": "نگین / مینا",
+                            "type": "string"
+                        },
+                        {
+                            "const": "57945",
+                            "title": "مخراج",
+                            "type": "string"
+                        },
+                        {
+                            "const": "57946",
+                            "title": "تراش",
+                            "type": "string"
+                        },
+                        {
+                            "const": "57947",
+                            "title": "رزین /  پروجکت",
+                            "type": "string"
+                        },
+                        {
+                            "const": "58048",
+                            "title": "ندارد",
+                            "type": "string"
+                        }
+                    ]
+                }
+            },
+            "attribute[10092][]": {
+                "title": "نحوه ساخت طلا",
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                    "type": "string",
+                    "anyOf": [
+                        {
+                            "const": "52253",
+                            "title": "لیزری",
+                            "type": "string"
+                        },
+                        {
+                            "const": "52258",
+                            "title": "پرسی",
+                            "type": "string"
+                        },
+                        {
+                            "const": "52259",
+                            "title": "ماشینی",
+                            "type": "string"
+                        },
+                        {
+                            "const": "52260",
+                            "title": "الکتروفورمینگ",
+                            "type": "string"
+                        },
+                        {
+                            "const": "57942",
+                            "title": "ریخته‌گری",
+                            "type": "string"
+                        }
+                    ]
+                }
+            },
+            "attribute[8755][]": {
+                "title": "نوع آویز طلا زنانه",
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                    "type": "string",
+                    "anyOf": [
+                        {
+                            "const": "44068",
+                            "title": "طلای رزگلد",
+                            "type": "string"
+                        },
+                        {
+                            "const": "44069",
+                            "title": "طلای سفید",
+                            "type": "string"
+                        },
+                        {
+                            "const": "44072",
+                            "title": "طلای زرد",
+                            "type": "string"
+                        },
+                        {
+                            "const": "54017",
+                            "title": "طلای ترکیبی",
+                            "type": "string"
+                        }
+                    ]
+                }
+            },
+            "attribute[7830]": {
+                "title": "طرح کلی",
+                "type": "string",
+                "oneOf": [
+                    {
+                        "const": "35283",
+                        "title": "ماه مرداد",
+                        "type": "string"
+                    },
+                    {
+                        "const": "35280",
+                        "title": "ماه اردیبهشت",
+                        "type": "string"
+                    },
+                    {
+                        "const": "35290",
+                        "title": "ماه اسفند",
+                        "type": "string"
+                    },
+                    {
+                        "const": "35289",
+                        "title": "ماه بهمن",
+                        "type": "string"
+                    },
+                    {
+                        "const": "35282",
+                        "title": "ماه تیر",
+                        "type": "string"
+                    },
+                    {
+                        "const": "35281",
+                        "title": "ماه خرداد",
+                        "type": "string"
+                    },
+                    {
+                        "const": "35288",
+                        "title": "ماه دی",
+                        "type": "string"
+                    },
+                    {
+                        "const": "35284",
+                        "title": "ماه شهریور",
+                        "type": "string"
+                    },
+                    {
+                        "const": "35279",
+                        "title": "ماه فروردین",
+                        "type": "string"
+                    },
+                    {
+                        "const": "35287",
+                        "title": "ماه آذر",
+                        "type": "string"
+                    },
+                    {
+                        "const": "35285",
+                        "title": "ماه مهر",
+                        "type": "string"
+                    },
+                    {
+                        "const": "35292",
+                        "title": "مذهبی",
+                        "type": "string"
+                    },
+                    {
+                        "const": "35294",
+                        "title": "مشاغل",
+                        "type": "string"
+                    },
+                    {
+                        "const": "35310",
+                        "title": "مناسبت",
+                        "type": "string"
+                    },
+                    {
+                        "const": "35309",
+                        "title": "میوه",
+                        "type": "string"
+                    },
+                    {
+                        "const": "35297",
+                        "title": "ورزش",
+                        "type": "string"
+                    },
+                    {
+                        "const": "35308",
+                        "title": "یلدا",
+                        "type": "string"
+                    },
+                    {
+                        "const": "35295",
+                        "title": "شخصیت کارتونی",
+                        "type": "string"
+                    },
+                    {
+                        "const": "35311",
+                        "title": "اشعار",
+                        "type": "string"
+                    },
+                    {
+                        "const": "35302",
+                        "title": "پدر",
+                        "type": "string"
+                    },
+                    {
+                        "const": "35299",
+                        "title": "پسر",
+                        "type": "string"
+                    },
+                    {
+                        "const": "35304",
+                        "title": "تولدت مبارک",
+                        "type": "string"
+                    },
+                    {
+                        "const": "35306",
+                        "title": "حیوان",
+                        "type": "string"
+                    },
+                    {
+                        "const": "35298",
+                        "title": "دختر",
+                        "type": "string"
+                    },
+                    {
+                        "const": "35305",
+                        "title": "ساده",
+                        "type": "string"
+                    },
+                    {
+                        "const": "35278",
+                        "title": "اسم",
+                        "type": "string"
+                    },
+                    {
+                        "const": "35307",
+                        "title": "عروسکی",
+                        "type": "string"
+                    },
+                    {
+                        "const": "35296",
+                        "title": "فوتبال",
+                        "type": "string"
+                    },
+                    {
+                        "const": "35291",
+                        "title": "گل",
+                        "type": "string"
+                    },
+                    {
+                        "const": "35301",
+                        "title": "مادر",
+                        "type": "string"
+                    },
+                    {
+                        "const": "35300",
+                        "title": "سنتی",
+                        "type": "string"
+                    },
+                    {
+                        "const": "35286",
+                        "title": "ماه آبان",
+                        "type": "string"
+                    },
+                    {
+                        "const": "35358",
+                        "title": "حروف الفبا",
+                        "type": "string"
+                    },
+                    {
+                        "const": "35356",
+                        "title": "خوراکی",
+                        "type": "string"
+                    },
+                    {
+                        "const": "36396",
+                        "title": "مشاهیر",
+                        "type": "string"
+                    },
+                    {
+                        "const": "36395",
+                        "title": "شهر",
+                        "type": "string"
+                    },
+                    {
+                        "const": "35355",
+                        "title": "منظره",
+                        "type": "string"
+                    },
+                    {
+                        "const": "35667",
+                        "title": "پاپیون",
+                        "type": "string"
+                    },
+                    {
+                        "const": "35357",
+                        "title": "نقاشی",
+                        "type": "string"
+                    },
+                    {
+                        "const": "35666",
+                        "title": "عشق",
+                        "type": "string"
+                    },
+                    {
+                        "const": "36416",
+                        "title": "انیمه",
+                        "type": "string"
+                    },
+                    {
+                        "const": "36417",
+                        "title": "گیم",
+                        "type": "string"
+                    },
+                    {
+                        "const": "36418",
+                        "title": "فیلم و سریال",
+                        "type": "string"
+                    },
+                    {
+                        "const": "36419",
+                        "title": "موسیقی",
+                        "type": "string"
+                    },
+                    {
+                        "const": "37861",
+                        "title": "آدم برفی",
+                        "type": "string"
+                    },
+                    {
+                        "const": "37934",
+                        "title": "کاپ کیک",
+                        "type": "string"
+                    },
+                    {
+                        "const": "37935",
+                        "title": "برگ",
+                        "type": "string"
+                    },
+                    {
+                        "const": "38811",
+                        "title": "زن و نور",
+                        "type": "string"
+                    },
+                    {
+                        "const": "39178",
+                        "title": "سایر",
+                        "type": "string"
+                    },
+                    {
+                        "const": "54951",
+                        "title": "پروانه",
+                        "type": "string"
+                    },
+                    {
+                        "const": "54952",
+                        "title": "قلب",
+                        "type": "string"
+                    },
+                    {
+                        "const": "56034",
+                        "title": "پرنده",
+                        "type": "string"
+                    }
+                ]
+            },
+            "attribute[143]": {
+                "title": "عیار",
+                "type": "string",
+                "oneOf": [
+                    {
+                        "const": "883",
+                        "title": "18",
+                        "type": "string"
+                    },
+                    {
+                        "const": "881",
+                        "title": "24",
+                        "type": "string"
+                    }
+                ]
+            },
+            "attribute[254]": {
+                "title": "میزان خلوص",
+                "type": "string",
+                "oneOf": [
+                    {
+                        "const": "1654",
+                        "title": "کاملاً خالص",
+                        "type": "string"
+                    },
+                    {
+                        "const": "1655",
+                        "title": "همراه با ناخالصی",
+                        "type": "string"
+                    }
+                ]
+            },
+            "attribute[43]": {
+                "title": "ابعاد تقریبی پلاک",
+                "type": "string"
+            },
+            "attribute[114]": {
+                "title": "رنگ",
+                "type": "string"
+            },
+            "attribute[126]": {
+                "title": "طرح پلاک",
+                "type": "string"
+            },
+            "variants": {
+                "title": "تنوع ها",
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "title": "تنوع",
+                    "required": [
+                        "weight",
+                        "stock",
+                        "wage",
+                        "profit"
+                    ],
+                    "properties": {
+                        "weight": {
+                            "type": "number",
+                            "title": "وزن"
+                        },
+                        "stock": {
+                            "type": "number",
+                            "title": "موجودی"
+                        },
+                        "wage": {
+                            "type": "number",
+                            "title": "درصد اجرت"
+                        },
+                        "profit": {
+                            "type": "number",
+                            "title": "درصد سود"
+                        },
+                        "extras_price": {
+                            "type": "number",
+                            "title": "قیمت اضافات"
+                        },
+                        "extras_wage": {
+                            "type": "number",
+                            "title": "اجرت اضافات"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
