@@ -33,7 +33,7 @@ export default function Page() {
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [selectedSchema, setSelectedSchema] = useState<string | null>(null);
   const [bucketOptions, setBucketOptions] = useState<string[]>([]);
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [uploadStatus, setUploadStatus] = useState("pre");
   const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
@@ -56,14 +56,20 @@ export default function Page() {
     setSku(prefix + incremented);
   };
 
-    }
-
-
   const onSubmit = async ({ formData }: { formData: any }, e: any) => {
     console.log("Data submitted: ", sku, formData);
     try {
-      await axios.post("/api/product", { bucket, data: { sku, ...formData } });
-      alert("Form submitted successfully!");
+
+      const title = `${schemas[selectedSchema]["title"].slice(
+        -5
+      )} 18 عیار زنانه مدوپد مدل ${formData["product[model]"]} کد ${sku}`;
+
+      await axios.post("/api/product", {
+        bucket,
+        data: { sku, ...formData, "product[title_fa]": title },
+      });
+      
+      alert("موفق: " + title);
       incrementSku();
     } catch (error) {
       setErrorMessage("Error submitting form");
@@ -96,7 +102,7 @@ export default function Page() {
 
   const handleUpload = async (event: React.FormEvent) => {
     event.preventDefault();
-    setIsSubmitting(true);
+    setUploadStatus("pending");
     setErrorMessage("");
 
     const formData = new FormData();
@@ -117,7 +123,7 @@ export default function Page() {
       setErrorMessage("Error uploading files");
       console.error(error);
     } finally {
-      setIsSubmitting(false);
+      setUploadStatus("done");
     }
   };
 
@@ -142,8 +148,8 @@ export default function Page() {
             </Select>
           </div>
 
-          <div className="mb-4">
-            <Label htmlFor="category">دسته بندی*</Label>
+          <div className='mb-4'>
+            <Label htmlFor='category'>دسته بندی*</Label>
             <Select onValueChange={setSelectedSchema}>
               <SelectTrigger>
                 <SelectValue placeholder='Select Schema' />
@@ -197,8 +203,16 @@ export default function Page() {
             {errorMessage && <p className='text-red-500'>{errorMessage}</p>}
           </div>
 
-          <Button type='submit' className='mt-2' disabled={isSubmitting}>
-            {isSubmitting ? "در حال آپلود" : "آپلود تصاویر"}
+          <Button
+            type='submit'
+            className='mt-2'
+            disabled={uploadStatus != "pre"}
+          >
+            {uploadStatus == "pre"
+              ? "آپلود تصاویر"
+              : uploadStatus == "pending"
+              ? "درحال آپلود"
+              : "آپلود شده"}
           </Button>
         </form>
       </div>
