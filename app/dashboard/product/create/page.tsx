@@ -28,7 +28,7 @@ const category_code = {
 
 export default function Page() {
   const [files, setFiles] = useState<File[]>([]);
-  const [sku, setSku] = useState("AA-D-000001");
+  const [sku, setSku] = useState("AA000001");
   const [bucket, setBucket] = useState<string | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [selectedSchema, setSelectedSchema] = useState<string | null>(null);
@@ -57,12 +57,6 @@ export default function Page() {
 
     }
 
-    const categorySku = (newCat) => {
-        const cat_code = category_code[newCat];
-        const prefix = sku.slice(0, 2)
-        const postfix = sku.slice(-6)
-        setSku(prefix + cat_code + postfix)
-    }
 
   const onSubmit = async ({ formData }: { formData: any }, e: any) => {
     console.log('Data submitted: ', sku, formData);
@@ -147,10 +141,7 @@ export default function Page() {
 
           <div className="mb-4">
             <Label htmlFor="category">دسته بندی*</Label>
-            <Select onValueChange={(newValue)=> {
-                setSelectedSchema(newValue);
-                categorySku(newValue);
-            }}>
+            <Select onValueChange={setSelectedSchema}>
               <SelectTrigger>
                 <SelectValue placeholder="Select Schema" />
               </SelectTrigger>
