@@ -16,36 +16,28 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-const category_code = {
-11314: "B",
-9388: "D",
-9390: "Z",
-9391: "E", // gooshvare
-9392: "S", // service
-9393: "G", // gardanband
-9394: "A", // aviz
-}
 
-export default function Page() {
+export default function Page({...props}) {
+
   const [files, setFiles] = useState<File[]>([]);
-  const [sku, setSku] = useState("AA000001");
-  const [bucket, setBucket] = useState<string | null>(null);
+  const [sku, setSku] = useState(props.sku || "AA000001");
+  const [bucket, setBucket] = useState<string | null>(props.bucket || null);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
-  const [selectedSchema, setSelectedSchema] = useState<string | null>(null);
+  const [selectedSchema, setSelectedSchema] = useState<string | null>(props.schema || null);
   const [bucketOptions, setBucketOptions] = useState<string[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
-  const fetchBuckets = async () => {
-    try {
-      const res = await axios.get('/api/bucket');
-      setBucketOptions(res.data.buckets.map(bucket=>bucket.name));
-    } catch (error) {
-      console.error('Error fetching buckets:', error);
-    }
-  };
-  fetchBuckets();
+    const fetchBuckets = async () => {
+      try {
+        const res = await axios.get('/api/bucket');
+        setBucketOptions(res.data.buckets.map(bucket=>bucket.name));
+      } catch (error) {
+        console.error('Error fetching buckets:', error);
+      }
+    };
+    fetchBuckets();
   }, []);
 
     const incrementSku = () => {
@@ -148,7 +140,7 @@ export default function Page() {
               <SelectContent>
                 {Object.entries(schemas).map(([key, schema]) => (
                   <SelectItem key={key} value={key}>
-                    {schema.title} {category_code[key]}
+                    {schema.title} 
                   </SelectItem>
                 ))}
               </SelectContent>
@@ -208,7 +200,7 @@ export default function Page() {
 
       {/* Second part - Render schema form */}
       {selectedSchema && (
-          <RJSForm schema={schemas[selectedSchema]} onSubmit={onSubmit} />
+          <RJSForm schema={schemas[selectedSchema]} onSubmit={onSubmit} formData={props.data} />
       )}
       
 
