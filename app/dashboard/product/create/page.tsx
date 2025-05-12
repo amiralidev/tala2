@@ -59,8 +59,8 @@ export default function Page() {
   const onSubmit = async ({ formData }: { formData: any }, e: any) => {
     console.log("Data submitted: ", sku, formData);
     try {
-
       const title = `${schemas[selectedSchema]["title"].slice(
+        0,
         -5
       )} 18 عیار زنانه مدوپد مدل ${formData["product[model]"]} کد ${sku}`;
 
@@ -68,7 +68,7 @@ export default function Page() {
         bucket,
         data: { sku, ...formData, "product[title_fa]": title },
       });
-      
+
       alert("موفق: " + title);
       incrementSku();
     } catch (error) {
@@ -118,9 +118,9 @@ export default function Page() {
           "Content-Type": "multipart/form-data",
         },
       });
-      alert("Files uploaded successfully!");
     } catch (error) {
       setErrorMessage("Error uploading files");
+      setUploadStatus("error");
       console.error(error);
     } finally {
       setUploadStatus("done");
@@ -212,7 +212,9 @@ export default function Page() {
               ? "آپلود تصاویر"
               : uploadStatus == "pending"
               ? "درحال آپلود"
-              : "آپلود شده"}
+              : uploadStatus == "done"
+              ? "آپلود شده"
+              : "خطا"}
           </Button>
         </form>
       </div>
