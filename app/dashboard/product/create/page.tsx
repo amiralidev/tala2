@@ -16,16 +16,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-const category_code = {
-  11314: "B",
-  9388: "D",
-  9390: "Z",
-  9391: "E", // gooshvare
-  9392: "S", // service
-  9393: "G", // gardanband
-  9394: "A", // aviz
-};
-
 export default function Page() {
   const [files, setFiles] = useState<File[]>([]);
   const [sku, setSku] = useState("AA000001");
@@ -70,6 +60,9 @@ export default function Page() {
       });
 
       alert("موفق: " + title);
+      setFiles([]);
+      setPreviewUrl(null);
+      setUploadStatus("pre");
       incrementSku();
     } catch (error) {
       setErrorMessage("Error submitting form");
@@ -157,7 +150,7 @@ export default function Page() {
               <SelectContent>
                 {Object.entries(schemas).map(([key, schema]) => (
                   <SelectItem key={key} value={key}>
-                    {schema.title} {category_code[key]}
+                    {schema.title}
                   </SelectItem>
                 ))}
               </SelectContent>
@@ -206,7 +199,7 @@ export default function Page() {
           <Button
             type='submit'
             className='mt-2'
-            disabled={uploadStatus != "pre"}
+            disabled={uploadStatus == "pending"}
           >
             {uploadStatus == "pre"
               ? "آپلود تصاویر"
