@@ -17,13 +17,13 @@ import {
 } from "@/components/ui/select";
 
 
-export default function Page({...props}) {
-
+export default function Page({product}) {
+  
   const [files, setFiles] = useState<File[]>([]);
-  const [sku, setSku] = useState(props.sku || "AA000001");
-  const [bucket, setBucket] = useState<string | null>(props.bucket || null);
+  const [sku, setSku] = useState(product?.sku || "AA000001");
+  const [bucket, setBucket] = useState<string | null>(product?.bucket || null);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
-  const [selectedSchema, setSelectedSchema] = useState<string | null>(props.schema || null);
+  const [selectedSchema, setSelectedSchema] = useState<string | null>(product?.category || null);
   const [bucketOptions, setBucketOptions] = useState<string[]>([]);
   const [uploadStatus, setUploadStatus] = useState("pre");
   const [errorMessage, setErrorMessage] = useState("");
@@ -53,12 +53,12 @@ export default function Page({...props}) {
     try {
       const title = `${schemas[selectedSchema]["title"].slice(
         0,
-        -5
+        -6
       )} 18 عیار زنانه مدوپد مدل ${formData["product[model]"]} کد ${sku}`;
 
       await axios.post("/api/product", {
         bucket,
-        data: { sku, ...formData, "product[title_fa]": title },
+        data: { sku, data: {...formData}, "category": selectedSchema, "title": title},
       });
 
       alert("موفق: " + title);
@@ -126,7 +126,7 @@ export default function Page({...props}) {
         <form onSubmit={handleUpload}>
           <div className='mb-4'>
             <Label htmlFor='bucket'>مجموعه*</Label>
-            <Select onValueChange={setBucket} required>
+            <Select onValueChange={setBucket} value={bucket} required>
               <SelectTrigger className='mt-2'>
                 <SelectValue placeholder='انتخاب کنید' />
               </SelectTrigger>
@@ -142,7 +142,7 @@ export default function Page({...props}) {
 
           <div className='mb-4'>
             <Label htmlFor='category'>دسته بندی*</Label>
-            <Select onValueChange={setSelectedSchema}>
+            <Select onValueChange={setSelectedSchema} value={selectedSchema}>
               <SelectTrigger>
                 <SelectValue placeholder='Select Schema' />
               </SelectTrigger>
@@ -213,7 +213,7 @@ export default function Page({...props}) {
 
       {/* Second part - Render schema form */}
       {selectedSchema && (
-          <RJSForm schema={schemas[selectedSchema]} onSubmit={onSubmit} formData={props.data} />
+          <RJSForm schema={schemas[selectedSchema]} onSubmit={onSubmit} formData={product?.data} />
       )}
     </div>
   );

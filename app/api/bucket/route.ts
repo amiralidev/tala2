@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { NextResponse } from 'next/server';
 
+
 export async function GET() {
     try {
         const dirPath = process.env.BASE_PRODUCTS_DIR;
@@ -20,6 +21,7 @@ export async function GET() {
         );
     }
 }
+
 
 export async function POST(request) {
     try {
