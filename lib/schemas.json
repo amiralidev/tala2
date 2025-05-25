@@ -4873,5 +4873,858 @@
         }
       }
     }
+  },
+  "11224": {
+    "title": "النگو طلا زنانه",
+    "type": "object",
+    "required": [
+      "product[model]",
+      "product[category_product_type_id][]",
+      "product[division_id]",
+      "product[general_mefa]",
+      "variants",
+      "product[description]",
+      "attribute[10648]",
+      "attribute[10885][]",
+      "attribute[11137]",
+      "attribute[9789]",
+      "attribute[10092][]",
+      "attribute[143]",
+      "attribute[10604]",
+      "attribute[254]",
+      "attribute[168]"
+    ],
+    "properties": {
+      "product[model]": {
+        "title": "مدل",
+        "type": "string"
+      },
+
+      "product[description]": {
+        "title": "توضیحات",
+        "type": "string"
+      },
+      "product[category_product_type_id][]": {
+        "title": "نوع کالا",
+        "type": "string",
+        "oneOf": []
+      },
+      "product[division_id]": {
+        "title": "دسته بندی کالا",
+        "type": "string",
+        "oneOf": [
+          {
+            "const": "13108",
+            "title": "النگو طلا",
+            "type": "string"
+          },
+          {
+            "const": "13155",
+            "title": "تک‌پوش طلا",
+            "type": "string"
+          }
+        ]
+      },
+      "product[general_mefa]": {
+        "title": "شناسه عمومی",
+        "type": "number",
+        "oneOf": [
+          {
+            "const": 3592,
+            "title": "2720000044665(النگو طلا زیورآلات ساخته شده از طلا - شناسه عمومی تولید داخل)",
+            "type": "number"
+          },
+          {
+            "const": 3593,
+            "title": "2710000044666(النگو طلا زیورآلات ساخته شده از طلا - شناسه عمومی وارداتی)",
+            "type": "number"
+          }
+        ]
+      },
+      "attribute[10648]": {
+        "title": "رنگ طلا",
+        "type": "string",
+        "oneOf": [
+          {
+            "const": "55402",
+            "title": "زرد",
+            "type": "string"
+          },
+          {
+            "const": "55403",
+            "title": "سفید",
+            "type": "string"
+          },
+          {
+            "const": "55404",
+            "title": "رزگلد",
+            "type": "string"
+          },
+          {
+            "const": "55405",
+            "title": "ترکیبی",
+            "type": "string"
+          }
+        ]
+      },
+      "attribute[10885][]": {
+        "title": "جزییات ساخت طلا",
+        "type": "array",
+        "uniqueItems": true,
+        "items": {
+          "type": "string",
+          "anyOf": [
+            {
+              "const": "57943",
+              "title": "موم",
+              "type": "string"
+            },
+            {
+              "const": "57944",
+              "title": "نگین / مینا",
+              "type": "string"
+            },
+            {
+              "const": "57945",
+              "title": "مخراج",
+              "type": "string"
+            },
+            {
+              "const": "57946",
+              "title": "تراش",
+              "type": "string"
+            },
+            {
+              "const": "57947",
+              "title": "رزین /  پروجکت",
+              "type": "string"
+            },
+            {
+              "const": "58048",
+              "title": "ندارد",
+              "type": "string"
+            }
+          ]
+        }
+      },
+      "attribute[11137]": {
+        "title": "جلوه ظاهری طلا",
+        "type": "string",
+        "oneOf": [
+          {
+            "const": "59425",
+            "title": "مات",
+            "type": "string"
+          },
+          {
+            "const": "59426",
+            "title": "براق",
+            "type": "string"
+          },
+          {
+            "const": "59427",
+            "title": "ترکیب مات و براق",
+            "type": "string"
+          }
+        ]
+      },
+      "attribute[9789]": {
+        "title": "طرح النگو",
+        "type": "string",
+        "oneOf": [
+          {
+            "const": "49717",
+            "title": "تراش خورده",
+            "type": "string"
+          },
+          {
+            "const": "49718",
+            "title": "بدون تراش",
+            "type": "string"
+          }
+        ]
+      },
+      "attribute[10092][]": {
+        "title": "نحوه ساخت طلا",
+        "type": "array",
+        "uniqueItems": true,
+        "items": {
+          "type": "string",
+          "anyOf": [
+            {
+              "const": "52253",
+              "title": "لیزری",
+              "type": "string"
+            },
+            {
+              "const": "52258",
+              "title": "پرسی",
+              "type": "string"
+            },
+            {
+              "const": "52259",
+              "title": "ماشینی",
+              "type": "string"
+            },
+            {
+              "const": "52260",
+              "title": "الکتروفورمینگ",
+              "type": "string"
+            },
+            {
+              "const": "57942",
+              "title": "ریخته‌گری",
+              "type": "string"
+            }
+          ]
+        }
+      },
+      "attribute[143]": {
+        "title": "عیار",
+        "type": "string",
+        "oneOf": [
+          {
+            "const": "883",
+            "title": "18",
+            "type": "string"
+          },
+          {
+            "const": "881",
+            "title": "24",
+            "type": "string"
+          },
+          {
+            "const": "36549",
+            "title": "22",
+            "type": "string"
+          }
+        ]
+      },
+      "attribute[10604]": {
+        "title": "سایز النگو",
+        "type": "string",
+        "oneOf": [
+          {
+            "const": "55087",
+            "title": "1",
+            "type": "string"
+          },
+          {
+            "const": "55088",
+            "title": "2",
+            "type": "string"
+          },
+          {
+            "const": "55089",
+            "title": "3",
+            "type": "string"
+          },
+          {
+            "const": "55090",
+            "title": "4",
+            "type": "string"
+          },
+          {
+            "const": "55091",
+            "title": "5",
+            "type": "string"
+          },
+          {
+            "const": "55092",
+            "title": "6",
+            "type": "string"
+          },
+          {
+            "const": "55093",
+            "title": "7",
+            "type": "string"
+          },
+          {
+            "const": "55094",
+            "title": "8",
+            "type": "string"
+          }
+        ]
+      },
+      "attribute[254]": {
+        "title": "میزان خلوص",
+        "type": "string",
+        "oneOf": [
+          {
+            "const": "1654",
+            "title": "کاملاً خالص",
+            "type": "string"
+          },
+          {
+            "const": "1655",
+            "title": "همراه با ناخالصی",
+            "type": "string"
+          }
+        ]
+      },
+      "attribute[168]": {
+        "title": "قطر کالا",
+        "type": "string"
+      },
+      "variants": {
+        "title": "تنوع ها",
+        "type": "array",
+        "items": {
+          "type": "object",
+          "title": "تنوع",
+          "required": ["weight", "stock", "wage", "profit"],
+          "properties": {
+            "weight": {
+              "type": "number",
+              "title": "وزن"
+            },
+            "stock": {
+              "type": "number",
+              "title": "موجودی"
+            },
+            "wage": {
+              "type": "number",
+              "title": "درصد اجرت"
+            },
+            "profit": {
+              "type": "number",
+              "title": "درصد سود"
+            },
+            "extras_price": {
+              "type": "number",
+              "title": "قیمت اضافات"
+            },
+            "extras_wage": {
+              "type": "number",
+              "title": "اجرت اضافات"
+            }
+          }
+        }
+      }
+    }
+  },
+  "9396": {
+    "title": "انگشتر طلا زنانه",
+    "type": "object",
+    "required": [
+      "product[model]",
+      "product[category_product_type_id][]",
+      "product[division_id]",
+      "product[general_mefa]",
+      "variants",
+      "product[description]",
+      "attribute[10885][]",
+      "attribute[10092][]",
+      "attribute[9176][]",
+      "attribute[10648]",
+      "attribute[11137]",
+      "attribute[143]",
+      "attribute[254]",
+      "attribute[168]",
+      "attribute[6909]"
+    ],
+    "properties": {
+      "product[model]": {
+        "title": "مدل",
+        "type": "string"
+      },
+
+      "product[description]": {
+        "title": "توضیحات",
+        "type": "string"
+      },
+      "product[category_product_type_id][]": {
+        "title": "نوع کالا",
+        "type": "string",
+        "oneOf": [
+          {
+            "const": "12436",
+            "title": "انگشتر بندانگشتی",
+            "type": "string"
+          },
+          {
+            "const": "21162",
+            "title": "طلای رز گلد",
+            "type": "string"
+          },
+          {
+            "const": "16243",
+            "title": "طلای زرد",
+            "type": "string"
+          },
+          {
+            "const": "14928",
+            "title": "طلای سفید",
+            "type": "string"
+          }
+        ]
+      },
+      "product[division_id]": {
+        "title": "دسته بندی کالا",
+        "type": "string",
+        "oneOf": [
+          {
+            "const": "2522",
+            "title": "انگشتر طلا",
+            "type": "string"
+          },
+          {
+            "const": "13038",
+            "title": "انگشتر طلا زنانه با طرح امگا",
+            "type": "string"
+          },
+          {
+            "const": "13035",
+            "title": "انگشتر طلا زنانه با طرح بولگاری",
+            "type": "string"
+          },
+          {
+            "const": "13044",
+            "title": "انگشتر طلا زنانه با طرح تیفانی",
+            "type": "string"
+          },
+          {
+            "const": "13043",
+            "title": "انگشتر طلا زنانه با طرح دیوید یورمن",
+            "type": "string"
+          },
+          {
+            "const": "13039",
+            "title": "انگشتر طلا زنانه با طرح روبرتو کوین",
+            "type": "string"
+          },
+          {
+            "const": "13030",
+            "title": "انگشتر طلا زنانه با طرح شنل",
+            "type": "string"
+          },
+          {
+            "const": "13037",
+            "title": "انگشتر طلا زنانه با طرح فراگامو",
+            "type": "string"
+          },
+          {
+            "const": "13036",
+            "title": "انگشتر طلا زنانه با طرح فرِد",
+            "type": "string"
+          },
+          {
+            "const": "13032",
+            "title": "انگشتر طلا زنانه با طرح لویی ویتون",
+            "type": "string"
+          },
+          {
+            "const": "13041",
+            "title": "انگشتر طلا زنانه با طرح میسکا",
+            "type": "string"
+          },
+          {
+            "const": "13045",
+            "title": "انگشتر طلا زنانه با طرح هرمس",
+            "type": "string"
+          },
+          {
+            "const": "13160",
+            "title": "انگشتر طلا زنانه با طرح ورساچه",
+            "type": "string"
+          },
+          {
+            "const": "13031",
+            "title": "انگشتر طلا زنانه با طرح ولنتینو",
+            "type": "string"
+          },
+          {
+            "const": "13040",
+            "title": "انگشتر طلا زنانه با طرح ونکلیف",
+            "type": "string"
+          },
+          {
+            "const": "13029",
+            "title": "انگشتر طلا زنانه با طرح پاندورا",
+            "type": "string"
+          },
+          {
+            "const": "13042",
+            "title": "انگشتر طلا زنانه با طرح پورتوفینو",
+            "type": "string"
+          },
+          {
+            "const": "13033",
+            "title": "انگشتر طلا زنانه با طرح پوملاتو",
+            "type": "string"
+          },
+          {
+            "const": "13034",
+            "title": "انگشتر طلا زنانه با طرح کارتیه",
+            "type": "string"
+          },
+          {
+            "const": "12302",
+            "title": "ست حلقه و پشت حلقه طلا",
+            "type": "string"
+          }
+        ]
+      },
+      "product[general_mefa]": {
+        "title": "شناسه عمومی",
+        "type": "number",
+        "oneOf": [
+          {
+            "const": 3594,
+            "title": "2720000044672(انگشتر طلا زیورآلات ساخته شده از طلا - شناسه عمومی تولید داخل)",
+            "type": "number"
+          },
+          {
+            "const": 3595,
+            "title": "2710000044673(انگشتر طلا زیورآلات ساخته شده از طلا - شناسه عمومی وارداتی)",
+            "type": "number"
+          }
+        ]
+      },
+      "attribute[10885][]": {
+        "title": "جزییات ساخت طلا",
+        "type": "array",
+        "uniqueItems": true,
+        "items": {
+          "type": "string",
+          "anyOf": [
+            {
+              "const": "57943",
+              "title": "موم",
+              "type": "string"
+            },
+            {
+              "const": "57944",
+              "title": "نگین / مینا",
+              "type": "string"
+            },
+            {
+              "const": "57945",
+              "title": "مخراج",
+              "type": "string"
+            },
+            {
+              "const": "57946",
+              "title": "تراش",
+              "type": "string"
+            },
+            {
+              "const": "57947",
+              "title": "رزین /  پروجکت",
+              "type": "string"
+            },
+            {
+              "const": "58048",
+              "title": "ندارد",
+              "type": "string"
+            }
+          ]
+        }
+      },
+      "attribute[10092][]": {
+        "title": "نحوه ساخت طلا",
+        "type": "array",
+        "uniqueItems": true,
+        "items": {
+          "type": "string",
+          "anyOf": [
+            {
+              "const": "52253",
+              "title": "لیزری",
+              "type": "string"
+            },
+            {
+              "const": "52258",
+              "title": "پرسی",
+              "type": "string"
+            },
+            {
+              "const": "52259",
+              "title": "ماشینی",
+              "type": "string"
+            },
+            {
+              "const": "52260",
+              "title": "الکتروفورمینگ",
+              "type": "string"
+            },
+            {
+              "const": "57942",
+              "title": "ریخته‌گری",
+              "type": "string"
+            }
+          ]
+        }
+      },
+      "attribute[9176][]": {
+        "title": "نوع انگشتر طلا زنانه",
+        "type": "array",
+        "uniqueItems": true,
+        "items": {
+          "type": "string",
+          "anyOf": [
+            {
+              "const": "46876",
+              "title": "انگشتر بندانگشتی",
+              "type": "string"
+            },
+            {
+              "const": "60142",
+              "title": "انگشتر کلاسیک",
+              "type": "string"
+            }
+          ]
+        }
+      },
+      "attribute[10648]": {
+        "title": "رنگ طلا",
+        "type": "string",
+        "oneOf": [
+          {
+            "const": "55402",
+            "title": "زرد",
+            "type": "string"
+          },
+          {
+            "const": "55403",
+            "title": "سفید",
+            "type": "string"
+          },
+          {
+            "const": "55404",
+            "title": "رزگلد",
+            "type": "string"
+          },
+          {
+            "const": "55405",
+            "title": "ترکیبی",
+            "type": "string"
+          }
+        ]
+      },
+      "attribute[11137]": {
+        "title": "جلوه ظاهری طلا",
+        "type": "string",
+        "oneOf": [
+          {
+            "const": "59425",
+            "title": "مات",
+            "type": "string"
+          },
+          {
+            "const": "59426",
+            "title": "براق",
+            "type": "string"
+          },
+          {
+            "const": "59427",
+            "title": "ترکیب مات و براق",
+            "type": "string"
+          }
+        ]
+      },
+      "attribute[143]": {
+        "title": "عیار",
+        "type": "string",
+        "oneOf": [
+          {
+            "const": "883",
+            "title": "18",
+            "type": "string"
+          },
+          {
+            "const": "881",
+            "title": "24",
+            "type": "string"
+          },
+          {
+            "const": "36549",
+            "title": "22",
+            "type": "string"
+          },
+          {
+            "const": "39131",
+            "title": "99.9",
+            "type": "string"
+          },
+          {
+            "const": "39130",
+            "title": "999.9",
+            "type": "string"
+          }
+        ]
+      },
+      "attribute[254]": {
+        "title": "میزان خلوص",
+        "type": "string",
+        "oneOf": [
+          {
+            "const": "1654",
+            "title": "کاملاً خالص",
+            "type": "string"
+          },
+          {
+            "const": "1655",
+            "title": "همراه با ناخالصی",
+            "type": "string"
+          }
+        ]
+      },
+      "attribute[168]": {
+        "title": "قطر کالا",
+        "type": "string"
+      },
+      "attribute[6909]": {
+        "title": "سایز انگشتر",
+        "type": "string",
+        "oneOf": [
+          {
+            "const": "29994",
+            "title": "44",
+            "type": "string"
+          },
+          {
+            "const": "29995",
+            "title": "45",
+            "type": "string"
+          },
+          {
+            "const": "29996",
+            "title": "46",
+            "type": "string"
+          },
+          {
+            "const": "29997",
+            "title": "47",
+            "type": "string"
+          },
+          {
+            "const": "29998",
+            "title": "48",
+            "type": "string"
+          },
+          {
+            "const": "29999",
+            "title": "49",
+            "type": "string"
+          },
+          {
+            "const": "30000",
+            "title": "50",
+            "type": "string"
+          },
+          {
+            "const": "30001",
+            "title": "51",
+            "type": "string"
+          },
+          {
+            "const": "30002",
+            "title": "52",
+            "type": "string"
+          },
+          {
+            "const": "30003",
+            "title": "53",
+            "type": "string"
+          },
+          {
+            "const": "30004",
+            "title": "54",
+            "type": "string"
+          },
+          {
+            "const": "30005",
+            "title": "55",
+            "type": "string"
+          },
+          {
+            "const": "30006",
+            "title": "56",
+            "type": "string"
+          },
+          {
+            "const": "30007",
+            "title": "57",
+            "type": "string"
+          },
+          {
+            "const": "30008",
+            "title": "58",
+            "type": "string"
+          },
+          {
+            "const": "30009",
+            "title": "59",
+            "type": "string"
+          },
+          {
+            "const": "30010",
+            "title": "60",
+            "type": "string"
+          },
+          {
+            "const": "30011",
+            "title": "61",
+            "type": "string"
+          },
+          {
+            "const": "30012",
+            "title": "62",
+            "type": "string"
+          },
+          {
+            "const": "30013",
+            "title": "63",
+            "type": "string"
+          },
+          {
+            "const": "30014",
+            "title": "64",
+            "type": "string"
+          },
+          {
+            "const": "63480",
+            "title": "65",
+            "type": "string"
+          }
+        ]
+      },
+      "variants": {
+        "title": "تنوع ها",
+        "type": "array",
+        "items": {
+          "type": "object",
+          "title": "تنوع",
+          "required": ["weight", "stock", "wage", "profit"],
+          "properties": {
+            "weight": {
+              "type": "number",
+              "title": "وزن"
+            },
+            "stock": {
+              "type": "number",
+              "title": "موجودی"
+            },
+            "wage": {
+              "type": "number",
+              "title": "درصد اجرت"
+            },
+            "profit": {
+              "type": "number",
+              "title": "درصد سود"
+            },
+            "extras_price": {
+              "type": "number",
+              "title": "قیمت اضافات"
+            },
+            "extras_wage": {
+              "type": "number",
+              "title": "اجرت اضافات"
+            }
+          }
+        }
+      }
+    }
   }
 }

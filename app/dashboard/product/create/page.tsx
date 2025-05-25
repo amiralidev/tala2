@@ -62,6 +62,9 @@ export default function Page({product}) {
       });
 
       alert("موفق: " + title);
+      setFiles([]);
+      setPreviewUrl(null);
+      setUploadStatus("pre");
       incrementSku();
     } catch (error) {
       setErrorMessage("Error submitting form");
@@ -198,7 +201,7 @@ export default function Page({product}) {
           <Button
             type='submit'
             className='mt-2'
-            disabled={uploadStatus != "pre"}
+            disabled={uploadStatus == "pending"}
           >
             {uploadStatus == "pre"
               ? "آپلود تصاویر"
