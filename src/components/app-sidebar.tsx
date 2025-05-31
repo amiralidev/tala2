@@ -1,24 +1,19 @@
 "use client";
 
-import * as React from "react";
 import {
   AudioWaveform,
-  BookOpen,
-  Bot,
   Box,
   Command,
   Frame,
   GalleryVerticalEnd,
   Map,
   PieChart,
-  Settings2,
   SquareTerminal,
   Users,
 } from "lucide-react";
+import * as React from "react";
 
 import { NavMain } from "@/components/nav-main";
-import { NavProjects } from "@/components/nav-projects";
-import { NavUser } from "@/components/nav-user";
 import { TeamSwitcher } from "@/components/team-switcher";
 import {
   Sidebar,
@@ -59,14 +54,14 @@ const data = {
       icon: Box,
       isActive: true,
       items: [
-        {
-          title: "لیست",
-          url: "/dashboard/products",
-        },
-        {
-          title: "ایجاد",
-          url: "/dashboard/products/create",
-        }
+        // {
+        //   title: "لیست",
+        //   url: "/dashboard/products",
+        // },
+        // {
+        //   title: "ایجاد",
+        //   url: "/dashboard/products/create",
+        // },
       ],
     },
     {
@@ -79,10 +74,10 @@ const data = {
           title: "لیست",
           url: "/dashboard/bucket",
         },
-        {
-          title: "ایجاد",
-          url: "/dashboard/bucket/create",
-        }
+        // {
+        //   title: "ایجاد",
+        //   url: "/dashboard/bucket/create",
+        // }
       ],
     },
     {
@@ -91,14 +86,14 @@ const data = {
       icon: Users,
       isActive: true,
       items: [
-        {
-          title: "لیست",
-          url: "/dashboard/product/create",
-        },
-        {
-          title: "ایجاد",
-          url: "/dashboard/product/create",
-        }
+        // {
+        //   title: "لیست",
+        //   url: "/dashboard/product/create",
+        // },
+        // {
+        //   title: "ایجاد",
+        //   url: "/dashboard/product/create",
+        // },
       ],
     },
     // {
@@ -188,16 +183,14 @@ const data = {
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
-    <Sidebar collapsible='icon' {...props}>
+    <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
         <TeamSwitcher teams={data.teams} />
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} />
       </SidebarContent>
-      <SidebarFooter>
-        {/* <NavUser user={data.user} /> */}
-      </SidebarFooter>
+      <SidebarFooter>{/* <NavUser user={data.user} /> */}</SidebarFooter>
       <SidebarRail />
     </Sidebar>
   );

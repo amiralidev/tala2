@@ -1,15 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
 import {
   Table,
   TableBody,
@@ -18,19 +9,12 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { useQueryClient } from "@tanstack/react-query";
 import { Eye, Plus } from "lucide-react";
 import Link from "next/link";
-import { toast } from "sonner";
-import { readData } from "@/core/http-service/http-service";
+import { useState } from "react";
+import { useBuckets } from "./_api/manage-bucket";
 import { CreateBucketDialog } from "./_components/create-bucket-dialog";
-import { createBucket, useBuckets } from "./_api/manage-bucket";
-import { useQueryClient } from "@tanstack/react-query";
-
-type Bucket = {
-  _id: string;
-  name: string;
-  code: string;
-};
 
 export default function BucketsPage() {
   const [dialogOpen, setDialogOpen] = useState(false);
@@ -101,7 +85,7 @@ export default function BucketsPage() {
                   <TableCell></TableCell>
                   <TableCell></TableCell>
                   <TableCell className="text-right flex items-center gap-2">
-                    <Link href={`/dashboard/bucket/${bucket.name}`}>
+                    <Link href={`/dashboard/bucket/${bucket._id}`}>
                       <Button className="bg-green-500 text-white cursor-pointer">
                         <Eye className="w-4 h-4" />
                         مشاهده مجموعه
