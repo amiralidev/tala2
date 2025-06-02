@@ -44,8 +44,6 @@ export const useBucket = ({ bucketId }: { bucketId: string }) => {
   const { data, isLoading, error } = useQuery({
     queryKey: ["bucket"],
     queryFn: () => getBucket({ bucketId: bucketId }),
-    staleTime: 1000 * 60 * 5,
-    gcTime: 1000 * 60 * 6,
   });
 
   return {

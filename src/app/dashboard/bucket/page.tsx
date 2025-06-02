@@ -92,7 +92,7 @@ export default function BucketsPage() {
                       </Button>
                     </Link>
                     <Link
-                      href={`/dashboard/products/create?bucketCode=${bucket.code}&bucketName=${bucket.name}`}
+                      href={`/dashboard/products/create?bucketCode=${bucket.code}&bucketName=${bucket.name}&bucketId=${bucket._id}`}
                     >
                       <Button className="bg-blue-500 text-white cursor-pointer">
                         <Plus className="w-4 h-4" />

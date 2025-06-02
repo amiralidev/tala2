@@ -1,0 +1,41 @@
+.uploader-container {
+  margin-top: 16px;
+}
+
+.dropzone {
+  border: 2px dashed #cccccc;
+  border-radius: 4px;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.thumbs-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+
+.thumb {
+  display: inline-flex;
+  border-radius: 2px;
+  border: 1px solid #eaeaea;
+  margin-bottom: 8px;
+  margin-right: 8px;
+  width: 100px;
+  height: 100px;
+  padding: 4px;
+  box-sizing: border-box;
+}
+
+.thumb-inner {
+  display: flex;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.thumb img {
+  display: block;
+  width: auto;
+  height: 100%;
+}

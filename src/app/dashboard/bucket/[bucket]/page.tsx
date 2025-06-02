@@ -7,6 +7,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { formatRial } from "@/utils/rial-formatter";
 import { useParams } from "next/navigation";
 import { useBucket } from "../_api/manage-bucket";
 
@@ -38,7 +39,7 @@ export default function BucketsPage() {
           <TableBody>
             {isLoading ? (
               <TableRow>
-                <TableCell colSpan={2} className="text-center py-8">
+                <TableCell colSpan={5} className="text-center py-8">
                   در حال بارگذاری...
                 </TableCell>
               </TableRow>
@@ -67,11 +68,16 @@ export default function BucketsPage() {
                   className={index % 2 !== 0 ? "bg-zinc-100" : ""}
                 >
                   <TableCell>
-                    {product.digikalaData["product[title_fa]"]}
+                    {product.digikalaData["product[title_fa]"] ??
+                      product.digikalaData["product[model]"]}
                   </TableCell>
                   <TableCell>{product.sku}</TableCell>
-                  <TableCell>{product.pricing.wage}</TableCell>
-                  <TableCell>{product.pricing.profit}</TableCell>
+                  <TableCell>
+                    {formatRial(product.pricing.wage.toString())}
+                  </TableCell>
+                  <TableCell>
+                    {formatRial(product.pricing.profit.toString())}
+                  </TableCell>
                   <TableCell className="text-right space-x-2">
                     {/* <Link href={`/dashboard/bucket/${bucket.name}`}>
                       <Button variant="ghost" size="icon">

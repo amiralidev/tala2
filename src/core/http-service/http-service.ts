@@ -1,3 +1,4 @@
+import { API_URL } from "@/configs/global";
 import { ApiError } from "@/types/http-errors.interface";
 import axios, {
   AxiosRequestConfig,
@@ -5,7 +6,6 @@ import axios, {
   AxiosResponse,
 } from "axios";
 import { errorHandler, networkErrorStrategy } from "./http-error-strategies";
-import { API_URL } from "@/configs/global";
 
 const httpService = axios.create({
   baseURL: API_URL,
@@ -65,6 +65,22 @@ async function createData<TModel, TResult>(
   return await apiBase<TResult>(url, options);
 }
 
+async function createDataWithFormData<TModel, TResult>(
+  url: string,
+  data: TModel,
+  headers?: AxiosRequestHeaders
+): Promise<TResult> {
+  const options: AxiosRequestConfig = {
+    method: "POST",
+    headers: {
+      ...headers,
+      "Content-Type": "multipart/form-data",
+    },
+    data: data,
+  };
+  return await apiBase<TResult>(url, options);
+}
+
 async function updateData<TModel, TResult>(
   url: string,
   data: TModel,
@@ -91,4 +107,4 @@ async function deleteData(
   return await apiBase(url, options);
 }
 
-export { createData, readData, updateData, deleteData };
+export { createData, createDataWithFormData, deleteData, readData, updateData };
