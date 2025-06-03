@@ -35,8 +35,8 @@ import { createProduct } from "../_api/manage-product";
 const variantSchema = z.object({
   weight: z.string().min(1, { message: "وزن الزامی است" }),
   inventory: z.string().min(1, { message: "موجودی الزامی است" }),
-  extras_price: z.string().min(1, { message: "قیمت اضافی الزامی است" }),
-  extras_wage: z.string().min(1, { message: "اجرت اضافی الزامی است" }),
+  extras_price: z.string().optional(),
+  extras_wage: z.string().optional(),
 });
 
 const baseSchema = z.object({
@@ -621,10 +621,7 @@ export default function Page({
                             name={`variants.${index}.extras_price`}
                             render={({ field, fieldState }) => (
                               <FormItem>
-                                <FormLabel>
-                                  قیمت اضافات{" "}
-                                  <span className="text-red-500">*</span>
-                                </FormLabel>
+                                <FormLabel>قیمت اضافات</FormLabel>
                                 <FormControl>
                                   <Input
                                     value={
@@ -650,10 +647,7 @@ export default function Page({
                             name={`variants.${index}.extras_wage`}
                             render={({ field, fieldState }) => (
                               <FormItem>
-                                <FormLabel>
-                                  اجرت اضافات{" "}
-                                  <span className="text-red-500">*</span>
-                                </FormLabel>
+                                <FormLabel>اجرت اضافات</FormLabel>
                                 <FormControl>
                                   <Input
                                     value={
