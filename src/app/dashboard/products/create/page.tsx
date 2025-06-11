@@ -2,7 +2,14 @@
 
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
-import { use, useCallback, useEffect, useMemo, useState } from "react"; // Added useCallback
+import {
+  Fragment,
+  use,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from "react"; // Added useCallback
 
 import { FileUploaderNew } from "@/components/file-uploader-new";
 import {
@@ -301,7 +308,7 @@ export default function Page({
           //model
           "product[title_fa]": `${skuId} ${getKalaTitle(
             selectedSchema
-          )} ${getAiar(values["attribute#143&"])} طلا مدل ${
+          )} طلا ${getAiar(values["attribute#143&"])} مدل ${
             values["product#model&"]
           } کد`,
         },
@@ -514,9 +521,8 @@ export default function Page({
 
                     if (property.type === "array" && property.items) {
                       return (
-                        <>
+                        <Fragment key={key}>
                           <FormField
-                            key={key}
                             control={form.control}
                             name={convertBrackets(key)}
                             render={({ field, fieldState }) => {
@@ -558,7 +564,7 @@ export default function Page({
                               );
                             }}
                           />
-                        </>
+                        </Fragment>
                       );
                     }
 
