@@ -67,7 +67,10 @@ export default function BucketsPage() {
                   key={product._id}
                   className={index % 2 !== 0 ? "bg-zinc-100" : ""}
                 >
-                  <TableCell>
+                  <TableCell
+                    style={{ direction: "ltr" }}
+                    className="text-right"
+                  >
                     {product.digikalaData["product[title_fa]"] ??
                       product.digikalaData["product[model]"]}
                   </TableCell>

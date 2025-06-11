@@ -33,8 +33,26 @@ import { createProduct } from "../_api/manage-product";
 
 // Variant schema
 const variantSchema = z.object({
-  weight: z.string().min(1, { message: "وزن الزامی است" }),
-  inventory: z.string().min(1, { message: "موجودی الزامی است" }),
+  weight: z
+    .string()
+    .min(1, { message: "وزن الزامی است" })
+    .refine(
+      (val) => {
+        const num = Number(val);
+        return !isNaN(num) && num > 0;
+      },
+      { message: "وزن باید عدد مثبت باشد" }
+    ),
+  inventory: z
+    .string()
+    .min(1, { message: "موجودی الزامی است" })
+    .refine(
+      (val) => {
+        const num = Number(val);
+        return !isNaN(num) && num >= 0;
+      },
+      { message: "موجودی باید عدد مثبت باشد" }
+    ),
   extras_price: z.string().optional(),
   extras_wage: z.string().optional(),
 });
@@ -96,10 +114,10 @@ export default function Page({
       })) || [
         {
           id: Date.now(),
-          weight: "",
-          inventory: "",
-          extras_price: "",
-          extras_wage: "",
+          weight: "0",
+          inventory: "0",
+          extras_price: "0",
+          extras_wage: "0",
         },
       ],
     };
@@ -135,10 +153,10 @@ export default function Page({
         [
           {
             id: Date.now(), // Add unique ID
-            weight: "",
-            inventory: "",
-            extras_price: "",
-            extras_wage: "",
+            weight: "0",
+            inventory: "0",
+            extras_price: "0",
+            extras_wage: "0",
           },
         ].map((variant: any, index: number) => ({
           ...variant,
@@ -160,7 +178,7 @@ export default function Page({
         const fieldTitle = propDef.title || key;
         const isRequired = requiredFields.includes(key);
         let fieldSchema: z.ZodTypeAny;
-        let s = z.string({
+        const s = z.string({
           invalid_type_error: `${fieldTitle} نامعتبر است.`,
         });
         if (isRequired) {
@@ -215,10 +233,10 @@ export default function Page({
   const addVariant = useCallback(() => {
     const newVariant = {
       id: Date.now() + Math.random(), // Unique ID for new variant
-      weight: "",
-      inventory: "",
-      extras_price: "",
-      extras_wage: "",
+      weight: "0",
+      inventory: "0",
+      extras_price: "0",
+      extras_wage: "0",
     };
     const updatedVariants = [...currentVariants, newVariant];
     form.setValue("variants", updatedVariants, { shouldValidate: true });
@@ -236,7 +254,26 @@ export default function Page({
     [form]
   );
 
+  const getAiar = (id: string) => {
+    switch (id) {
+      case "883":
+        return "۱۸ عیار";
+      case "36549":
+        return "۲۲ عیار";
+      case "881":
+        return "۲۴ عیار";
+      default:
+        return "";
+    }
+  };
+
+  const getKalaTitle = (id: string) => {
+    const kala = kalasData.find((item) => item._id === id);
+    return kala?.title;
+  };
+
   const onSubmit = async (values: Record<string, any>) => {
+    const skuId = bucketCode + Math.floor(100000 + Math.random() * 900000);
     try {
       const convertedValues = Object.fromEntries(
         Object.entries(values).map(([key, value]) => [
@@ -248,7 +285,7 @@ export default function Page({
       const submissionData = {
         // ...convertedValues,
         bucket: bucketId,
-        sku: bucketCode + Math.floor(100000 + Math.random() * 900000),
+        sku: skuId,
         pricing: {
           wage: values.wage,
           profit: values.profit,
@@ -261,6 +298,12 @@ export default function Page({
                 key.startsWith("product[") || key.startsWith("attribute[")
             )
           ),
+          //model
+          "product[title_fa]": `${skuId} ${getKalaTitle(
+            selectedSchema
+          )} ${getAiar(values["attribute#143&"])} طلا مدل ${
+            values["product#model&"]
+          } کد`,
         },
         images: productImageIds,
         variants: values.variants, // Use variants from form values
@@ -293,7 +336,7 @@ export default function Page({
           </b>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
-          <div className="col-span-1 lg:col-span-3 ">
+          <div className="col-span-1 lg:col-span-3 order-2 lg:order-1">
             <div className="space-y-4 mb-6">
               {" "}
               {/* Added mb-6 for spacing */}
@@ -586,6 +629,7 @@ export default function Page({
                                   <Input
                                     {...field}
                                     placeholder="وزن"
+                                    type="number"
                                     className="w-full"
                                   />
                                 </FormControl>
@@ -605,9 +649,9 @@ export default function Page({
                                 <FormControl>
                                   <Input
                                     {...field}
-                                    type="text"
                                     placeholder="موجودی"
                                     className="w-full"
+                                    type="number"
                                     min="1"
                                   />
                                 </FormControl>
@@ -695,7 +739,7 @@ export default function Page({
             </Form>
           </div>
 
-          <div className="col-span-1">
+          <div className="col-span-1 order-1 lg:order-2">
             <FileUploaderNew onImageIdsChange={handleImageIdsChange} />
           </div>
         </div>

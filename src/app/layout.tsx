@@ -1,16 +1,9 @@
 import type { Metadata } from "next";
-import { Geist_Mono, Vazirmatn } from "next/font/google";
-import { Providers } from "@/components/providers";
 import localFont from "next/font/local";
 import NextTopLoader from "nextjs-toploader";
 
-import "./globals.css";
 import QueryProvider from "@/providers/react-query-provider";
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import "./globals.css";
 
 const yekanbakh = localFont({
   src: [
