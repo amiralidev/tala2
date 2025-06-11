@@ -380,12 +380,12 @@ export default function Page({
                       </FormLabel>
                       <FormControl>
                         <Input
-                          value={field.value ? formatRial(field.value) : ""}
+                          value={field.value ? field.value : ""}
                           onChange={(e) => {
                             const numericValue = parseRial(e.target.value);
                             field.onChange(numericValue);
                           }}
-                          placeholder="اجرت (ریال)"
+                          placeholder="اجرت (درصد)"
                           className="w-full lg:w-[342px]"
                         />
                       </FormControl>
@@ -404,12 +404,12 @@ export default function Page({
                       </FormLabel>
                       <FormControl>
                         <Input
-                          value={field.value ? formatRial(field.value) : ""}
+                          value={field.value ? field.value : ""}
                           onChange={(e) => {
                             const numericValue = parseRial(e.target.value);
                             field.onChange(numericValue);
                           }}
-                          placeholder="سود (ریال)"
+                          placeholder="سود (درصد)"
                           className="w-full lg:w-[342px]"
                         />
                       </FormControl>
