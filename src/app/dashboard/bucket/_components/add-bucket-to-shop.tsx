@@ -16,10 +16,11 @@ import {
 import { Grid2X2Plus, Loader2, ShoppingBag, SquarePlus } from "lucide-react";
 import { useCreateTask, useMarketplaces, useShops } from "../_api/manage-shops";
 interface AddBucketToShopProps {
+  bucketName: string;
   bucket: string;
 }
 
-export function AddBucketToShop({ bucket }: AddBucketToShopProps) {
+export function AddBucketToShop({ bucketName, bucket }: AddBucketToShopProps) {
   const { data: shopsDatas, isLoading, error } = useShops();
   const { data: marketplacesDatas } = useMarketplaces();
   const createTaskMutation = useCreateTask();
@@ -45,7 +46,7 @@ export function AddBucketToShop({ bucket }: AddBucketToShopProps) {
         </DialogTrigger>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>فروشگاه های مجموعه</DialogTitle>
+            <DialogTitle>فروشگاه های مجموعه {bucketName}</DialogTitle>
           </DialogHeader>
           <div className="divide-y mt-2">
             {shopsDatas.map((shop) => {

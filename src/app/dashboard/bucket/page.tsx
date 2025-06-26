@@ -106,7 +106,10 @@ export default function BucketsPage() {
                       <Plus className="w-4 h-4" />
                       اضافه کردن محصول
                     </Link>
-                    <AddBucketToShop bucket={bucket._id} />
+                    <AddBucketToShop
+                      bucketName={bucket.name}
+                      bucket={bucket._id}
+                    />
                   </TableCell>
                 </TableRow>
               ))
