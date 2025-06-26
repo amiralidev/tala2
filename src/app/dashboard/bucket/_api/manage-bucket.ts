@@ -1,5 +1,5 @@
 import { createData, readData } from "@/core/http-service/http-service";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import {
   BucketCreate,
   BucketCreateResponse,
@@ -51,4 +51,18 @@ export const useBucket = ({ bucketId }: { bucketId: string }) => {
     isLoading,
     error,
   };
+};
+
+export const useCreateBucket = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: createBucket,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["buckets"] });
+    },
+    onError: (error) => {
+      console.error("Failed to create bucket:", error);
+    },
+  });
 };

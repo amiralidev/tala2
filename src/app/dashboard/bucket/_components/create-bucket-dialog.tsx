@@ -8,21 +8,21 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import * as z from "zod";
-import { useState } from "react";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { createBucket } from "../_api/manage-bucket";
+import { Input } from "@/components/ui/input";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import * as z from "zod";
+import { useCreateBucket } from "../_api/manage-bucket";
+
 interface CreateBucketDialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
@@ -43,6 +43,8 @@ export function CreateBucketDialog({
 }: CreateBucketDialogProps) {
   const [errors, setErrors] = useState<z.ZodError | null>(null);
 
+  const createBucketMutation = useCreateBucket();
+
   const form = useForm<z.infer<typeof bucketSchema>>({
     resolver: zodResolver(bucketSchema),
     defaultValues: {
@@ -50,17 +52,20 @@ export function CreateBucketDialog({
       bucketCode: "",
     },
   });
+
   const onSubmit = async (values: z.infer<typeof bucketSchema>) => {
     try {
-      await createBucket({
+      await createBucketMutation.mutateAsync({
         name: values.bucketName,
         code: values.bucketCode,
-      }); // Assuming code can be the same as name for now
+      });
 
       await refreshData();
       onOpenChange(false);
       form.reset();
-    } catch (error) {}
+    } catch (error) {
+      // Error is handled by the mutation hook
+    }
   };
 
   return (
@@ -100,7 +105,17 @@ export function CreateBucketDialog({
                 </FormItem>
               )}
             />
-            <Button type="submit">ایجاد مجموعه</Button>
+            <Button type="submit" disabled={createBucketMutation.isPending}>
+              {createBucketMutation.isPending
+                ? "در حال ایجاد..."
+                : "ایجاد مجموعه"}
+            </Button>
+
+            {createBucketMutation.error && (
+              <div className="text-red-500 text-sm">
+                خطا در ایجاد مجموعه: {createBucketMutation.error.message}
+              </div>
+            )}
           </form>
         </Form>
       </DialogContent>

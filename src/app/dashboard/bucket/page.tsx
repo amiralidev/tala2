@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import {
   Table,
   TableBody,
@@ -10,15 +10,17 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { useQueryClient } from "@tanstack/react-query";
+import clsx from "clsx";
 import { Eye, Plus } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import { useBuckets } from "./_api/manage-bucket";
+import { AddBucketToShop } from "./_components/add-bucket-to-shop";
 import { CreateBucketDialog } from "./_components/create-bucket-dialog";
 
 export default function BucketsPage() {
   const [dialogOpen, setDialogOpen] = useState(false);
-  const { data: bucketsData, isLoading, error } = useBuckets();
+  const { data: bucketsDatas, isLoading, error } = useBuckets();
   const queryClient = useQueryClient();
   // refresh Data when create bucket
   async function refreshData() {
@@ -35,7 +37,6 @@ export default function BucketsPage() {
           refreshData={refreshData}
         />
       </div>
-
       <div className="border rounded-md overflow-hidden">
         <Table>
           <TableHeader>
@@ -64,7 +65,7 @@ export default function BucketsPage() {
                   خطا در بارگذاری مجموعه‌ها
                 </TableCell>
               </TableRow>
-            ) : bucketsData.length === 0 ? (
+            ) : bucketsDatas.length === 0 ? (
               <TableRow>
                 <TableCell
                   colSpan={6}
@@ -74,7 +75,7 @@ export default function BucketsPage() {
                 </TableCell>
               </TableRow>
             ) : (
-              bucketsData.map((bucket, index) => (
+              bucketsDatas.map((bucket, index) => (
                 <TableRow
                   key={bucket.name}
                   className={index % 2 !== 0 ? "bg-zinc-100" : ""}
@@ -85,20 +86,27 @@ export default function BucketsPage() {
                   <TableCell></TableCell>
                   <TableCell></TableCell>
                   <TableCell className="text-right flex items-center gap-2">
-                    <Link href={`/dashboard/bucket/${bucket._id}`}>
-                      <Button className="bg-green-500 text-white cursor-pointer">
-                        <Eye className="w-4 h-4" />
-                        مشاهده مجموعه
-                      </Button>
+                    <Link
+                      href={`/dashboard/bucket/${bucket._id}`}
+                      className={clsx(
+                        buttonVariants(),
+                        "!bg-green-500 text-white"
+                      )}
+                    >
+                      <Eye className="w-4 h-4" />
+                      مشاهده مجموعه
                     </Link>
                     <Link
                       href={`/dashboard/products/create?bucketCode=${bucket.code}&bucketName=${bucket.name}&bucketId=${bucket._id}`}
+                      className={clsx(
+                        buttonVariants(),
+                        "!bg-blue-500 text-white"
+                      )}
                     >
-                      <Button className="bg-blue-500 text-white cursor-pointer">
-                        <Plus className="w-4 h-4" />
-                        اضافه کردن محصول
-                      </Button>
+                      <Plus className="w-4 h-4" />
+                      اضافه کردن محصول
                     </Link>
+                    <AddBucketToShop bucket={bucket._id} />
                   </TableCell>
                 </TableRow>
               ))

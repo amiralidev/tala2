@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import NextTopLoader from "nextjs-toploader";
 
+import { Toaster } from "@/components/ui/sonner";
 import QueryProvider from "@/providers/react-query-provider";
 import "./globals.css";
 
@@ -56,6 +57,7 @@ export default function RootLayout({
       <body className={"antialiased"}>
         <NextTopLoader />
         <QueryProvider>{children}</QueryProvider>
+        <Toaster />
       </body>
     </html>
   );
