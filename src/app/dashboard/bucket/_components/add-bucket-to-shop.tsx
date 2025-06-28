@@ -1,5 +1,6 @@
 "use client";
 
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -14,17 +15,19 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { Grid2X2Plus, Loader2, ShoppingBag, SquarePlus } from "lucide-react";
-import { useCreateTask, useMarketplaces, useShops } from "../_api/manage-shops";
+import Image from "next/image";
+import { useBucketShops, useCreateTask } from "../_api/manage-shops";
+
 interface AddBucketToShopProps {
   bucketName: string;
   bucket: string;
 }
 
 export function AddBucketToShop({ bucketName, bucket }: AddBucketToShopProps) {
-  const { data: shopsDatas, isLoading, error } = useShops();
-  const { data: marketplacesDatas } = useMarketplaces();
+  const { data: shopsDatas, isLoading, error } = useBucketShops(bucket);
   const createTaskMutation = useCreateTask();
 
+  console.log(shopsDatas);
   const createTask = (shopId: string, type: string) => {
     createTaskMutation.mutate({
       type: type,
@@ -50,19 +53,32 @@ export function AddBucketToShop({ bucketName, bucket }: AddBucketToShopProps) {
           </DialogHeader>
           <div className="divide-y mt-2 overflow-y-auto max-h-[340px]">
             {shopsDatas.map((shop) => {
-              const marketplace = marketplacesDatas.find(
-                (marketplace) => marketplace._id === shop.marketplace
-              );
               return (
                 <div
                   key={shop._id}
                   className="flex items-center justify-between border-b pb-4 mb-4"
                 >
-                  <div>
+                  <div className="flex items-center gap-x-4">
+                    <Image
+                      src={shop.marketplace.icon.url}
+                      alt={shop.marketplace.title}
+                      width={40}
+                      height={40}
+                      className="rounded-md border"
+                    />
                     <div>
-                      {shop.title} - {marketplace?.title}
+                      <div>
+                        {shop.title} - {shop.marketplace?.title}
+                      </div>
+                      <div className="flex gap-2 mt-1">
+                        {Object.entries(shop.status).map(([status, count]) => (
+                          <Badge key={status} className="text-xs">
+                            <span className="font-bold">{String(count)}</span>
+                            <span className="mr-1">{status}</span>
+                          </Badge>
+                        ))}
+                      </div>
                     </div>
-                    <span className="text-zinc-500 text-xs">{shop._id}</span>
                   </div>
                   <div className="flex items-center gap-x-4">
                     <Tooltip>
@@ -80,8 +96,8 @@ export function AddBucketToShop({ bucketName, bucket }: AddBucketToShopProps) {
                         <p>اضافه کردن محصول</p>
                       </TooltipContent>
                     </Tooltip>
-                    {marketplace?.name === "digikala" ||
-                    marketplace?.name === "snapp" ? (
+                    {shop.marketplace?.name === "digikala" ||
+                    shop.marketplace?.name === "snapp" ? (
                       <Tooltip>
                         <TooltipTrigger
                           onClick={() => createTask(shop._id, "variant")}

@@ -9,6 +9,23 @@ export const getShops = async (): Promise<ShopList[]> => {
   return readData<ShopList[]>("/shops");
 };
 
+export const getBucketShops = async (bucketId: string): Promise<any[]> => {
+  return readData<any[]>(`/buckets/${bucketId}/shops`);
+};
+
+export const useBucketShops = (bucketId: string) => {
+  const { data, isLoading, error } = useQuery({
+    queryKey: ["bucketShops", bucketId],
+    queryFn: () => getBucketShops(bucketId),
+  });
+
+  return {
+    data: data ?? [],
+    isLoading,
+    error,
+  };
+};
+
 export const createTask = async (task: CreateTask): Promise<any> => {
   return createData<CreateTask, any>("/tasks", task);
 };

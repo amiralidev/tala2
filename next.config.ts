@@ -9,6 +9,12 @@ const nextConfig: NextConfig = {
         port: "",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "talasys-images.s3.ir-thr-at1.arvanstorage.ir",
+        port: "",
+        pathname: "/**",
+      },
     ],
   },
   async headers() {
