@@ -48,7 +48,7 @@ export function AddBucketToShop({ bucketName, bucket }: AddBucketToShopProps) {
           <DialogHeader>
             <DialogTitle>فروشگاه های مجموعه {bucketName}</DialogTitle>
           </DialogHeader>
-          <div className="divide-y mt-2">
+          <div className="divide-y mt-2 overflow-y-auto max-h-[340px]">
             {shopsDatas.map((shop) => {
               const marketplace = marketplacesDatas.find(
                 (marketplace) => marketplace._id === shop.marketplace
