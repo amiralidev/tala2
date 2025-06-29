@@ -591,7 +591,7 @@ export default function Page({
               >
                 <SelectTrigger
                   id="productCategorySelect"
-                  className="w-full lg:w-[342px]"
+                  className="w-full  lg:w-1/4"
                 >
                   <SelectValue placeholder="انتخاب کنید" />
                 </SelectTrigger>
@@ -626,7 +626,7 @@ export default function Page({
                             field.onChange(numericValue);
                           }}
                           placeholder="اجرت (درصد)"
-                          className="w-full lg:w-[342px]"
+                          className="w-full"
                         />
                       </FormControl>
                       <FormMessage />
@@ -650,7 +650,7 @@ export default function Page({
                             field.onChange(numericValue);
                           }}
                           placeholder="سود (درصد)"
-                          className="w-full lg:w-[342px]"
+                          className="w-full"
                         />
                       </FormControl>
                       <FormMessage />
@@ -692,7 +692,7 @@ export default function Page({
                                   <Input
                                     {...field}
                                     placeholder={property.title || key}
-                                    className="w-full lg:w-[342px]"
+                                    className="w-full"
                                     // required={isFieldRequired}
                                   />
                                 </FormControl>
@@ -729,7 +729,7 @@ export default function Page({
                                   // required={isFieldRequired}
                                 >
                                   <FormControl>
-                                    <SelectTrigger className="w-full lg:w-[342px]">
+                                    <SelectTrigger className="w-full">
                                       <SelectValue placeholder="انتخاب کنید" />
                                     </SelectTrigger>
                                   </FormControl>
@@ -773,7 +773,7 @@ export default function Page({
                                     // required={isFieldRequired}
                                   >
                                     <FormControl>
-                                      <SelectTrigger className="w-full lg:w-[342px]">
+                                      <SelectTrigger className="w-full">
                                         <SelectValue placeholder="انتخاب کنید" />
                                       </SelectTrigger>
                                     </FormControl>
