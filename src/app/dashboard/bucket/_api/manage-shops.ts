@@ -13,10 +13,14 @@ export const getBucketShops = async (bucketId: string): Promise<any[]> => {
   return readData<any[]>(`/buckets/${bucketId}/shops`);
 };
 
-export const useBucketShops = (bucketId: string) => {
+export const useBucketShops = (
+  bucketId: string,
+  options?: { enabled?: boolean }
+) => {
   const { data, isLoading, error } = useQuery({
     queryKey: ["bucketShops", bucketId],
     queryFn: () => getBucketShops(bucketId),
+    enabled: options?.enabled ?? true,
   });
 
   return {
