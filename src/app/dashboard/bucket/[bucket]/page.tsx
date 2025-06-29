@@ -76,10 +76,10 @@ export default function BucketsPage() {
                   </TableCell>
                   <TableCell>{product.sku}</TableCell>
                   <TableCell>
-                    {formatRial(product.pricing.wage.toString())}
+                    {product.pricing.wage.toString()} %
                   </TableCell>
                   <TableCell>
-                    {formatRial(product.pricing.profit.toString())}
+                    {product.pricing.profit.toString()} %
                   </TableCell>
                   <TableCell className="text-right space-x-2">
                     {/* <Link href={`/dashboard/bucket/${bucket.name}`}>
