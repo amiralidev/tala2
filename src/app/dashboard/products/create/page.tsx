@@ -32,7 +32,7 @@ import {
 import { formatRial, parseRial } from "@/utils/rial-formatter";
 import { convertBrackets, reverseConvert } from "@/utils/zod-schema-converter";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Plus, Trash2 } from "lucide-react";
+import { Plus, RotateCcw, Trash2 } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { z } from "zod"; // Using 'zod' directly, v4 is usually implied by project setup
 import { useKalas } from "../_api/manage-kalas";
@@ -128,19 +128,71 @@ export default function Page({
         },
       ],
     };
-    if (product && selectedKala?.data?.schema?.properties) {
-      Object.entries(selectedKala.data.schema.properties).forEach(
-        ([key, propDef]: [string, any]) => {
-          // if (key === "sku") return;
-          if (key === "wage") return;
-          if (key === "profit") return;
-          if (key === "variants") return;
-          initialDefaults[convertBrackets(key)] = "";
-        }
-      );
-    }
+    // Don't set dynamic schema defaults here - they'll be set in the useEffect when selectedKala is available
     return initialDefaults;
   });
+
+  // Load saved data from localStorage on component mount
+  useEffect(() => {
+    if (!product) {
+      // Only load if editing mode is not active
+      try {
+        const savedData = localStorage.getItem("product_form_data");
+        if (savedData) {
+          const parsedData = JSON.parse(savedData);
+          const {
+            selectedSchema: savedSchema,
+            productImageIds: savedImages,
+            formData: savedFormData,
+          } = parsedData;
+
+          // Restore selected schema
+          if (savedSchema) {
+            setSelectedSchema(savedSchema);
+          }
+
+          // Restore product images
+          // if (savedImages) {
+          //   setProductImageIds(savedImages);
+          // }
+
+          // Store saved form data to be applied after schema is ready
+          if (savedFormData) {
+            console.log("🔄 Restoring form data:", savedFormData);
+            // We'll apply this after the dynamic schema is set up
+            setFormDefaultValues((prev) => ({
+              ...prev,
+              ...savedFormData,
+            }));
+          }
+        }
+      } catch (error) {
+        console.error("Error loading saved form data:", error);
+      }
+    }
+  }, [product]);
+
+  // Save form data to localStorage whenever form values change
+  const saveFormData = useCallback(
+    (formData: Record<string, any>) => {
+      if (!product) {
+        // Only save if not in editing mode
+        try {
+          const dataToSave = {
+            selectedSchema,
+            productImageIds,
+            formData,
+            timestamp: Date.now(),
+          };
+          console.log("💾 Saving form data:", dataToSave);
+          localStorage.setItem("product_form_data", JSON.stringify(dataToSave));
+        } catch (error) {
+          console.error("Error saving form data:", error);
+        }
+      }
+    },
+    [selectedSchema, productImageIds, product]
+  );
 
   // Combine base schema with dynamic parts
   const currentFormSchema = useMemo(() => {
@@ -217,11 +269,164 @@ export default function Page({
     mode: "onBlur", // Changed from onChange to onBlur to reduce validation triggers
   });
 
+  // Reset form and clear localStorage
+  const resetForm = useCallback(() => {
+    try {
+      localStorage.removeItem("product_form_data");
+    } catch (error) {
+      console.error("Error clearing saved form data:", error);
+    }
+
+    // Reset form to initial state
+    setSelectedSchema("");
+    setProductImageIds([]);
+
+    const initialDefaults = {
+      wage: "",
+      profit: "",
+      variants: [
+        {
+          id: Date.now(),
+          weight: "0",
+          inventory: "0",
+          extras_price: "0",
+          extras_wage: "0",
+        },
+      ],
+    };
+
+    setFormDefaultValues(initialDefaults);
+    form.reset(initialDefaults);
+  }, [form]);
+
   // Effect to reset the form when defaultValues or the schema itself changes.
   // This is crucial for react-hook-form to pick up new defaults and structure.
   useEffect(() => {
-    form.reset(formDefaultValues);
-  }, [formDefaultValues, currentFormSchema, form.reset]);
+    // Only reset if we have a proper schema and default values
+    // But don't reset if we're in the middle of restoring saved data
+    if (Object.keys(dynamicSchemaParts).length > 0 || selectedKala) {
+      // Check if we have saved data that we should preserve
+      const savedData = localStorage.getItem("product_form_data");
+      if (savedData) {
+        try {
+          const parsedData = JSON.parse(savedData);
+          // If we have saved data for the current schema, don't reset
+          if (
+            parsedData.selectedSchema === selectedSchema &&
+            parsedData.formData
+          ) {
+            console.log("🔄 Skipping form reset - preserving saved data");
+            return;
+          }
+        } catch (error) {
+          console.error("Error checking saved data:", error);
+        }
+      }
+
+      console.log("🔄 Resetting form with new defaults:", formDefaultValues);
+      form.reset(formDefaultValues);
+    }
+  }, [
+    formDefaultValues,
+    currentFormSchema,
+    form.reset,
+    dynamicSchemaParts,
+    selectedKala,
+    selectedSchema,
+  ]);
+
+  // Effect to restore saved form data after schema is ready
+  useEffect(() => {
+    if (
+      !product &&
+      selectedKala &&
+      Object.keys(dynamicSchemaParts).length > 0
+    ) {
+      try {
+        const savedData = localStorage.getItem("product_form_data");
+        console.log("🔍 Checking for saved data:", savedData);
+        if (savedData) {
+          const parsedData = JSON.parse(savedData);
+          console.log("📦 Parsed saved data:", parsedData);
+
+          // Check if the saved schema matches the current schema
+          if (
+            parsedData.selectedSchema === selectedSchema &&
+            parsedData.formData
+          ) {
+            console.log("✅ Restoring form data:", parsedData.formData);
+
+            // Merge saved data with current defaults to ensure all fields are present
+            const mergedData = {
+              ...formDefaultValues,
+              ...parsedData.formData,
+            };
+
+            // Apply the merged data to the form
+            form.reset(mergedData);
+
+            // Also set values individually to ensure select fields are properly updated
+            Object.entries(parsedData.formData).forEach(([key, value]) => {
+              if (value !== undefined && value !== null && value !== "") {
+                form.setValue(key, value, { shouldValidate: false });
+              } else if (value === undefined || value === null) {
+                // Ensure undefined/null values become empty strings
+                form.setValue(key, "", { shouldValidate: false });
+              }
+            });
+
+            console.log("✅ Form values restored successfully");
+          } else {
+            console.log("❌ Not restoring - conditions not met:", {
+              hasFormData: !!parsedData.formData,
+              savedSchema: parsedData.selectedSchema,
+              currentSchema: selectedSchema,
+            });
+          }
+        }
+      } catch (error) {
+        console.error("Error restoring saved form data:", error);
+      }
+    }
+  }, [
+    selectedKala,
+    dynamicSchemaParts,
+    product,
+    selectedSchema,
+    form,
+    formDefaultValues,
+  ]);
+
+  // Additional effect to ensure select fields are properly set after component mounts
+  useEffect(() => {
+    if (!product && selectedKala) {
+      try {
+        const savedData = localStorage.getItem("product_form_data");
+        if (savedData) {
+          const parsedData = JSON.parse(savedData);
+          if (
+            parsedData.selectedSchema === selectedSchema &&
+            parsedData.formData
+          ) {
+            // Use setTimeout to ensure the component is fully rendered
+            setTimeout(() => {
+              Object.entries(parsedData.formData).forEach(([key, value]) => {
+                if (value !== undefined && value !== null && value !== "") {
+                  form.setValue(key, value, { shouldValidate: false });
+                } else if (value === undefined || value === null) {
+                  // Ensure undefined/null values become empty strings
+                  form.setValue(key, "", { shouldValidate: false });
+                }
+              });
+              console.log("🔄 Select fields updated after render");
+            }, 100);
+          }
+        }
+      } catch (error) {
+        console.error("Error updating select fields:", error);
+      }
+    }
+  }, [selectedKala, product, selectedSchema, form]);
 
   // Get current variants from form state
   const currentVariants = form.watch("variants") || [];
@@ -306,17 +511,24 @@ export default function Page({
             )
           ),
           //model
-          "product[title_fa]": `${skuId} ${getKalaTitle(
-            selectedSchema
-          )} طلا ${getAiar(values["attribute#143&"])} مدل ${
-            values["product#model&"]
-          } کد`,
+          // "product[title_fa]": `${skuId} ${getKalaTitle(
+          //   selectedSchema
+          // )} طلا ${getAiar(values["attribute#143&"])} مدل ${
+          //   values["product#model&"]
+          // } کد`,
         },
         images: productImageIds,
         variants: values.variants, // Use variants from form values
       };
 
       await createProduct(submissionData);
+
+      // Clear localStorage after successful submission
+      try {
+        localStorage.removeItem("product_form_data");
+      } catch (error) {
+        console.error("Error clearing localStorage after submission:", error);
+      }
 
       // redirect to bucket page
       router.push(`/dashboard/bucket/${bucketId}`);
@@ -331,16 +543,37 @@ export default function Page({
     setProductImageIds(imageIds);
   };
 
+  // Auto-save form data when form values change
+  useEffect(() => {
+    const subscription = form.watch((value) => {
+      saveFormData(value);
+    });
+    return () => subscription.unsubscribe();
+  }, [form.watch, saveFormData]);
+
   if (isLoading) return <div>در حال بارگذاری دسته‌بندی‌ها...</div>;
 
   return (
     <div>
       <div className="w-full p-1">
         <div className="border-b pb-5 mb-5">
-          <b className="text-xl">
-            {product ? "ویرایش محصول" : "ایجاد محصول جدید"} | نام مجموعه (
-            {bucketName}) | کد ({bucketCode})
-          </b>
+          <div className="flex items-center justify-between">
+            <b className="text-xl">
+              {product ? "ویرایش محصول" : "ایجاد محصول جدید"} | نام مجموعه (
+              {bucketName}) | کد ({bucketCode})
+            </b>
+            {!product && (
+              <Button
+                type="button"
+                onClick={resetForm}
+                variant="outline"
+                className="flex items-center gap-2"
+              >
+                <RotateCcw className="h-4 w-4" />
+                پاک کردن همه انتخاب‌ها
+              </Button>
+            )}
+          </div>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
           <div className="col-span-1 lg:col-span-3 order-2 lg:order-1">
@@ -387,7 +620,7 @@ export default function Page({
                       </FormLabel>
                       <FormControl>
                         <Input
-                          value={field.value ? field.value : ""}
+                          value={field.value || ""}
                           onChange={(e) => {
                             const numericValue = parseRial(e.target.value);
                             field.onChange(numericValue);
@@ -411,7 +644,7 @@ export default function Page({
                       </FormLabel>
                       <FormControl>
                         <Input
-                          value={field.value ? field.value : ""}
+                          value={field.value || ""}
                           onChange={(e) => {
                             const numericValue = parseRial(e.target.value);
                             field.onChange(numericValue);
@@ -491,7 +724,7 @@ export default function Page({
                                   )}
                                 </FormLabel>
                                 <Select
-                                  value={field.value?.toString() ?? ""} // Ensure value is string
+                                  value={field.value?.toString() || ""} // Ensure value is string
                                   onValueChange={field.onChange}
                                   // required={isFieldRequired}
                                 >
@@ -535,7 +768,7 @@ export default function Page({
                                     )}
                                   </FormLabel>
                                   <Select
-                                    value={field.value?.toString() ?? ""} // Ensure value is string
+                                    value={field.value?.toString() || ""} // Ensure value is string
                                     onValueChange={field.onChange}
                                     // required={isFieldRequired}
                                   >
