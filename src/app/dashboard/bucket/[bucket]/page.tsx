@@ -7,7 +7,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { formatRial } from "@/utils/rial-formatter";
+import Image from "next/image";
 import { useParams } from "next/navigation";
 import { useBucket } from "../_api/manage-bucket";
 
@@ -29,6 +29,7 @@ export default function BucketsPage() {
         <Table>
           <TableHeader>
             <TableRow>
+              <TableHead className="text-right">عکس</TableHead>
               <TableHead className="text-right">نام</TableHead>
               <TableHead className="text-right">sku</TableHead>
               <TableHead className="text-right">اجرت</TableHead>
@@ -39,7 +40,7 @@ export default function BucketsPage() {
           <TableBody>
             {isLoading ? (
               <TableRow>
-                <TableCell colSpan={5} className="text-center py-8">
+                <TableCell colSpan={6} className="text-center py-8">
                   در حال بارگذاری...
                 </TableCell>
               </TableRow>
@@ -67,6 +68,19 @@ export default function BucketsPage() {
                   key={product._id}
                   className={index % 2 !== 0 ? "bg-zinc-100" : ""}
                 >
+                  <TableCell className="space-x-2 flex">
+                    {product.images[0]["url"] ? (
+                      <div className="border rounded-md overflow-hidden">
+                        <Image
+                          src={product.images[0]["url"]}
+                          alt={product.images[0]["url"]}
+                          width={50}
+                          height={50}
+                          unoptimized
+                        />
+                      </div>
+                    ) : null}
+                  </TableCell>
                   <TableCell
                     style={{ direction: "ltr" }}
                     className="text-right"
@@ -75,12 +89,8 @@ export default function BucketsPage() {
                       product.digikalaData["product[model]"]}
                   </TableCell>
                   <TableCell>{product.sku}</TableCell>
-                  <TableCell>
-                    {product.pricing.wage.toString()} %
-                  </TableCell>
-                  <TableCell>
-                    {product.pricing.profit.toString()} %
-                  </TableCell>
+                  <TableCell>{product.pricing.wage.toString()} %</TableCell>
+                  <TableCell>{product.pricing.profit.toString()} %</TableCell>
                   <TableCell className="text-right space-x-2">
                     {/* <Link href={`/dashboard/bucket/${bucket.name}`}>
                       <Button variant="ghost" size="icon">
