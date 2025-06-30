@@ -2,9 +2,11 @@ export interface BucketList {
   _id: string;
   name: string;
   code: string;
+  brand: string;
 }
 
 export type BucketCreate = {
+  brand: string;
   name: string;
   code: string;
 };

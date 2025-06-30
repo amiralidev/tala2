@@ -30,6 +30,7 @@ interface CreateBucketDialogProps {
 }
 
 const bucketSchema = z.object({
+  brand: z.string().min(3, { message: "نام برند باید حداقل ۳ کاراکتر باشد" }),
   bucketName: z
     .string()
     .min(3, { message: "نام مجموعه باید حداقل ۳ کاراکتر باشد" }),
@@ -48,6 +49,7 @@ export function CreateBucketDialog({
   const form = useForm<z.infer<typeof bucketSchema>>({
     resolver: zodResolver(bucketSchema),
     defaultValues: {
+      brand: "",
       bucketName: "",
       bucketCode: "",
     },
@@ -56,6 +58,7 @@ export function CreateBucketDialog({
   const onSubmit = async (values: z.infer<typeof bucketSchema>) => {
     try {
       await createBucketMutation.mutateAsync({
+        brand: values.brand,
         name: values.bucketName,
         code: values.bucketCode,
       });
@@ -79,6 +82,20 @@ export function CreateBucketDialog({
         </DialogHeader>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+            <FormField
+              control={form.control}
+              name="brand"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>نام برند</FormLabel>
+                  <FormControl>
+                    <Input {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
             <FormField
               control={form.control}
               name="bucketName"

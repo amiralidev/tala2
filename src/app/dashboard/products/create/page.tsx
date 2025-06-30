@@ -22,6 +22,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import MultipleSelector from "@/components/ui/multiple-selector";
 import {
   Select,
   SelectContent,
@@ -50,9 +51,14 @@ const variantSchema = z.object({
       },
       { message: "وزن باید عدد مثبت باشد" }
     ),
-  inventory: z
-    .string()
-    .min(1, { message: "موجودی الزامی است" })
+  stock: z
+    .preprocess((val) => {
+      if (typeof val === "string") {
+        const num = Number(val);
+        return isNaN(num) ? 0 : num;
+      }
+      return val;
+    }, z.number().min(1, { message: "موجودی الزامی است" }))
     .refine(
       (val) => {
         const num = Number(val);
@@ -122,7 +128,7 @@ export default function Page({
         {
           id: Date.now(),
           weight: "0",
-          inventory: "0",
+          stock: 0,
           extras_price: "0",
           extras_wage: "0",
         },
@@ -213,7 +219,7 @@ export default function Page({
           {
             id: Date.now(), // Add unique ID
             weight: "0",
-            inventory: "0",
+            stock: 0,
             extras_price: "0",
             extras_wage: "0",
           },
@@ -232,22 +238,38 @@ export default function Page({
         if (key === "variants") return; // Variants is in baseSchema
         if (key === "wage") return; // wage is in baseSchema
         if (key === "profit") return; // profit is in baseSchema
-
         // const fieldTitle = propDef.title || key;
         const fieldTitle = propDef.title || key;
         const isRequired = requiredFields.includes(key);
         let fieldSchema: z.ZodTypeAny;
-        const s = z.string({
-          invalid_type_error: `${fieldTitle} نامعتبر است.`,
-        });
-        if (isRequired) {
-          fieldSchema = s.min(1, { message: `${fieldTitle} الزامی است` });
-        } else {
-          fieldSchema = z.preprocess(
-            (v) => (v === "" ? undefined : v),
-            s.optional()
+        if (propDef.type === "array" && propDef.items.anyOf) {
+          const s = z.array(
+            z.string({
+              invalid_type_error: `${fieldTitle} نامعتبر است.`,
+            })
           );
+          if (isRequired) {
+            fieldSchema = s.min(1, { message: `${fieldTitle} الزامی است` });
+          } else {
+            fieldSchema = z.preprocess(
+              (v) => (v === "" ? undefined : v),
+              s.optional()
+            );
+          }
+        } else {
+          const s = z.string({
+            invalid_type_error: `${fieldTitle} نامعتبر است.`,
+          });
+          if (isRequired) {
+            fieldSchema = s.min(1, { message: `${fieldTitle} الزامی است` });
+          } else {
+            fieldSchema = z.preprocess(
+              (v) => (v === "" ? undefined : v),
+              s.optional()
+            );
+          }
         }
+
         newDynamicSchema[convertBrackets(key)] = fieldSchema;
         // Set default value: product's value > schema default > type default
         newDefaults[convertBrackets(key)] =
@@ -288,7 +310,7 @@ export default function Page({
         {
           id: Date.now(),
           weight: "0",
-          inventory: "0",
+          stock: 0,
           extras_price: "0",
           extras_wage: "0",
         },
@@ -418,7 +440,6 @@ export default function Page({
                   form.setValue(key, "", { shouldValidate: false });
                 }
               });
-              console.log("🔄 Select fields updated after render");
             }, 100);
           }
         }
@@ -446,7 +467,7 @@ export default function Page({
     const newVariant = {
       id: Date.now() + Math.random(), // Unique ID for new variant
       weight: "0",
-      inventory: "0",
+      stock: 0,
       extras_price: "0",
       extras_wage: "0",
     };
@@ -707,48 +728,47 @@ export default function Page({
                     // Render select for oneOf types
                     if (property.oneOf) {
                       return (
-                        <FormField
-                          key={key}
-                          control={form.control}
-                          name={convertBrackets(key)}
-                          render={({ field, fieldState }) => {
-                            // console.log(fieldState.error?.message);
-                            // console.log(field.value);
-                            // console.log(field.name);
-                            return (
-                              <FormItem>
-                                <FormLabel>
-                                  {property.title || key}
-                                  {isFieldRequired && (
-                                    <span className="text-red-500">*</span>
-                                  )}
-                                </FormLabel>
-                                <Select
-                                  value={field.value?.toString() || ""} // Ensure value is string
-                                  onValueChange={field.onChange}
-                                  // required={isFieldRequired}
-                                >
-                                  <FormControl>
-                                    <SelectTrigger className="w-full">
-                                      <SelectValue placeholder="انتخاب کنید" />
-                                    </SelectTrigger>
-                                  </FormControl>
-                                  <SelectContent>
-                                    {property.oneOf.map((option: any) => (
-                                      <SelectItem
-                                        key={option.const}
-                                        value={option.const?.toString() ?? ""}
-                                      >
-                                        {option.title}
-                                      </SelectItem>
-                                    ))}
-                                  </SelectContent>
-                                </Select>
-                                <FormMessage />
-                              </FormItem>
-                            );
-                          }}
-                        />
+                        <div className="w-full overflow-hidden" key={key}>
+                          <FormField
+                            key={key}
+                            control={form.control}
+                            name={convertBrackets(key)}
+                            render={({ field, fieldState }) => {
+                              return (
+                                <FormItem>
+                                  <FormLabel>
+                                    {property.title || key}
+                                    {isFieldRequired && (
+                                      <span className="text-red-500">*</span>
+                                    )}
+                                  </FormLabel>
+                                  <Select
+                                    value={field.value?.toString() || ""} // Ensure value is string
+                                    onValueChange={field.onChange}
+                                    // required={isFieldRequired}
+                                  >
+                                    <FormControl>
+                                      <SelectTrigger className="!w-full">
+                                        <SelectValue placeholder="انتخاب کنید" />
+                                      </SelectTrigger>
+                                    </FormControl>
+                                    <SelectContent>
+                                      {property.oneOf.map((option: any) => (
+                                        <SelectItem
+                                          key={option.const}
+                                          value={option.const?.toString() ?? ""}
+                                        >
+                                          {option.title}
+                                        </SelectItem>
+                                      ))}
+                                    </SelectContent>
+                                  </Select>
+                                  <FormMessage />
+                                </FormItem>
+                              );
+                            }}
+                          />
+                        </div>
                       );
                     }
 
@@ -767,31 +787,45 @@ export default function Page({
                                       <span className="text-red-500">*</span>
                                     )}
                                   </FormLabel>
-                                  <Select
-                                    value={field.value?.toString() || ""} // Ensure value is string
-                                    onValueChange={field.onChange}
-                                    // required={isFieldRequired}
-                                  >
-                                    <FormControl>
-                                      <SelectTrigger className="w-full">
-                                        <SelectValue placeholder="انتخاب کنید" />
-                                      </SelectTrigger>
-                                    </FormControl>
-                                    <SelectContent>
-                                      {property.items.anyOf.map(
-                                        (option: any) => (
-                                          <SelectItem
-                                            key={option.const}
-                                            value={
-                                              option.const?.toString() ?? ""
-                                            }
-                                          >
-                                            {option.title}
-                                          </SelectItem>
-                                        )
+                                  <FormControl>
+                                    <MultipleSelector
+                                      {...field}
+                                      value={
+                                        Array.isArray(field.value)
+                                          ? field.value.map((id: string) => {
+                                              const option =
+                                                property.items.anyOf.find(
+                                                  (item: any) =>
+                                                    item.const === id
+                                                );
+
+                                              return {
+                                                value: id,
+                                                label: option?.title || id,
+                                              };
+                                            })
+                                          : []
+                                      }
+                                      onChange={(options) => {
+                                        // Transform to only send array of const IDs
+                                        const ids = options.map(
+                                          (option) => option.value
+                                        );
+                                        field.onChange(ids);
+                                      }}
+                                      defaultOptions={property.items.anyOf.map(
+                                        (item: any) => ({
+                                          value: item.const,
+                                          label: item.title,
+                                        })
                                       )}
-                                    </SelectContent>
-                                  </Select>
+                                      emptyIndicator={
+                                        <p className="text-center text-lg leading-10 text-gray-600 dark:text-gray-400">
+                                          موردی یافت نشد
+                                        </p>
+                                      }
+                                    />
+                                  </FormControl>
                                   <FormMessage />
                                 </FormItem>
                               );
@@ -879,7 +913,7 @@ export default function Page({
 
                           <FormField
                             control={form.control}
-                            name={`variants.${index}.inventory`}
+                            name={`variants.${index}.stock`}
                             render={({ field, fieldState }) => (
                               <FormItem>
                                 <FormLabel>

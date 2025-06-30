@@ -63,10 +63,26 @@ export function FileUploaderNew({ onImageIdsChange }: FileUploaderNewProps) {
           onProgress(file, 0);
         });
 
+        // Simulate progress updates during upload
+        const progressIntervals = imageFiles.map((file) => {
+          let currentProgress = 0;
+          const interval = setInterval(() => {
+            if (currentProgress < 90) {
+              currentProgress += Math.random() * 15 + 5; // Random increment between 5-20%
+              onProgress(file, Math.min(currentProgress, 90));
+            }
+          }, 200); // Update every 200ms
+
+          return { file, interval };
+        });
+
         // Use the uploadImages API
         const uploadResponse = await uploadImages({
           images: imageFiles,
         });
+
+        // Clear progress intervals
+        progressIntervals.forEach(({ interval }) => clearInterval(interval));
 
         // Extract IDs from upload response
         const newImageIds = uploadResponse.uploaded.map(
@@ -134,22 +150,29 @@ export function FileUploaderNew({ onImageIdsChange }: FileUploaderNewProps) {
           </Button>
         </FileUploadTrigger>
       </FileUploadDropzone>
-      <FileUploadList orientation="horizontal">
+      <FileUploadList orientation="vertical">
         {files.map((file, index) => (
-          <FileUploadItem key={index} value={file} className="p-0">
-            <FileUploadItemPreview className="size-20">
-              <FileUploadItemProgress variant="fill" />
-            </FileUploadItemPreview>
-            <FileUploadItemMetadata className="sr-only" />
-            <FileUploadItemDelete asChild>
-              <Button
-                variant="secondary"
-                size="icon"
-                className="-top-1 -right-1 absolute size-5 rounded-full"
+          <FileUploadItem key={index} value={file} className="p-0 border-none">
+            <div className="relative">
+              <FileUploadItemPreview
+                className={index == 0 ? "size-72" : "size-20 border-none"}
               >
-                <X className="size-3" />
-              </Button>
-            </FileUploadItemDelete>
+                <FileUploadItemProgress variant="fill" />
+              </FileUploadItemPreview>
+              <FileUploadItemDelete asChild>
+                <Button
+                  variant="secondary"
+                  size="icon"
+                  className="-top-1 -right-1 absolute size-5 rounded-full"
+                >
+                  <X className="size-3" />
+                </Button>
+              </FileUploadItemDelete>
+            </div>
+            <div className="mt-2">
+              <FileUploadItemProgress variant="linear" className="h-2" />
+            </div>
+            <FileUploadItemMetadata className="sr-only" />
           </FileUploadItem>
         ))}
       </FileUploadList>
