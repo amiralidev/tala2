@@ -44,10 +44,10 @@ export default function BucketsPage() {
               <TableHead className="text-right">کد مجموعه</TableHead>
               <TableHead className="text-right">نام مجموعه</TableHead>
               <TableHead className="text-right">نام برند</TableHead>
-              <TableHead className="text-right">نام تامیین کننده</TableHead>
+              {/* <TableHead className="text-right">نام تامیین کننده</TableHead>
               <TableHead className="text-right">تعداد مجموعه</TableHead>
               <TableHead className="text-right">فروشگاه ها</TableHead>
-              <TableHead className="text-right">تاریخ ساخت مجموعه</TableHead>
+              <TableHead className="text-right">تاریخ ساخت مجموعه</TableHead> */}
               <TableHead className="text-right">عملیات</TableHead>
             </TableRow>
           </TableHeader>
@@ -85,10 +85,10 @@ export default function BucketsPage() {
                   <TableCell>{bucket.code}</TableCell>
                   <TableCell>{bucket.name}</TableCell>
                   <TableCell>{bucket.brand}</TableCell>
+                  {/* <TableCell></TableCell>
                   <TableCell></TableCell>
                   <TableCell></TableCell>
-                  <TableCell></TableCell>
-                  <TableCell></TableCell>
+                  <TableCell></TableCell> */}
                   <TableCell className="text-right flex items-center gap-2">
                     <Link
                       href={`/dashboard/bucket/${bucket._id}`}
