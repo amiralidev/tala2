@@ -5,6 +5,14 @@ FROM oven/bun as builder
 # Set the working directory inside the container for all subsequent commands.
 WORKDIR /app
 
+# Declare NEXT_PUBLIC_API_URL as a build argument.
+# This allows you to pass its value during the docker build command.
+ARG NEXT_PUBLIC_API_URL
+
+# Set the build argument as an environment variable for the build process.
+# This makes it available to Next.js during the 'bun run build' step.
+ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
+
 # Copy package.json and bun.lock (if it exists) to leverage Docker's build cache.
 # This step is crucial for efficient caching: if these files don't change,
 # Docker won't re-run 'bun install' in subsequent builds.
