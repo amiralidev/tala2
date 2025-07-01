@@ -24,18 +24,28 @@ export interface BucketListItems {
   code: string;
 }
 
-export interface BucketListItemsResponse {
+export interface BucketProduct {
   _id: string;
   sku: string;
   kala: string;
   bucket: string;
   variants: Variant[];
-  images: string[];
+  images: Image[];
   shops: Shop[];
   pricing: Pricing;
   createdAt: string;
   updatedAt: string;
-  digikalaData: Record<string, string>;
+  digikalaData?: Record<string, string>;
+}
+
+interface Image {
+  _id: string;
+  url: string;
+}
+
+export interface BucketListItemsResponse {
+  bucket: BucketList;
+  products: BucketProduct[];
 }
 
 interface Variant {
