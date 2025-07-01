@@ -122,6 +122,7 @@ export function AddBucketToShop({ bucketName, bucket }: AddBucketToShopProps) {
                           width={40}
                           height={40}
                           className="rounded-md border"
+                          unoptimized
                         />
                         <div>
                           <div>
