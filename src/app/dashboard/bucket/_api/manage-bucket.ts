@@ -15,8 +15,8 @@ export const getBucket = async ({
   bucketId,
 }: {
   bucketId: string;
-}): Promise<BucketListItemsResponse[]> => {
-  return readData<BucketListItemsResponse[]>(`/products/bucket/${bucketId}`);
+}): Promise<BucketListItemsResponse> => {
+  return readData<BucketListItemsResponse>(`/products/bucket/${bucketId}`);
 };
 
 export const createBucket = async (
@@ -47,7 +47,7 @@ export const useBucket = ({ bucketId }: { bucketId: string }) => {
   });
 
   return {
-    data: data ?? [],
+    data: data ?? null,
     isLoading,
     error,
   };

@@ -14,7 +14,7 @@ import { useBucket } from "../_api/manage-bucket";
 export default function BucketsPage() {
   const { bucket } = useParams();
   const {
-    data: products,
+    data: bucketData,
     isLoading,
     error,
   } = useBucket({ bucketId: bucket as string });
@@ -22,7 +22,9 @@ export default function BucketsPage() {
   return (
     <>
       <div className="flex justify-between items-center">
-        <h1 className="text-2xl font-semibold">مجموعه {bucket}</h1>
+        <h1 className="text-2xl font-semibold">
+          مجموعه {bucketData?.bucket?.brand}
+        </h1>
       </div>
 
       <div className="border rounded-md overflow-hidden">
@@ -40,7 +42,7 @@ export default function BucketsPage() {
           <TableBody>
             {isLoading ? (
               <TableRow>
-                <TableCell colSpan={6} className="text-center py-8">
+                <TableCell colSpan={7} className="text-center py-8">
                   در حال بارگذاری...
                 </TableCell>
               </TableRow>
@@ -53,7 +55,7 @@ export default function BucketsPage() {
                   خطا در بارگذاری مجموعه‌ها
                 </TableCell>
               </TableRow>
-            ) : products.length === 0 ? (
+            ) : !bucketData ? (
               <TableRow>
                 <TableCell
                   colSpan={5}
@@ -62,18 +64,27 @@ export default function BucketsPage() {
                   هیچ مجموعه‌ای یافت نشد
                 </TableCell>
               </TableRow>
+            ) : bucketData.products?.length === 0 ? (
+              <TableRow>
+                <TableCell
+                  colSpan={5}
+                  className="text-center py-8 text-gray-500"
+                >
+                  هیچ محصولی در این مجموعه یافت نشد
+                </TableCell>
+              </TableRow>
             ) : (
-              products.map((product, index) => (
+              bucketData.products?.map((product, index) => (
                 <TableRow
                   key={product._id}
                   className={index % 2 !== 0 ? "bg-zinc-100" : ""}
                 >
                   <TableCell className="space-x-2 flex">
-                    {product.images[0]["url"] ? (
+                    {product.images?.[0]?.url ? (
                       <div className="border rounded-md overflow-hidden">
                         <Image
-                          src={product.images[0]["url"]}
-                          alt={product.images[0]["url"]}
+                          src={product.images[0].url}
+                          alt={product.images[0].url}
                           width={50}
                           height={50}
                           unoptimized
@@ -85,8 +96,9 @@ export default function BucketsPage() {
                     style={{ direction: "ltr" }}
                     className="text-right"
                   >
-                    {product.digikalaData["product[title_fa]"] ??
-                      product.digikalaData["product[model]"]}
+                    {product.digikalaData?.["product[title_fa]"] ??
+                      product.digikalaData?.["product[model]"] ??
+                      "بدون نام"}
                   </TableCell>
                   <TableCell>{product.sku}</TableCell>
                   <TableCell>{product.pricing.wage.toString()} %</TableCell>
