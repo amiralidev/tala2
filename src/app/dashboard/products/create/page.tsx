@@ -30,10 +30,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { formatRial, parseRial } from "@/utils/rial-formatter";
+import { parseRial } from "@/utils/rial-formatter";
 import { convertBrackets, reverseConvert } from "@/utils/zod-schema-converter";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Plus, RotateCcw, Trash2 } from "lucide-react";
+import { Plus, Trash2 } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { z } from "zod"; // Using 'zod' directly, v4 is usually implied by project setup
 import { useKalas } from "../_api/manage-kalas";
@@ -127,8 +127,8 @@ export default function Page({
       })) || [
         {
           id: Date.now(),
-          weight: "0",
-          stock: 0,
+          weight: "",
+          stock: 1,
           extras_price: "0",
           extras_wage: "0",
         },
@@ -218,8 +218,8 @@ export default function Page({
         [
           {
             id: Date.now(), // Add unique ID
-            weight: "0",
-            stock: 0,
+            weight: "",
+            stock: 1,
             extras_price: "0",
             extras_wage: "0",
           },
@@ -309,8 +309,8 @@ export default function Page({
       variants: [
         {
           id: Date.now(),
-          weight: "0",
-          stock: 0,
+          weight: "",
+          stock: 1,
           extras_price: "0",
           extras_wage: "0",
         },
@@ -467,7 +467,7 @@ export default function Page({
     const newVariant = {
       id: Date.now() + Math.random(), // Unique ID for new variant
       weight: "0",
-      stock: 0,
+      stock: 1,
       extras_price: "0",
       extras_wage: "0",
     };
@@ -486,24 +486,6 @@ export default function Page({
     },
     [form]
   );
-
-  const getAiar = (id: string) => {
-    switch (id) {
-      case "883":
-        return "۱۸ عیار";
-      case "36549":
-        return "۲۲ عیار";
-      case "881":
-        return "۲۴ عیار";
-      default:
-        return "";
-    }
-  };
-
-  const getKalaTitle = (id: string) => {
-    const kala = kalasData.find((item) => item._id === id);
-    return kala?.title;
-  };
 
   const onSubmit = async (values: Record<string, any>) => {
     const skuId = bucketCode + Math.floor(100000 + Math.random() * 900000);
@@ -583,7 +565,7 @@ export default function Page({
               {product ? "ویرایش محصول" : "ایجاد محصول جدید"} | نام مجموعه (
               {bucketName}) | کد ({bucketCode})
             </b>
-            {!product && (
+            {/* {!product && (
               <Button
                 type="button"
                 onClick={resetForm}
@@ -593,7 +575,7 @@ export default function Page({
                 <RotateCcw className="h-4 w-4" />
                 پاک کردن همه انتخاب‌ها
               </Button>
-            )}
+            )} */}
           </div>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
@@ -641,7 +623,7 @@ export default function Page({
                       </FormLabel>
                       <FormControl>
                         <Input
-                          value={field.value || ""}
+                          value={field.value || "7"}
                           onChange={(e) => {
                             const numericValue = parseRial(e.target.value);
                             field.onChange(numericValue);
@@ -665,7 +647,7 @@ export default function Page({
                       </FormLabel>
                       <FormControl>
                         <Input
-                          value={field.value || ""}
+                          value={field.value || "23"}
                           onChange={(e) => {
                             const numericValue = parseRial(e.target.value);
                             field.onChange(numericValue);
@@ -850,7 +832,7 @@ export default function Page({
                         className="flex items-center gap-2"
                       >
                         <Plus className="h-4 w-4" />
-                        ایجاد نوع جدید
+                        ایجاد تنوع جدید
                       </Button>
                     </div>
 
@@ -925,7 +907,7 @@ export default function Page({
                                     placeholder="موجودی"
                                     className="w-full"
                                     type="number"
-                                    min="1"
+                                    min="0"
                                   />
                                 </FormControl>
                                 <FormMessage />
@@ -942,13 +924,13 @@ export default function Page({
                                 <FormControl>
                                   <Input
                                     value={
-                                      field.value ? formatRial(field.value) : ""
+                                      field.value ? parseInt(field.value) : ""
                                     }
                                     onChange={(e) => {
-                                      const numericValue = parseRial(
-                                        e.target.value
-                                      );
-                                      field.onChange(numericValue);
+                                      // const numericValue = parseRial(
+                                      //   e.target.value
+                                      // );
+                                      field.onChange(e.target.value);
                                     }}
                                     placeholder="قیمت اضافات (ریال)"
                                     className="w-full"
@@ -968,13 +950,13 @@ export default function Page({
                                 <FormControl>
                                   <Input
                                     value={
-                                      field.value ? formatRial(field.value) : ""
+                                      field.value ? parseInt(field.value) : ""
                                     }
                                     onChange={(e) => {
-                                      const numericValue = parseRial(
-                                        e.target.value
-                                      );
-                                      field.onChange(numericValue);
+                                      // const numericValue = parseRial(
+                                      //   e.target.value
+                                      // );
+                                      field.onChange(e.target.value);
                                     }}
                                     placeholder="اجرت اضافات (ریال)"
                                     className="w-full"
