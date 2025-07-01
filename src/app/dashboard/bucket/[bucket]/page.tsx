@@ -1,4 +1,5 @@
 "use client";
+import { buttonVariants } from "@/components/ui/button";
 import {
   Table,
   TableBody,
@@ -8,6 +9,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import Image from "next/image";
+import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useBucket } from "../_api/manage-bucket";
 
@@ -25,6 +27,12 @@ export default function BucketsPage() {
         <h1 className="text-2xl font-semibold">
           مجموعه {bucketData?.bucket?.brand}
         </h1>
+        <Link
+          href={`/dashboard/products/create?bucketCode=${bucketData?.bucket?.code}&bucketName=${bucketData?.bucket?.name}&bucketId=${bucketData?.bucket?._id}`}
+          className={buttonVariants()}
+        >
+          ایجاد محصول جدید
+        </Link>
       </div>
 
       <div className="border rounded-md overflow-hidden">
