@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import NextTopLoader from "nextjs-toploader";
 
 import { Toaster } from "@/components/ui/sonner";
+import { AuthProvider } from "@/providers/auth-provider";
 import QueryProvider from "@/providers/react-query-provider";
 import "./globals.css";
 
@@ -56,7 +57,9 @@ export default function RootLayout({
     <html lang="fa" dir="rtl" className={`${yekanbakh.variable} `}>
       <body className={"antialiased"}>
         <NextTopLoader />
-        <QueryProvider>{children}</QueryProvider>
+        <QueryProvider>
+          <AuthProvider>{children}</AuthProvider>
+        </QueryProvider>
         <Toaster />
       </body>
     </html>

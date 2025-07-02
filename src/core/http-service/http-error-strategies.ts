@@ -44,6 +44,7 @@ export const errorHandler: Record<number, ApiErrorHandler> = {
     (errorData.errors ? validationErrorStrategy : badRequestErrorStrategy)(
       errorData
     ),
+  401: unauthorizedErrorStrategy,
   403: unauthorizedErrorStrategy,
   404: notFoundErrorStrategy,
   500: unhandledExceptionStrategy,

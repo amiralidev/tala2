@@ -1,9 +1,7 @@
 "use client";
 
 import {
-  AudioWaveform,
   Box,
-  Command,
   Frame,
   GalleryVerticalEnd,
   Map,
@@ -14,6 +12,7 @@ import {
 import * as React from "react";
 
 import { NavMain } from "@/components/nav-main";
+import { NavUser } from "@/components/nav-user";
 import { TeamSwitcher } from "@/components/team-switcher";
 import {
   Sidebar,
@@ -22,32 +21,40 @@ import {
   SidebarHeader,
   SidebarRail,
 } from "@/components/ui/sidebar";
+import { useAuth } from "@/providers/auth-provider";
 
 // This is sample data.
 const data = {
-  user: {
-    name: "shadcn",
-    email: "m@example.com",
-    avatar: "/avatars/shadcn.jpg",
-  },
   teams: [
     {
       name: "طلاسیس",
       logo: GalleryVerticalEnd,
       plan: "ادمین",
     },
-    {
-      name: "Acme Corp.",
-      logo: AudioWaveform,
-      plan: "Startup",
-    },
-    {
-      name: "Evil Corp.",
-      logo: Command,
-      plan: "Free",
-    },
+    // {
+    //   name: "Acme Corp.",
+    //   logo: AudioWaveform,
+    //   plan: "Startup",
+    // },
+    // {
+    //   name: "Evil Corp.",
+    //   logo: Command,
+    //   plan: "Free",
+    // },
   ],
   navMain: [
+    // {
+    //   title: "لینک ها",
+    //   url: "/dashboard",
+    //   icon: Home,
+    //   isActive: true,
+    //   items: [
+    //      // {
+    //     //   title: "لیست",
+    //     //   url: "/dashboard/products",
+    //     // },
+    //   ]
+    // },
     {
       title: "محصول",
       url: "#",
@@ -182,6 +189,14 @@ const data = {
 };
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  const { user } = useAuth();
+
+  const userData = {
+    name: user?.name || "کاربر",
+    email: user?.email || "user@example.com",
+    avatar: "/avatars/default.jpg",
+  };
+
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
@@ -190,7 +205,9 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       <SidebarContent>
         <NavMain items={data.navMain} />
       </SidebarContent>
-      <SidebarFooter>{/* <NavUser user={data.user} /> */}</SidebarFooter>
+      <SidebarFooter>
+        <NavUser user={userData} />
+      </SidebarFooter>
       <SidebarRail />
     </Sidebar>
   );

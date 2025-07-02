@@ -14,6 +14,37 @@ const httpService = axios.create({
   },
 });
 
+// Add request interceptor to include Bearer token
+httpService.interceptors.request.use(
+  (config) => {
+    // Get token from localStorage
+    const token = localStorage.getItem("talasys_access_token");
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
+
+// Helper function to logout user
+const logoutUser = () => {
+  // Remove from localStorage
+  localStorage.removeItem("talasys_access_token");
+  localStorage.removeItem("talasys_user");
+
+  // Remove cookie
+  document.cookie =
+    "talasys_access_token=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;";
+
+  // Redirect to login page
+  if (typeof window !== "undefined") {
+    window.location.href = "/login";
+  }
+};
+
 httpService.interceptors.response.use(
   (response) => {
     return response;
@@ -21,6 +52,13 @@ httpService.interceptors.response.use(
   (error) => {
     if (error?.response) {
       const statusCode = error?.response?.status;
+
+      // Handle 401 Unauthorized - automatically logout user
+      if (statusCode === 403) {
+        logoutUser();
+        return Promise.reject(error);
+      }
+
       if (statusCode >= 400) {
         const errorData: ApiError = error.response?.data;
 
@@ -29,6 +67,8 @@ httpService.interceptors.response.use(
     } else {
       networkErrorStrategy();
     }
+
+    return Promise.reject(error);
   }
 );
 
