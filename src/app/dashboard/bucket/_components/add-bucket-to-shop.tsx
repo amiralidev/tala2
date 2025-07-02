@@ -26,22 +26,26 @@ interface AddBucketToShopProps {
   bucket: string;
 }
 
+interface Task {
+  type: string;
+  shop: string;
+  bucket: string;
+  status: string;
+  extraFields?: Record<string, string>;
+}
+
 export function AddBucketToShop({ bucketName, bucket }: AddBucketToShopProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [categoryCodes, setCategoryCodes] = useState<Record<string, string>>(
     {}
   );
-  const {
-    data: shopsDatas,
-    isLoading,
-    error,
-  } = useBucketShops(bucket, {
+  const { data: shopsDatas, isLoading } = useBucketShops(bucket, {
     enabled: isOpen,
   });
   const createTaskMutation = useCreateTask();
 
   const createTask = (shopId: string, type: string) => {
-    const taskData: any = {
+    const taskData: Task = {
       type: type,
       shop: shopId,
       bucket: bucket,
