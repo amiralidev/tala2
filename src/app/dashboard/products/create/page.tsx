@@ -146,11 +146,8 @@ export default function Page({
         const savedData = localStorage.getItem("product_form_data");
         if (savedData) {
           const parsedData = JSON.parse(savedData);
-          const {
-            selectedSchema: savedSchema,
-            productImageIds: savedImages,
-            formData: savedFormData,
-          } = parsedData;
+          const { selectedSchema: savedSchema, formData: savedFormData } =
+            parsedData;
 
           // Restore selected schema
           if (savedSchema) {
@@ -232,6 +229,7 @@ export default function Page({
     if (selectedKala?.data?.schema?.properties) {
       const properties = selectedKala.data.schema.properties;
       const requiredFields = selectedKala.data.schema.required || [];
+      const defaultValues = selectedKala.data.defaultValues;
 
       Object.entries(properties).forEach(([key, propDef]: [string, any]) => {
         // if (key === "sku") return; // SKU is in baseSchema
@@ -272,10 +270,17 @@ export default function Page({
 
         newDynamicSchema[convertBrackets(key)] = fieldSchema;
         // Set default value: product's value > schema default > type default
-        newDefaults[convertBrackets(key)] =
-          product?.[convertBrackets(key)] !== undefined
-            ? product[convertBrackets(key)]
+        const convertedKey = convertBrackets(key);
+        const defaultValue =
+          product?.[convertedKey] !== undefined
+            ? product[convertedKey]
+            : defaultValues?.[convertedKey] !== undefined
+            ? defaultValues[convertedKey]
+            : defaultValues?.[key] !== undefined
+            ? defaultValues[key]
             : "";
+
+        newDefaults[convertedKey] = defaultValue;
       });
     }
     setDynamicSchemaParts(newDynamicSchema);
@@ -291,42 +296,72 @@ export default function Page({
     mode: "onBlur", // Changed from onChange to onBlur to reduce validation triggers
   });
 
-  // Reset form and clear localStorage
-  const resetForm = useCallback(() => {
-    try {
-      localStorage.removeItem("product_form_data");
-    } catch (error) {
-      console.error("Error clearing saved form data:", error);
+  // Effect to apply default values when schema changes (for new selections)
+  useEffect(() => {
+    if (
+      selectedKala &&
+      !product &&
+      Object.keys(dynamicSchemaParts).length > 0
+    ) {
+      // Check if this is a new schema selection (not from saved data)
+      const savedData = localStorage.getItem("product_form_data");
+      const isNewSelection =
+        !savedData || JSON.parse(savedData)?.selectedSchema !== selectedSchema;
+
+      if (isNewSelection) {
+        // Apply default values to form fields
+        Object.entries(formDefaultValues).forEach(([key, value]) => {
+          if (value !== undefined && value !== null && value !== "") {
+            form.setValue(key, value, { shouldValidate: false });
+          }
+        });
+      }
     }
+  }, [
+    selectedKala,
+    dynamicSchemaParts,
+    product,
+    formDefaultValues,
+    form,
+    selectedSchema,
+  ]);
 
-    // Reset form to initial state
-    setSelectedSchema("");
-    setProductImageIds([]);
+  // Reset form and clear localStorage
+  // const resetForm = useCallback(() => {
+  //   try {
+  //     localStorage.removeItem("product_form_data");
+  //   } catch (error) {
+  //     console.error("Error clearing saved form data:", error);
+  //   }
 
-    const initialDefaults = {
-      wage: "",
-      profit: "",
-      variants: [
-        {
-          id: Date.now(),
-          weight: "",
-          stock: 1,
-          extras_price: "0",
-          extras_wage: "0",
-        },
-      ],
-    };
+  //   // Reset form to initial state
+  //   setSelectedSchema("");
+  //   setProductImageIds([]);
 
-    setFormDefaultValues(initialDefaults);
-    form.reset(initialDefaults);
-  }, [form]);
+  //   const initialDefaults = {
+  //     wage: "",
+  //     profit: "",
+  //     variants: [
+  //       {
+  //         id: Date.now(),
+  //         weight: "",
+  //         stock: 1,
+  //         extras_price: "0",
+  //         extras_wage: "0",
+  //       },
+  //     ],
+  //   };
+
+  //   setFormDefaultValues(initialDefaults);
+  //   form.reset(initialDefaults);
+  // }, [form]);
 
   // Effect to reset the form when defaultValues or the schema itself changes.
   // This is crucial for react-hook-form to pick up new defaults and structure.
   useEffect(() => {
     // Only reset if we have a proper schema and default values
     // But don't reset if we're in the middle of restoring saved data
-    if (Object.keys(dynamicSchemaParts).length > 0 || selectedKala) {
+    if (Object.keys(dynamicSchemaParts).length > 0 && selectedKala) {
       // Check if we have saved data that we should preserve
       const savedData = localStorage.getItem("product_form_data");
       if (savedData) {
@@ -682,7 +717,7 @@ export default function Page({
                           key={key}
                           control={form.control}
                           name={convertBrackets(key)}
-                          render={({ field, fieldState }) => {
+                          render={({ field }) => {
                             return (
                               <FormItem>
                                 <FormLabel>
@@ -715,7 +750,7 @@ export default function Page({
                             key={key}
                             control={form.control}
                             name={convertBrackets(key)}
-                            render={({ field, fieldState }) => {
+                            render={({ field }) => {
                               return (
                                 <FormItem>
                                   <FormLabel>
@@ -760,7 +795,7 @@ export default function Page({
                           <FormField
                             control={form.control}
                             name={convertBrackets(key)}
-                            render={({ field, fieldState }) => {
+                            render={({ field }) => {
                               return (
                                 <FormItem>
                                   <FormLabel>
@@ -850,7 +885,7 @@ export default function Page({
                       )}
                     />
 
-                    {variantsWithKeys.map((variant, index) => (
+                    {variantsWithKeys.map((variant: any, index: number) => (
                       <div
                         key={variant.key}
                         className="border rounded-lg p-4 space-y-4 mb-4"
@@ -875,7 +910,7 @@ export default function Page({
                           <FormField
                             control={form.control}
                             name={`variants.${index}.weight`}
-                            render={({ field, fieldState }) => (
+                            render={({ field }) => (
                               <FormItem>
                                 <FormLabel>
                                   وزن <span className="text-red-500">*</span>
@@ -896,7 +931,7 @@ export default function Page({
                           <FormField
                             control={form.control}
                             name={`variants.${index}.stock`}
-                            render={({ field, fieldState }) => (
+                            render={({ field }) => (
                               <FormItem>
                                 <FormLabel>
                                   موجودی <span className="text-red-500">*</span>
@@ -918,7 +953,7 @@ export default function Page({
                           <FormField
                             control={form.control}
                             name={`variants.${index}.extras_price`}
-                            render={({ field, fieldState }) => (
+                            render={({ field }) => (
                               <FormItem>
                                 <FormLabel>قیمت اضافات</FormLabel>
                                 <FormControl>
@@ -944,7 +979,7 @@ export default function Page({
                           <FormField
                             control={form.control}
                             name={`variants.${index}.extras_wage`}
-                            render={({ field, fieldState }) => (
+                            render={({ field }) => (
                               <FormItem>
                                 <FormLabel>اجرت اضافات</FormLabel>
                                 <FormControl>

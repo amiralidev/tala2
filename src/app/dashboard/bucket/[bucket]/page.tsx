@@ -8,6 +8,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { skuFormatter } from "@/utils/sku-formatter";
 import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
@@ -108,7 +109,7 @@ export default function BucketsPage() {
                       product.digikalaData?.["product[model]"] ??
                       "بدون نام"}
                   </TableCell>
-                  <TableCell>{product.sku}</TableCell>
+                  <TableCell>{skuFormatter(product.sku)}</TableCell>
                   <TableCell>{product.pricing.wage.toString()} %</TableCell>
                   <TableCell>{product.pricing.profit.toString()} %</TableCell>
                   <TableCell className="text-right space-x-2">

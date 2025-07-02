@@ -8,6 +8,7 @@ export interface Kalas {
 
 export interface Data {
   schema: Schema;
+  defaultValues: any;
 }
 
 export interface Schema {
