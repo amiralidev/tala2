@@ -214,7 +214,7 @@ export default function Page({
           id: variant.id || `default-${index}-${Date.now()}`, // Ensure ID exists
         })),
     };
-
+    console.log("🔍 selectedKala:", selectedKala);
     if (selectedKala?.data?.schema?.properties) {
       const properties = selectedKala.data.schema.properties;
       const requiredFields = selectedKala.data.schema.required || [];
