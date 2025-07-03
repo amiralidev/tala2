@@ -1,8 +1,15 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { useRouter, useSearchParams } from "next/navigation";
-import { Fragment, useCallback, useEffect, useMemo, useState } from "react"; // Added useCallback
+import { useRouter } from "next/navigation";
+import {
+  Fragment,
+  use,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from "react"; // Added useCallback
 
 import { FileUploaderNew } from "@/components/file-uploader-new";
 import {
@@ -74,11 +81,16 @@ const baseSchema = z.object({
 
 export default function Page({
   product, // Existing product data for editing, if any
+  searchParams,
 }: {
   product?: any;
+  searchParams?: Promise<{
+    bucketName?: string;
+    bucketCode?: string;
+    bucketId?: string;
+  }>;
 }) {
   const router = useRouter();
-  const searchParams = useSearchParams();
   const [selectedSchema, setSelectedSchema] = useState<string>(
     product?.kalaId || "" // Initialize with product's kalaId if editing
   );
@@ -86,12 +98,11 @@ export default function Page({
   const { data: kalasData = [], isLoading } = useKalas();
   const [productImageIds, setProductImageIds] = useState<string[]>([]);
 
-  // Get search params using traditional approach
-  const bucketName = searchParams.get("bucketName") || "";
-  const bucketCode = searchParams.get("bucketCode") || "";
-  const bucketId = searchParams.get("bucketId") || "";
-
-  console.log("🔍 Search params:", { bucketName, bucketCode, bucketId });
+  const resolvedSearchParams = searchParams ? use(searchParams) : {};
+  console.log("🔍 Resolved search params:", resolvedSearchParams);
+  const bucketName = resolvedSearchParams?.bucketName || "";
+  const bucketCode = resolvedSearchParams?.bucketCode || "";
+  const bucketId = resolvedSearchParams?.bucketId || "";
 
   // Find selected kala based on selectedSchema (ID)
   const selectedKala = useMemo(
@@ -176,7 +187,7 @@ export default function Page({
             formData,
             timestamp: Date.now(),
           };
-          // console.log("💾 Saving form data:", dataToSave);
+          console.log("💾 Saving form data:", dataToSave);
           localStorage.setItem("product_form_data", JSON.stringify(dataToSave));
         } catch (error) {
           console.error("Error saving form data:", error);
