@@ -99,6 +99,7 @@ export default function Page({
   const [productImageIds, setProductImageIds] = useState<string[]>([]);
 
   const resolvedSearchParams = searchParams ? use(searchParams) : {};
+  console.log("🔍 Resolved search params:", resolvedSearchParams);
   const bucketName = resolvedSearchParams?.bucketName || "";
   const bucketCode = resolvedSearchParams?.bucketCode || "";
   const bucketId = resolvedSearchParams?.bucketId || "";
@@ -161,7 +162,6 @@ export default function Page({
 
           // Store saved form data to be applied after schema is ready
           if (savedFormData) {
-            console.log("🔄 Restoring form data:", savedFormData);
             // We'll apply this after the dynamic schema is set up
             setFormDefaultValues((prev) => ({
               ...prev,
@@ -372,7 +372,6 @@ export default function Page({
             parsedData.selectedSchema === selectedSchema &&
             parsedData.formData
           ) {
-            console.log("🔄 Skipping form reset - preserving saved data");
             return;
           }
         } catch (error) {
@@ -380,7 +379,6 @@ export default function Page({
         }
       }
 
-      console.log("🔄 Resetting form with new defaults:", formDefaultValues);
       form.reset(formDefaultValues);
     }
   }, [
@@ -401,18 +399,14 @@ export default function Page({
     ) {
       try {
         const savedData = localStorage.getItem("product_form_data");
-        console.log("🔍 Checking for saved data:", savedData);
         if (savedData) {
           const parsedData = JSON.parse(savedData);
-          console.log("📦 Parsed saved data:", parsedData);
 
           // Check if the saved schema matches the current schema
           if (
             parsedData.selectedSchema === selectedSchema &&
             parsedData.formData
           ) {
-            console.log("✅ Restoring form data:", parsedData.formData);
-
             // Merge saved data with current defaults to ensure all fields are present
             const mergedData = {
               ...formDefaultValues,
@@ -431,8 +425,6 @@ export default function Page({
                 form.setValue(key, "", { shouldValidate: false });
               }
             });
-
-            console.log("✅ Form values restored successfully");
           } else {
             console.log("❌ Not restoring - conditions not met:", {
               hasFormData: !!parsedData.formData,
@@ -571,7 +563,6 @@ export default function Page({
       // redirect to bucket page
       router.push(`/dashboard/bucket/${bucketId}`);
       // Temporary success message for testing
-      console.log("✅ Form submission completed successfully");
     } catch (error) {
       console.error("❌ Error in form submission:", error);
     }
